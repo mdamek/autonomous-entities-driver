@@ -9,5 +9,6 @@ echo Killing Xinuk...
 
 for HOSTNAME in ${RASPBERRYHOSTS[@]} ; do
     ssh -l ${USERNAME} ${HOSTNAME} "${KILLXINUKSCRIPT}"
-    echo Xinuk killed on ${HOSTNAME}
+    curl http://${HOSTNAME}:8000/clear
+    echo .Xinuk killed on ${HOSTNAME}
 done
