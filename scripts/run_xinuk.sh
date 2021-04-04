@@ -7,19 +7,23 @@ APLICATION_NAME="mock"
 
 WORLD_WIDTH=64
 WORLD_HEIGHT=64
-ITERATIONS_NUMBER=2000
+ITERATIONS_NUMBER=100
 MIN_NR_OF_MEMBERS=4
 GUI_TYPE="ledPanel"
 LED_PANEL_PORT=8000
 WORKERS_ROOT=2
+WORKERS_X=2
+WORKERS_Y=2
 XINUK_PORT=2551
+SIGNAL_DISABLED=false
 
 function run_xinuk () {
 RUN_SCRIPT="java -Dmock.config.isSupervisor=$2  
 -Dclustering.ip=$1 -Dclustering.port=${XINUK_PORT} 
 -Dclustering.supervisor.ip=${RASPBERRY1} -Dclustering.supervisor.port=${XINUK_PORT} 
--Dclustering.min-nr-of-members${MIN_NR_OF_MEMBERS} -Dmock.config.worldWidth=${WORLD_WIDTH} 
--Dmock.config.worldHeight=${WORLD_HEIGHT} -Dmock.config.guiType=${GUI_TYPE} 
+-Dclustering.min-nr-of-members${MIN_NR_OF_MEMBERS} -Dmock.config.worldWidth=${WORLD_WIDTH}
+-Dmock.config.workersX=${WORKERS_X} -Dmock.config.workersY=${WORKERS_Y} Dmock.config.signalDisabled=${SIGNAL_DISABLED}
+-Dmock.config.worldHeight=${WORLD_HEIGHT} -Dmock.config.guiType=${GUI_TYPE}
 -Dmock.config.ledPanelPort=${LED_PANEL_PORT} -Dmock.config=workersRoot=${WORKERS_ROOT} 
 -jar /home/pi/Desktop/xinuk/${APLICATION_NAME}/target/scala-2.13/${APLICATION_NAME}.jar"
 

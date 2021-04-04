@@ -4,7 +4,7 @@ source raspberry_hosts.sh
 USERNAME="pi"
 
 RUNLEDSERVERSCRIPT="cd Desktop/simulation-platform-for-autonomous-entities;
-sudo npm run start < /dev/null > /tmp/mylogfile 2>&1 &"
+sudo npx ts-node -T Server/app.ts < /dev/null > /tmp/mylogfile 2>&1 &"
 
 echo Running all led servers...
 

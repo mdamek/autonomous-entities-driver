@@ -1,14 +1,11 @@
 
-import tkinter as tk                
-from tkinter import font as tkfont  
-
-
+import Tkinter as tk                 
 class App(tk.Tk):
 
     def __init__(self, *args, **kwargs):
         tk.Tk.__init__(self, *args, **kwargs)
 
-        self.title_font = tkfont.Font(family='Helvetica', size=18, weight="bold", slant="italic")
+        
 
         container = tk.Frame(self)
         container.pack(side="top", fill="both", expand=True)
@@ -33,7 +30,7 @@ class StartPage(tk.Frame):
     def __init__(self, parent, controller):
         tk.Frame.__init__(self, parent)
         self.controller = controller
-        label = tk.Label(self, text="Select simulation", font=controller.title_font)
+        label = tk.Label(self, text="Select simulation")
         label.pack(side="top", fill="x", pady=10)
 
         button1 = tk.Button(self, text="Start demo",
@@ -59,7 +56,7 @@ class DemoPage(tk.Frame):
     def __init__(self, parent, controller):
         tk.Frame.__init__(self, parent)
         self.controller = controller
-        label = tk.Label(self, text="This is page 1", font=controller.title_font)
+        label = tk.Label(self, text="This is page 1")
         label.pack(side="top", fill="x", pady=10)
         button = tk.Button(self, text="Stop",
                            command=lambda: controller.show_frame("StartPage"))
@@ -67,5 +64,5 @@ class DemoPage(tk.Frame):
 
 if __name__ == "__main__":
     app = App()
-    #app.attributes('-fullscreen', True)
+    app.attributes('-fullscreen', True)
     app.mainloop()

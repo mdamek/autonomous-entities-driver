@@ -14,6 +14,6 @@ fi
 
 echo Updating Xinuk...
 echo $UPDATEXINUKSCRIPT
-#for HOSTNAME in ${RASPBERRYHOSTS[@]} ; do
-#    ssh -l ${USERNAME} ${HOSTNAME} "${UPDATEXINUKSCRIPT}"
-#done
+for HOSTNAME in ${RASPBERRYHOSTS[@]} ; do
+    ssh -l ${USERNAME} ${HOSTNAME} ${UPDATEXINUKSCRIPT} "< /dev/null > /tmp/mylogfile 2>&1 &"
+done
