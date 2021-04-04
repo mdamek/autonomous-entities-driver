@@ -21,8 +21,8 @@ function run_xinuk () {
 RUN_SCRIPT="java -Dmock.config.isSupervisor=$2  
 -Dclustering.ip=$1 -Dclustering.port=${XINUK_PORT} 
 -Dclustering.supervisor.ip=${RASPBERRY1} -Dclustering.supervisor.port=${XINUK_PORT} 
--Dclustering.min-nr-of-members${MIN_NR_OF_MEMBERS} -Dmock.config.worldWidth=${WORLD_WIDTH}
--Dmock.config.workersX=${WORKERS_X} -Dmock.config.workersY=${WORKERS_Y} Dmock.config.signalDisabled=${SIGNAL_DISABLED}
+-Dclustering.min-nr-of-members=${MIN_NR_OF_MEMBERS} -Dmock.config.worldWidth=${WORLD_WIDTH}
+-Dmock.config.workersX=${WORKERS_X} -Dmock.config.workersY=${WORKERS_Y} -Dmock.config.signalDisabled=${SIGNAL_DISABLED}
 -Dmock.config.worldHeight=${WORLD_HEIGHT} -Dmock.config.guiType=${GUI_TYPE}
 -Dmock.config.ledPanelPort=${LED_PANEL_PORT} -Dmock.config=workersRoot=${WORKERS_ROOT} 
 -jar /home/pi/Desktop/xinuk/${APLICATION_NAME}/target/scala-2.13/${APLICATION_NAME}.jar"
