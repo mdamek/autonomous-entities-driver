@@ -1,11 +1,8 @@
-
-import Tkinter as tk                 
+import tkinter as tk                 
 class App(tk.Tk):
 
     def __init__(self, *args, **kwargs):
         tk.Tk.__init__(self, *args, **kwargs)
-
-        
 
         container = tk.Frame(self)
         container.pack(side="top", fill="both", expand=True)
@@ -13,15 +10,18 @@ class App(tk.Tk):
         container.grid_columnconfigure(0, weight=1)
 
         self.frames = {}
-        for F in (StartPage, DemoPage):
+        for F in (StartPage, ShapePage, InProgressPage, MockPage):
             page_name = F.__name__
             frame = F(parent=container, controller=self)
             self.frames[page_name] = frame
             frame.grid(row=0, column=0, sticky="nsew")
         self.show_frame("StartPage")
 
+    def set_shape_and_show_frame(self, page_name, shape):
+        self.frames[page_name].set_shape(shape)
+        self.frames[page_name].tkraise()
+
     def show_frame(self, page_name):
-        '''Show a frame for the given page name'''
         frame = self.frames[page_name]
         frame.tkraise()
 
@@ -30,39 +30,67 @@ class StartPage(tk.Frame):
     def __init__(self, parent, controller):
         tk.Frame.__init__(self, parent)
         self.controller = controller
-        label = tk.Label(self, text="Select simulation")
-        label.pack(side="top", fill="x", pady=10)
 
-        button1 = tk.Button(self, text="Start demo",
-                            command=lambda: controller.show_frame("DemoPage"))
+        button1 = tk.Button(self, text="Mock",
+                            command=lambda: controller.show_frame("ShapePage"))
         button2 = tk.Button(self, text="Start...",
-                            command=lambda: controller.show_frame("DemoPage"))
+                            command=lambda: controller.show_frame("ShapePage"))
         button3 = tk.Button(self, text="Start...",
-                            command=lambda: controller.show_frame("DemoPage"))
+                            command=lambda: controller.show_frame("ShapePage"))
         button4 = tk.Button(self, text="Start...",
-                            command=lambda: controller.show_frame("DemoPage"))                            
+                            command=lambda: controller.show_frame("ShapePage"))                            
         button5 = tk.Button(self, text="Start...",
-                            command=lambda: controller.show_frame("DemoPage"))                            
-        button1.pack()
-        button2.pack()
-        button3.pack()
-        button4.pack()
-        button5.pack()
+                            command=lambda: controller.show_frame("ShapePage"))                            
+        button1.pack(fill = tk.BOTH, expand = True)
+        button2.pack(fill = tk.BOTH, expand = True)
+        button3.pack(fill = tk.BOTH, expand = True)
+        button4.pack(fill = tk.BOTH, expand = True)
+        button5.pack(fill = tk.BOTH, expand = True)
 
-
-
-class DemoPage(tk.Frame):
-
+class ShapePage(tk.Frame):
     def __init__(self, parent, controller):
         tk.Frame.__init__(self, parent)
         self.controller = controller
-        label = tk.Label(self, text="This is page 1")
-        label.pack(side="top", fill="x", pady=10)
-        button = tk.Button(self, text="Stop",
+
+        button1 = tk.Button(self, text="Square",
+                           command=lambda: controller.set_shape_and_show_frame("MockPage", "square"))
+        button2 = tk.Button(self, text="Vertical",
+                           command=lambda: controller.set_shape_and_show_frame("MockPage", "vertical"))
+        button3 = tk.Button(self, text="Horizontal",
+                           command=lambda: controller.set_shape_and_show_frame("MockPage", "horizontal"))                   
+        button4 = tk.Button(self, text="Cancel",
                            command=lambda: controller.show_frame("StartPage"))
-        button.pack()
+        button1.pack(fill = tk.BOTH, expand = True)
+        button2.pack(fill = tk.BOTH, expand = True)
+        button3.pack(fill = tk.BOTH, expand = True)
+        button4.pack()
+
+class InProgressPage(tk.Frame):
+    def __init__(self, parent, controller):
+        tk.Frame.__init__(self, parent)
+        self.controller = controller
+
+class MockPage(tk.Frame):
+    def __init__(self, parent, controller):
+        tk.Frame.__init__(self, parent)
+        self.controller = controller
+        self.shape = tk.StringVar()
+
+        button1 = tk.Button(self, text="Start",
+                        command=lambda: controller.show_frame("InProgressPage"))
+        button2 = tk.Button(self, text="Return",
+                        command=lambda: controller.show_frame("ShapePage"))
+        button3 = tk.Button(self, text="Cancel",
+                        command=lambda: controller.show_frame("StartPage"))
+
+        button1.pack()
+        button2.pack()
+        button3.pack()
+
+    def set_shape(self, shape):
+        self.shape.set(shape)
 
 if __name__ == "__main__":
     app = App()
-    app.attributes('-fullscreen', True)
+    #app.attributes('-fullscreen', True)
     app.mainloop()
