@@ -55,7 +55,6 @@ case ${SHAPE} in
 esac
 
 if [ ${APPLICATION_NAME} != mock ]; then
-    echo ${APPLICATION_NAME}
     echo "Define application name with flag -name: mock"
     exit 0
 fi
