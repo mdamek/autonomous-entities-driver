@@ -46,7 +46,7 @@ case ${SHAPE} in
     WORLD_WIDTH=128
     WORLD_HEIGHT=32
     WORKERS_X=4
-    WORKERS_Y= 1
+    WORKERS_Y=1
     ;;
 *)
     echo "Define the shape of the space with flag -shape: square, horizontal or vertical"

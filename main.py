@@ -84,7 +84,8 @@ class InProgressPage(tk.Frame):
         button1.pack(side="bottom", fill = tk.BOTH, expand = True)
 
     def set_simulation_name(self, simulation_name):
-        self.simulation_text.set(simulation_name + " simulation in progress...")
+        text = simulation_name + " simulation in progress..." 
+        self.simulation_text.set(text.capitalize())
 
 class MockPage(tk.Frame):
     def __init__(self, parent, controller):
