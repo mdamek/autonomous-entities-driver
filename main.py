@@ -44,7 +44,7 @@ class StartPage(tk.Frame):
                             command=lambda: controller.show_frame("ShapePage"))
         button4 = tk.Button(self, text="TODO",
                             command=lambda: controller.show_frame("ShapePage"))
-        button5 = tk.Button(self, text="Services actions", bg='#FFFEB0', activebackground='#FFFEB0',
+        button5 = tk.Button(self, text="Service", bg='#FFFEB0', activebackground='#FFFEB0',
                             command=lambda: controller.show_frame("OptionsPage"))
         
         button1.pack(fill = tk.BOTH, expand = True)
@@ -62,7 +62,7 @@ class OptionsPage(tk.Frame):
                             command=lambda: sr.restart_led_servers())
         button2 = tk.Button(self, text="Restart all devices", bg='#FFBEB0', activebackground='#FFBEB0',
                             command=lambda: sr.restart_all_devices())
-        button3 = tk.Button(self, text="Kill Xinuk", bg='#FFBEB0', activebackground='#FFBEB0',
+        button3 = tk.Button(self, text="Stop Xinuk", bg='#FFBEB0', activebackground='#FFBEB0',
                             command=lambda: sr.kill_xinuk())                          
         button4 = tk.Button(self, text="Return",
                             command=lambda: controller.show_frame("StartPage"))
