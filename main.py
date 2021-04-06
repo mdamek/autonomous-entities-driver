@@ -54,14 +54,14 @@ class StartPage(tk.Frame):
         self.button5.pack(fill = tk.BOTH, expand = True)
 
     def make_action_with_button_disable(self, button, function):
-        button['state'] = 'disabled'
+        self.button4['state'] = 'disabled'
 
-        button.config(bg='#9F9B9B')
-        button.config(activebackground='#9F9B9B')
+        self.button4.config(bg='#9F9B9B')
+        self.button4.config(activebackground='#9F9B9B')
         function()
-        button.config(state='normal')
-        button.config(bg='#FFFEB0')
-        button.config(activebackground='#FFFEB0')
+        self.button4.config(state='normal')
+        self.button4.config(bg='#FFFEB0')
+        self.button4.config(activebackground='#FFFEB0')
 
 class ShapePage(tk.Frame):
     def __init__(self, parent, controller):
