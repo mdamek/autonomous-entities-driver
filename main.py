@@ -76,9 +76,9 @@ class InProgressPage(tk.Frame):
         self.controller = controller
         self.simulation_text = tk.StringVar()
 
-        label = tk.Label(self, textvariable=self.simulation_text, font=("Courier", 44))
+        label = tk.Label(self, textvariable=self.simulation_text, font=("Courier", 20))
         button1 = tk.Button(self, text="Stop", bg='#FFBEB0', activebackground='#FFBEB0',
-                           command=lambda: SimulationDriver.kill_simulation_and_back_to_start(controller), font=("Courier", 44))
+                           command=lambda: SimulationDriver.kill_simulation_and_back_to_start(controller), font=("Courier", 40))
 
         label.pack(side="top", fill="x")
         button1.pack(side="bottom", fill = tk.BOTH, expand = True)
