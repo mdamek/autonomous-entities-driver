@@ -1,4 +1,4 @@
-import Tkinter as tk      
+import tkinter as tk      
 import scripts_runner as sr          
 class App(tk.Tk):
 
@@ -77,14 +77,13 @@ class InProgressPage(tk.Frame):
 
         label = tk.Label(self, textvariable=self.simulation_text, font=("Courier", 44))
         button1 = tk.Button(self, text="Stop", bg='#FFBEB0',
-                           command=lambda: controller.show_frame("StartPage"), font=("Courier", 44))
+                           command=lambda: SimulationDriver.kill_simulation_and_back_to_start(controller), font=("Courier", 44))
 
         label.pack(side="top", fill="x")
         button1.pack(side="bottom", fill = tk.BOTH, expand = True)
 
     def set_simulation_name(self, simulation_name):
         self.simulation_text.set(simulation_name + " simulation in progress...")
-
 
 class MockPage(tk.Frame):
     def __init__(self, parent, controller):
@@ -93,7 +92,7 @@ class MockPage(tk.Frame):
         self.shape = tk.StringVar()
 
         button1 = tk.Button(self, text="Start", height=8, bg='#B2FFB0',
-                        command=lambda: controller.set_simulation_name_and_show_frame("InProgressPage", "Mock"))
+                        command=lambda: SimulationDriver.start_simulation_and_show_next_page("InProgressPage", "mock", str(self.shape)))
         button2 = tk.Button(self, text="Return", height=4, bg='#FFBEB0',
                         command=lambda: controller.show_frame("ShapePage"))
         button3 = tk.Button(self, text="Cancel", height=4, bg='#FFBEB0',
@@ -105,8 +104,19 @@ class MockPage(tk.Frame):
 
     def set_shape(self, shape):
         self.shape.set(shape)
+        
+class SimulationDriver:
+    @staticmethod
+    def start_simulation_and_show_next_page(controller, simulation_name, shape):
+        sr.run_simulation(simulation_name, shape)
+        controller.set_simulation_name_and_show_frame("InProgressPage", simulation_name)
+    @staticmethod
+    def kill_simulation_and_back_to_start(controller):
+        sr.kill_simulation()
+        controller.show_frame("StartPage")
 
 if __name__ == "__main__":
+    #sr.run_led_servers()
     app = App()
     #app.attributes('-fullscreen', True)
     app.mainloop()
