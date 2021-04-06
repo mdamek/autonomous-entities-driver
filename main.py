@@ -44,8 +44,8 @@ class StartPage(tk.Frame):
                             command=lambda: controller.show_frame("ShapePage"))
         button4 = tk.Button(self, text="Restart LED servers", bg='#FFFEB0',
                             command=lambda: sr.restart_led_servers())                            
-        button5 = tk.Button(self, text="Turn off all devices", bg='#FFBEB0',
-                            command=lambda: controller.show_frame("ShapePage"))                            
+        button5 = tk.Button(self, text="Restart all devices", bg='#FFBEB0',
+                            command=lambda: sr.restart_all_devices())                            
         button1.pack(fill = tk.BOTH, expand = True)
         button2.pack(fill = tk.BOTH, expand = True)
         button3.pack(fill = tk.BOTH, expand = True)
