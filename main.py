@@ -89,10 +89,9 @@ class MockPage(tk.Frame):
     def __init__(self, parent, controller):
         tk.Frame.__init__(self, parent)
         self.controller = controller
-        self.shape = tk.StringVar()
-
+        self.shape = ""
         button1 = tk.Button(self, text="Start", height=8, bg='#B2FFB0',
-                        command=lambda: SimulationDriver.start_simulation_and_show_next_page("InProgressPage", "mock", str(self.shape)))
+                        command=lambda: SimulationDriver.start_simulation_and_show_next_page(controller, "mock", self.shape))
         button2 = tk.Button(self, text="Return", height=4, bg='#FFBEB0',
                         command=lambda: controller.show_frame("ShapePage"))
         button3 = tk.Button(self, text="Cancel", height=4, bg='#FFBEB0',
@@ -103,7 +102,7 @@ class MockPage(tk.Frame):
         button3.pack(side="bottom", fill="x")
 
     def set_shape(self, shape):
-        self.shape.set(shape)
+        self.shape = shape
         
 class SimulationDriver:
     @staticmethod
