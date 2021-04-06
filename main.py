@@ -60,13 +60,13 @@ class OptionsPage(tk.Frame):
 
         button1 = tk.Button(self, text="Restart LED servers", bg='#FFFEB0', activebackground='#FFFEB0', 
                             command=lambda: sr.restart_led_servers())
-        button2 = tk.Button(self, text="Restart all devices", bg='#FFBEB0', activebackground='#FFBEB0',
-                            command=lambda: sr.restart_all_devices())
-        button3 = tk.Button(self, text="Stop Xinuk", bg='#FFBEB0', activebackground='#FFBEB0',
+        button2 = tk.Button(self, text="Stop Xinuk", bg='#FFFEB0', activebackground='#FFFEB0',
                             command=lambda: sr.kill_xinuk())
-        button4 = tk.Button(self, text="Turn off platform", bg='#F10D0D', activebackground='#F10D0D',
+        button3 = tk.Button(self, text="Restart all devices", bg='#FFBEB0', activebackground='#FFBEB0',
+                            command=lambda: sr.restart_all_devices())
+        button4 = tk.Button(self, text="Turn off platform", bg='#E83838', activebackground='#E83838',
                             command=lambda: sr.turn_off_the_platform())                        
-        button5 = tk.Button(self, text="Return", bg='#FFBEB0', activebackground='#FFBEB0',
+        button5 = tk.Button(self, text="Return", 
                             command=lambda: controller.show_frame("StartPage"))
 
         button1.pack(fill = tk.BOTH, expand = True)
