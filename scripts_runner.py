@@ -15,3 +15,6 @@ def run_led_servers():
 
 def kill_simulation():
     subprocess.call("scripts/kill_xinuk.sh")
+
+def turn_off_the_platform():
+    subprocess.call("scripts/turn_off_the_platform.sh")

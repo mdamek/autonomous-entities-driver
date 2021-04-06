@@ -63,14 +63,17 @@ class OptionsPage(tk.Frame):
         button2 = tk.Button(self, text="Restart all devices", bg='#FFBEB0', activebackground='#FFBEB0',
                             command=lambda: sr.restart_all_devices())
         button3 = tk.Button(self, text="Stop Xinuk", bg='#FFBEB0', activebackground='#FFBEB0',
-                            command=lambda: sr.kill_xinuk())                          
-        button4 = tk.Button(self, text="Return",
+                            command=lambda: sr.kill_xinuk())
+        button4 = tk.Button(self, text="Turn off platform", bg='#F10D0D', activebackground='#F10D0D',
+                            command=lambda: sr.turn_off_the_platform())                        
+        button5 = tk.Button(self, text="Return", bg='#FFBEB0', activebackground='#FFBEB0',
                             command=lambda: controller.show_frame("StartPage"))
 
         button1.pack(fill = tk.BOTH, expand = True)
         button2.pack(fill = tk.BOTH, expand = True)
         button3.pack(fill = tk.BOTH, expand = True)
-        button4.pack(fill = tk.BOTH, expand = True)   
+        button4.pack(fill = tk.BOTH, expand = True)
+        button5.pack(fill = tk.BOTH, expand = True)   
 
 class ShapePage(tk.Frame):
     def __init__(self, parent, controller):
