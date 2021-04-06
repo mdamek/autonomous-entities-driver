@@ -1,5 +1,5 @@
 #!/usr/bin/bash
-source raspberry_hosts.sh
+source $(dirname $0)/raspberry_hosts.sh
 
 USERNAME="pi"
 APPLICATION_NAME="mock"
