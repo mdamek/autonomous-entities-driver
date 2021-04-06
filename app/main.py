@@ -1,4 +1,4 @@
-import tkinter as tk                 
+import Tkinter as tk                 
 class App(tk.Tk):
 
     def __init__(self, *args, **kwargs):
@@ -21,6 +21,10 @@ class App(tk.Tk):
         self.frames[page_name].set_shape(shape)
         self.frames[page_name].tkraise()
 
+    def set_simulation_name_and_show_frame(self, page_name, simulation_text):
+        self.frames[page_name].set_simulation_text(simulation_text)
+        self.frames[page_name].tkraise()
+
     def show_frame(self, page_name):
         frame = self.frames[page_name]
         frame.tkraise()
@@ -37,9 +41,9 @@ class StartPage(tk.Frame):
                             command=lambda: controller.show_frame("ShapePage"))
         button3 = tk.Button(self, text="Start...",
                             command=lambda: controller.show_frame("ShapePage"))
-        button4 = tk.Button(self, text="Start...",
+        button4 = tk.Button(self, text="Restart LED servers", bg='#FFFEB0',
                             command=lambda: controller.show_frame("ShapePage"))                            
-        button5 = tk.Button(self, text="Start...",
+        button5 = tk.Button(self, text="Turn off all devices", bg='#FFBEB0',
                             command=lambda: controller.show_frame("ShapePage"))                            
         button1.pack(fill = tk.BOTH, expand = True)
         button2.pack(fill = tk.BOTH, expand = True)
@@ -51,24 +55,35 @@ class ShapePage(tk.Frame):
     def __init__(self, parent, controller):
         tk.Frame.__init__(self, parent)
         self.controller = controller
-
         button1 = tk.Button(self, text="Square",
                            command=lambda: controller.set_shape_and_show_frame("MockPage", "square"))
         button2 = tk.Button(self, text="Vertical",
                            command=lambda: controller.set_shape_and_show_frame("MockPage", "vertical"))
         button3 = tk.Button(self, text="Horizontal",
                            command=lambda: controller.set_shape_and_show_frame("MockPage", "horizontal"))                   
-        button4 = tk.Button(self, text="Cancel",
+        button4 = tk.Button(self, text="Cancel", bg='#FFBEB0',
                            command=lambda: controller.show_frame("StartPage"))
         button1.pack(fill = tk.BOTH, expand = True)
         button2.pack(fill = tk.BOTH, expand = True)
         button3.pack(fill = tk.BOTH, expand = True)
-        button4.pack()
+        button4.pack(fill = tk.BOTH, expand = True)
 
 class InProgressPage(tk.Frame):
     def __init__(self, parent, controller):
         tk.Frame.__init__(self, parent)
         self.controller = controller
+        self.simulation_text = tk.StringVar()
+
+        label = tk.Label(self, textvariable=self.simulation_text)
+        button1 = tk.Button(self, text="Stop", bg='#FFBEB0', height=8,
+                           command=lambda: controller.show_frame("StartPage"))
+
+        label.pack(side="top", fill="x")
+        button1.pack(side="bottom", fill="x")
+
+    def set_simulation_text(self, simulation_text):
+        self.simulation_text.set(simulation_text)
+
 
 class MockPage(tk.Frame):
     def __init__(self, parent, controller):
@@ -76,16 +91,16 @@ class MockPage(tk.Frame):
         self.controller = controller
         self.shape = tk.StringVar()
 
-        button1 = tk.Button(self, text="Start",
-                        command=lambda: controller.show_frame("InProgressPage"))
-        button2 = tk.Button(self, text="Return",
+        button1 = tk.Button(self, text="Start", height=8, bg='#B2FFB0',
+                        command=lambda: controller.set_simulation_name_and_show_frame("InProgressPage", "Mock simulation in progres..."))
+        button2 = tk.Button(self, text="Return", height=4, bg='#FFBEB0',
                         command=lambda: controller.show_frame("ShapePage"))
-        button3 = tk.Button(self, text="Cancel",
+        button3 = tk.Button(self, text="Cancel", height=4, bg='#FFBEB0',
                         command=lambda: controller.show_frame("StartPage"))
 
-        button1.pack()
-        button2.pack()
-        button3.pack()
+        button1.pack(side="bottom", fill="x")
+        button2.pack(side="bottom", fill="x")
+        button3.pack(side="bottom", fill="x")
 
     def set_shape(self, shape):
         self.shape.set(shape)
