@@ -11,7 +11,7 @@ class App(tk.Tk):
         container.grid_columnconfigure(0, weight=1)
 
         self.frames = {}
-        for F in (StartPage, ShapePage, InProgressPage, MockPage):
+        for F in (StartPage, ShapePage, InProgressPage, MockPage, OptionsPage):
             page_name = F.__name__
             frame = F(parent=container, controller=self)
             self.frames[page_name] = frame
@@ -36,22 +36,38 @@ class StartPage(tk.Frame):
         tk.Frame.__init__(self, parent)
         self.controller = controller
 
-        button1 = tk.Button(self, text="Mock",
+        button1 = tk.Button(self, text="Mock simulation", bg='#B2FFB0', activebackground='#B2FFB0',
                             command=lambda: controller.show_frame("ShapePage"))
-        button2 = tk.Button(self, text="Start...",
-                            command=lambda: controller.show_frame("ShapePage"))
-        button3 = tk.Button(self, text="Start...",
-                            command=lambda: controller.show_frame("ShapePage"))
-        button4 = tk.Button(self, text="Restart LED servers", bg='#FFFEB0', activebackground='#FFFEB0', 
-                            command=lambda: sr.restart_led_servers())                       
-        button5 = tk.Button(self, text="Restart all devices", bg='#FFBEB0', activebackground='#FFBEB0',
-                            command=lambda: sr.restart_all_devices())  
-
+        button2 = tk.Button(self, text="TODO", bg='#B2FFB0', activebackground='#B2FFB0',
+                            command=lambda: print("TODO"))
+        button3 = tk.Button(self, text="TODO", bg='#B2FFB0', activebackground='#B2FFB0',
+                            command=lambda: print("TODO"))
+        button4 = tk.Button(self, text="TODO", bg='#B2FFB0', activebackground='#B2FFB0',
+                            command=lambda: print("TODO"))
+        button5 = tk.Button(self, text="Services actions", bg='#FFFEB0', activebackground='#FFFEB0',
+                            command=lambda: controller.show_frame("OptionsPage"))
+        
         button1.pack(fill = tk.BOTH, expand = True)
         button2.pack(fill = tk.BOTH, expand = True)
         button3.pack(fill = tk.BOTH, expand = True)
         button4.pack(fill = tk.BOTH, expand = True)
         button5.pack(fill = tk.BOTH, expand = True)
+
+class OptionsPage(tk.Frame):
+    def __init__(self, parent, controller):
+        tk.Frame.__init__(self, parent)
+        self.controller = controller
+
+        button1 = tk.Button(self, text="Restart LED servers", bg='#FFFEB0', activebackground='#FFFEB0', 
+                            command=lambda: sr.restart_led_servers())                       
+        button2 = tk.Button(self, text="Restart all devices", bg='#FFBEB0', activebackground='#FFBEB0',
+                            command=lambda: sr.restart_all_devices())
+        button3 = tk.Button(self, text="Return", bg='#FFBEB0', activebackground='#FFBEB0',
+                            command=lambda: controller.show_frame("StartPage"))
+
+        button1.pack(fill = tk.BOTH, expand = True)
+        button2.pack(fill = tk.BOTH, expand = True)
+        button3.pack(fill = tk.BOTH, expand = True)  
 
 class ShapePage(tk.Frame):
     def __init__(self, parent, controller):
