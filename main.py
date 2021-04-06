@@ -1,4 +1,4 @@
-import tkinter as tk      
+import Tkinter as tk      
 import scripts_runner as sr          
 class App(tk.Tk):
 
@@ -42,7 +42,7 @@ class StartPage(tk.Frame):
                             command=lambda: controller.show_frame("ShapePage"))
         button3 = tk.Button(self, text="Start...",
                             command=lambda: controller.show_frame("ShapePage"))
-        button4 = tk.Button(self, text="Restart LED servers", bg='#FFFEB0',
+        button4 = tk.Button(self, text="Restart LED servers", bg='#FFFEB0', activebackground='#FFFEB0', 
                             command=lambda: sr.restart_led_servers())                            
         button5 = tk.Button(self, text="Restart all devices", bg='#FFBEB0',
                             command=lambda: sr.restart_all_devices())                            
@@ -107,8 +107,8 @@ class MockPage(tk.Frame):
 class SimulationDriver:
     @staticmethod
     def start_simulation_and_show_next_page(controller, simulation_name, shape):
-        sr.run_simulation(simulation_name, shape)
         controller.set_simulation_name_and_show_frame("InProgressPage", simulation_name)
+        sr.run_simulation(simulation_name, shape)
     @staticmethod
     def kill_simulation_and_back_to_start(controller):
         sr.kill_simulation()
@@ -117,5 +117,5 @@ class SimulationDriver:
 if __name__ == "__main__":
     #sr.run_led_servers()
     app = App()
-    #app.attributes('-fullscreen', True)
+    app.attributes('-fullscreen', True)
     app.mainloop()
