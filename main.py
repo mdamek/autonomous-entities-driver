@@ -1,4 +1,5 @@
-import Tkinter as tk                 
+import Tkinter as tk      
+import scripts_runner as sr          
 class App(tk.Tk):
 
     def __init__(self, *args, **kwargs):
@@ -21,8 +22,8 @@ class App(tk.Tk):
         self.frames[page_name].set_shape(shape)
         self.frames[page_name].tkraise()
 
-    def set_simulation_name_and_show_frame(self, page_name, simulation_text):
-        self.frames[page_name].set_simulation_text(simulation_text)
+    def set_simulation_name_and_show_frame(self, page_name, simulation_name):
+        self.frames[page_name].set_simulation_name(simulation_name)
         self.frames[page_name].tkraise()
 
     def show_frame(self, page_name):
@@ -42,7 +43,7 @@ class StartPage(tk.Frame):
         button3 = tk.Button(self, text="Start...",
                             command=lambda: controller.show_frame("ShapePage"))
         button4 = tk.Button(self, text="Restart LED servers", bg='#FFFEB0',
-                            command=lambda: controller.show_frame("ShapePage"))                            
+                            command=lambda: sr.restart_led_servers())                            
         button5 = tk.Button(self, text="Turn off all devices", bg='#FFBEB0',
                             command=lambda: controller.show_frame("ShapePage"))                            
         button1.pack(fill = tk.BOTH, expand = True)
@@ -74,15 +75,15 @@ class InProgressPage(tk.Frame):
         self.controller = controller
         self.simulation_text = tk.StringVar()
 
-        label = tk.Label(self, textvariable=self.simulation_text)
-        button1 = tk.Button(self, text="Stop", bg='#FFBEB0', height=8,
-                           command=lambda: controller.show_frame("StartPage"))
+        label = tk.Label(self, textvariable=self.simulation_text, font=("Courier", 44))
+        button1 = tk.Button(self, text="Stop", bg='#FFBEB0',
+                           command=lambda: controller.show_frame("StartPage"), font=("Courier", 44))
 
         label.pack(side="top", fill="x")
-        button1.pack(side="bottom", fill="x")
+        button1.pack(side="bottom", fill = tk.BOTH, expand = True)
 
-    def set_simulation_text(self, simulation_text):
-        self.simulation_text.set(simulation_text)
+    def set_simulation_name(self, simulation_name):
+        self.simulation_text.set(simulation_name + " simulation in progress...")
 
 
 class MockPage(tk.Frame):
@@ -92,7 +93,7 @@ class MockPage(tk.Frame):
         self.shape = tk.StringVar()
 
         button1 = tk.Button(self, text="Start", height=8, bg='#B2FFB0',
-                        command=lambda: controller.set_simulation_name_and_show_frame("InProgressPage", "Mock simulation in progres..."))
+                        command=lambda: controller.set_simulation_name_and_show_frame("InProgressPage", "Mock"))
         button2 = tk.Button(self, text="Return", height=4, bg='#FFBEB0',
                         command=lambda: controller.show_frame("ShapePage"))
         button3 = tk.Button(self, text="Cancel", height=4, bg='#FFBEB0',
