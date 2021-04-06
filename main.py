@@ -1,4 +1,4 @@
-import Tkinter as tk      
+import tkinter as tk      
 import scripts_runner as sr          
 class App(tk.Tk):
 
@@ -43,14 +43,24 @@ class StartPage(tk.Frame):
         button3 = tk.Button(self, text="Start...",
                             command=lambda: controller.show_frame("ShapePage"))
         button4 = tk.Button(self, text="Restart LED servers", bg='#FFFEB0', activebackground='#FFFEB0', 
-                            command=lambda: sr.restart_led_servers())                            
+                            command=lambda: self.make_action_with_button_disable(button4, sr.restart_led_servers))                       
         button5 = tk.Button(self, text="Restart all devices", bg='#FFBEB0',
-                            command=lambda: sr.restart_all_devices())                            
+                            command=lambda: self.make_action_with_button_disable(button5, sr.restart_all_devices))  
+
         button1.pack(fill = tk.BOTH, expand = True)
         button2.pack(fill = tk.BOTH, expand = True)
         button3.pack(fill = tk.BOTH, expand = True)
         button4.pack(fill = tk.BOTH, expand = True)
         button5.pack(fill = tk.BOTH, expand = True)
+
+    def make_action_with_button_disable(self, button, function):
+        button.config(state='disabled')
+        button.config(bg='#9F9B9B')
+        button.config(activebackground='#9F9B9B')
+        function()
+        button.config(state='normal')
+        button.config(bg='#FFFEB0')
+        button.config(activebackground='#FFFEB0')
 
 class ShapePage(tk.Frame):
     def __init__(self, parent, controller):
