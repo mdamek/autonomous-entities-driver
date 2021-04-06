@@ -1,4 +1,4 @@
-import tkinter as tk      
+import Tkinter as tk      
 import scripts_runner as sr          
 class App(tk.Tk):
 
