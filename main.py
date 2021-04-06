@@ -1,4 +1,4 @@
-import tkinter as tk      
+import Tkinter as tk      
 import scripts_runner as sr          
 class App(tk.Tk):
 
@@ -36,25 +36,26 @@ class StartPage(tk.Frame):
         tk.Frame.__init__(self, parent)
         self.controller = controller
 
-        button1 = tk.Button(self, text="Mock",
+        self.button1 = tk.Button(self, text="Mock",
                             command=lambda: controller.show_frame("ShapePage"))
-        button2 = tk.Button(self, text="Start...",
+        self.button2 = tk.Button(self, text="Start...",
                             command=lambda: controller.show_frame("ShapePage"))
-        button3 = tk.Button(self, text="Start...",
+        self.button3 = tk.Button(self, text="Start...",
                             command=lambda: controller.show_frame("ShapePage"))
-        button4 = tk.Button(self, text="Restart LED servers", bg='#FFFEB0', activebackground='#FFFEB0', 
-                            command=lambda: self.make_action_with_button_disable(button4, sr.restart_led_servers))                       
-        button5 = tk.Button(self, text="Restart all devices", bg='#FFBEB0',
-                            command=lambda: self.make_action_with_button_disable(button5, sr.restart_all_devices))  
+        self.button4 = tk.Button(self, text="Restart LED servers", bg='#FFFEB0', activebackground='#FFFEB0', 
+                            command=lambda: self.make_action_with_button_disable(self.button4, sr.restart_led_servers))                       
+        self.button5 = tk.Button(self, text="Restart all devices", bg='#FFBEB0', activebackground='#FFBEB0',
+                            command=lambda: self.make_action_with_button_disable(self.button5, sr.restart_all_devices))  
 
-        button1.pack(fill = tk.BOTH, expand = True)
-        button2.pack(fill = tk.BOTH, expand = True)
-        button3.pack(fill = tk.BOTH, expand = True)
-        button4.pack(fill = tk.BOTH, expand = True)
-        button5.pack(fill = tk.BOTH, expand = True)
+        self.button1.pack(fill = tk.BOTH, expand = True)
+        self.button2.pack(fill = tk.BOTH, expand = True)
+        self.button3.pack(fill = tk.BOTH, expand = True)
+        self.button4.pack(fill = tk.BOTH, expand = True)
+        self.button5.pack(fill = tk.BOTH, expand = True)
 
     def make_action_with_button_disable(self, button, function):
-        button.config(state='disabled')
+        button['state'] = 'disabled'
+
         button.config(bg='#9F9B9B')
         button.config(activebackground='#9F9B9B')
         function()
@@ -86,7 +87,7 @@ class InProgressPage(tk.Frame):
         self.simulation_text = tk.StringVar()
 
         label = tk.Label(self, textvariable=self.simulation_text, font=("Courier", 44))
-        button1 = tk.Button(self, text="Stop", bg='#FFBEB0',
+        button1 = tk.Button(self, text="Stop", bg='#FFBEB0', activebackground='#FFBEB0',
                            command=lambda: SimulationDriver.kill_simulation_and_back_to_start(controller), font=("Courier", 44))
 
         label.pack(side="top", fill="x")
@@ -100,11 +101,11 @@ class MockPage(tk.Frame):
         tk.Frame.__init__(self, parent)
         self.controller = controller
         self.shape = ""
-        button1 = tk.Button(self, text="Start", height=8, bg='#B2FFB0',
+        button1 = tk.Button(self, text="Start", height=8, bg='#B2FFB0', activebackground='#B2FFB0',
                         command=lambda: SimulationDriver.start_simulation_and_show_next_page(controller, "mock", self.shape))
-        button2 = tk.Button(self, text="Return", height=4, bg='#FFBEB0',
+        button2 = tk.Button(self, text="Return", height=4, bg='#FFBEB0', activebackground='#FFBEB0',
                         command=lambda: controller.show_frame("ShapePage"))
-        button3 = tk.Button(self, text="Cancel", height=4, bg='#FFBEB0',
+        button3 = tk.Button(self, text="Cancel", height=4, bg='#FFBEB0', activebackground='#FFBEB0',
                         command=lambda: controller.show_frame("StartPage"))
 
         button1.pack(side="bottom", fill="x")
