@@ -124,7 +124,7 @@ class InProgressPage(tk.Frame):
         self.shape = ""
         self.simulation_text = tk.StringVar()
 
-        label = tk.Label(self, textvariable=self.simulation_text, font=("Courier", 18))
+        label = tk.Label(self, textvariable=self.simulation_text, font=("Courier", 10))
         button1 = tk.Button(self, text="Stop", bg='#FFBEB0', activebackground='#FFBEB0',
                            command=lambda: SimulationDriver.kill_simulation_and_back_to_start(controller), font=("Courier", 40))
 
