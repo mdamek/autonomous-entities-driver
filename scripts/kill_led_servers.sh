@@ -3,7 +3,7 @@ source $(dirname $0)/raspberry_hosts.sh
 
 USERNAME="pi"
 
-KILLLEDSERVERSCRIPT="sudo killall node"
+KILLLEDSERVERSCRIPT="sudo killall -9 node"
 
 echo Killing all led servers...
 
