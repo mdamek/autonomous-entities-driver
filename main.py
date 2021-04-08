@@ -124,7 +124,7 @@ class InProgressPage(tk.Frame):
         self.shape = ""
         self.simulation_text = tk.StringVar()
 
-        label = tk.Label(self, textvariable=self.simulation_text, font=("Courier", 10))
+        label = tk.Label(self, textvariable=self.simulation_text, font=("Courier", 13))
         button1 = tk.Button(self, text="Stop", bg='#FFBEB0', activebackground='#FFBEB0',
                            command=lambda: SimulationDriver.kill_simulation_and_back_to_start(controller), font=("Courier", 40))
 
@@ -164,7 +164,7 @@ class RabbitsPage(tk.Frame):
         self.shape = ""
 
         button1 = tk.Button(self, text="Start", height=8, bg='#B2FFB0', activebackground='#B2FFB0',
-                        command=lambda: SimulationDriver.start_simulation_and_show_next_page(controller, "rabbit", self.shape))
+                        command=lambda: SimulationDriver.start_simulation_and_show_next_page(controller, "rabbits", self.shape))
         button2 = tk.Button(self, text="Return", height=4, bg='#FFBEB0', activebackground='#FFBEB0',
                         command=lambda: controller.show_frame("ShapePage"))
         button3 = tk.Button(self, text="Cancel", height=4, bg='#FFBEB0', activebackground='#FFBEB0',
