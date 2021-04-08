@@ -54,8 +54,8 @@ case ${SHAPE} in
     ;;
 esac
 
-if [ ${APPLICATION_NAME} != mock && ${APPLICATION_NAME} != rabbits && ${APPLICATION_NAME} != fortwist && ${APPLICATION_NAME} != urban && ${APPLICATION_NAME} != torch ]; then
-    echo "Define application name with flag -name: mock"
+if [[ ${APPLICATION_NAME} != mock && ${APPLICATION_NAME} != rabbits && ${APPLICATION_NAME} != fortwist && ${APPLICATION_NAME} != urban && ${APPLICATION_NAME} != torch ]]; then
+    echo "Define application name with flag -name: mock, rabbits, fortwist, urban, torch "
     exit 0
 fi
 
@@ -72,10 +72,10 @@ function run_xinuk() {
     local deviceIp=${1}
     local isSupervisor=${2}
     RUN_SCRIPT="java 
--Dmock.config.isSupervisor=${isSupervisor} -Dclustering.ip=${deviceIp} -Dclustering.port=${XINUK_PORT} -Dclustering.supervisor.ip=${RASPBERRY1} -Dclustering.supervisor.port=${XINUK_PORT} 
--Dclustering.min-nr-of-members=${MIN_NR_OF_MEMBERS} -Dmock.config.worldWidth=${WORLD_WIDTH} -Dmock.config.workersX=${WORKERS_X} -Dmock.config.workersY=${WORKERS_Y} 
--Dmock.config.signalDisabled=${SIGNAL_DISABLED} -Dmock.config.worldHeight=${WORLD_HEIGHT} -Dmock.config.guiType=${GUI_TYPE} -Dmock.config.ledPanelPort=${LED_PANEL_PORT} 
--Dmock.config=workersRoot=${WORKERS_ROOT}  -jar /home/pi/Desktop/xinuk/${APPLICATION_NAME}/target/scala-2.13/${APPLICATION_NAME}.jar"
+-D${APPLICATION_NAME}.config.isSupervisor=${isSupervisor} -Dclustering.ip=${deviceIp} -Dclustering.port=${XINUK_PORT} -Dclustering.supervisor.ip=${RASPBERRY1} -Dclustering.supervisor.port=${XINUK_PORT} 
+-Dclustering.min-nr-of-members=${MIN_NR_OF_MEMBERS} -D${APPLICATION_NAME}.config.worldWidth=${WORLD_WIDTH} -D${APPLICATION_NAME}.config.workersX=${WORKERS_X} -${APPLICATION_NAME}.config.workersY=${WORKERS_Y} 
+-D${APPLICATION_NAME}.config.signalDisabled=${SIGNAL_DISABLED} -D${APPLICATION_NAME}.config.worldHeight=${WORLD_HEIGHT} -D${APPLICATION_NAME}.config.guiType=${GUI_TYPE} -D${APPLICATION_NAME}.config.ledPanelPort=${LED_PANEL_PORT} 
+-D${APPLICATION_NAME}.config=workersRoot=${WORKERS_ROOT}  -jar /home/pi/Desktop/xinuk/${APPLICATION_NAME}/target/scala-2.13/${APPLICATION_NAME}.jar"
 
     ssh -l ${USERNAME} $1 ${RUN_SCRIPT} "< /dev/null > /tmp/mylogfile 2>&1 &"
     echo Run Xinuk: ${APPLICATION_NAME} on ${deviceIp}
