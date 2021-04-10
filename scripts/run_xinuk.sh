@@ -36,13 +36,13 @@ case ${SHAPE} in
     WORKERS_X=2
     WORKERS_Y=2
     ;;
-"vertical")
+"horizontal")
     WORLD_WIDTH=32
     WORLD_HEIGHT=128
     WORKERS_X=1
     WORKERS_Y=4
     ;;
-"horizontal")
+"vertical")
     WORLD_WIDTH=128
     WORLD_HEIGHT=32
     WORKERS_X=4
