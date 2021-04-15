@@ -165,16 +165,56 @@ class RabbitsPage(tk.Frame):
         self.controller = controller
         self.shape = ""
 
-        button1 = tk.Button(self, text="Start", height=8, bg='#B2FFB0', activebackground='#B2FFB0',
-                        command=lambda: SimulationDriver.start_simulation_and_show_next_page(controller, "rabbits", self.shape))
-        button2 = tk.Button(self, text="Return", height=4, bg='#FFBEB0', activebackground='#FFBEB0',
-                        command=lambda: controller.show_frame("ShapePage"))
-        button3 = tk.Button(self, text="Cancel", height=4, bg='#FFBEB0', activebackground='#FFBEB0',
-                        command=lambda: controller.show_frame("StartPage"))
+        spawnChance = tk.DoubleVar()  
+        rabbitSpawnChance = tk.DoubleVar()  
+        rabbitInitialSignal = tk.DoubleVar()  
+        lettuceInitialSignal = tk.DoubleVar()  
+        rabbitStartEnergy = tk.DoubleVar()  
+        rabbitReproductionCost = tk.DoubleVar()  
+        rabbitLifeActivityCost = tk.DoubleVar()  
+        rabbitReproductionThreshold = tk.DoubleVar()  
+        lettuceEnergeticCapacity = tk.DoubleVar()  
+        lettuceReproductionFrequency = tk.DoubleVar()  
 
-        button1.pack(side="bottom", fill="x")
-        button2.pack(side="bottom", fill="x")
-        button3.pack(side="bottom", fill="x")
+        spawnChance.set(0.1)
+        rabbitSpawnChance.set(0.3)
+        rabbitInitialSignal.set(-1)
+        lettuceInitialSignal.set(1)
+        rabbitStartEnergy.set(0.5)
+        rabbitReproductionCost.set(0.5)
+        rabbitLifeActivityCost .set(0.1)
+        rabbitReproductionThreshold.set(1)
+        lettuceEnergeticCapacity.set(0.6)
+        lettuceReproductionFrequency.set(2)
+
+        labelNum1 = tk.Label(self, text="spawn chance").grid(row=1, column=0, padx=3) 
+        labelNum2 = tk.Label(self, text="rabbit spawn chance").grid(row=2, column=0) 
+        labelNum3 = tk.Label(self, text="rabbit start energy").grid(row=3, column=0)  
+        labelNum4 = tk.Label(self, text="rabbit reproduction cost").grid(row=4, column=0)
+        labelNum5 = tk.Label(self, text="rabbit life activity cost").grid(row=1, column=2)  
+        labelNum6 = tk.Label(self, text="rabbit reproduction threshold").grid(row=2, column=2)
+        labelNum7 = tk.Label(self, text="lettuce energetic capacity").grid(row=3, column=2)  
+        labelNum8 = tk.Label(self, text="lettuce reproduction frequency").grid(row=4, column=2, padx=3) 
+
+        entryNum1 = tk.Entry(self, textvariable=spawnChance).grid(row=1, column=1)  
+        entryNum2 = tk.Entry(self, textvariable=rabbitSpawnChance).grid(row=2, column=1) 
+        entryNum3 = tk.Entry(self, textvariable=rabbitStartEnergy).grid(row=3, column=1)  
+        entryNum4 = tk.Entry(self, textvariable=rabbitReproductionCost).grid(row=4, column=1)  
+        entryNum5 = tk.Entry(self, textvariable=rabbitLifeActivityCost).grid(row=1, column=3)  
+        entryNum6 = tk.Entry(self, textvariable=rabbitReproductionThreshold).grid(row=2, column=3)  
+        entryNum7 = tk.Entry(self, textvariable=lettuceEnergeticCapacity).grid(row=3, column=3)  
+        entryNum8 = tk.Entry(self, textvariable=lettuceReproductionFrequency).grid(row=4, column=3)    
+
+        button1 = tk.Button(self, text="Start", height=6, bg='#B2FFB0', activebackground='#B2FFB0',
+                        command=lambda: SimulationDriver.start_simulation_and_show_next_page(controller, "rabbits", self.shape)).grid(row=5, column=0, columnspan=4, sticky='nesw')
+        button2 = tk.Button(self, text="Return", height=4, bg='#FFBEB0', activebackground='#FFBEB0',
+                        command=lambda: controller.show_frame("ShapePage")).grid(row=6, column=0, columnspan=4, sticky='nesw')
+        button3 = tk.Button(self, text="Cancel", height=4, bg='#FFBEB0', activebackground='#FFBEB0',
+                        command=lambda: controller.show_frame("StartPage")).grid(row=7, column=0, columnspan=4, sticky='nesw')
+
+        #button1.pack(side="bottom", fill="x")
+        #button2.pack(side="bottom", fill="x")
+        #button3.pack(side="bottom", fill="x")
 
     def set_shape(self, shape):
         self.shape = shape
@@ -254,5 +294,6 @@ class SimulationDriver:
 if __name__ == "__main__":
     #sr.run_led_servers()
     app = App()
+    #app.geometry("800x480")
     app.attributes('-fullscreen', True)
     app.mainloop()
