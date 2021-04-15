@@ -1,3 +1,4 @@
+from helpers import Helpers
 import Tkinter as tk      
 import scripts_runner as sr          
 class App(tk.Tk):
@@ -182,39 +183,43 @@ class RabbitsPage(tk.Frame):
         lettuceInitialSignal.set(1)
         rabbitStartEnergy.set(0.5)
         rabbitReproductionCost.set(0.5)
-        rabbitLifeActivityCost .set(0.1)
+        rabbitLifeActivityCost.set(0.1)
         rabbitReproductionThreshold.set(1)
         lettuceEnergeticCapacity.set(0.6)
         lettuceReproductionFrequency.set(2)
 
-        labelNum1 = tk.Label(self, text="spawn chance").grid(row=1, column=0, padx=3) 
-        labelNum2 = tk.Label(self, text="rabbit spawn chance").grid(row=2, column=0) 
-        labelNum3 = tk.Label(self, text="rabbit start energy").grid(row=3, column=0)  
-        labelNum4 = tk.Label(self, text="rabbit reproduction cost").grid(row=4, column=0)
-        labelNum5 = tk.Label(self, text="rabbit life activity cost").grid(row=1, column=2)  
-        labelNum6 = tk.Label(self, text="rabbit reproduction threshold").grid(row=2, column=2)
-        labelNum7 = tk.Label(self, text="lettuce energetic capacity").grid(row=3, column=2)  
-        labelNum8 = tk.Label(self, text="lettuce reproduction frequency").grid(row=4, column=2, padx=3) 
+        for number in range(5, 7):
+            self.grid_rowconfigure(number, weight = 3)
+        for number in range(0, 3):
+            self.grid_columnconfigure(number, weight = 1)
 
-        entryNum1 = tk.Entry(self, textvariable=spawnChance).grid(row=1, column=1)  
-        entryNum2 = tk.Entry(self, textvariable=rabbitSpawnChance).grid(row=2, column=1) 
-        entryNum3 = tk.Entry(self, textvariable=rabbitStartEnergy).grid(row=3, column=1)  
-        entryNum4 = tk.Entry(self, textvariable=rabbitReproductionCost).grid(row=4, column=1)  
-        entryNum5 = tk.Entry(self, textvariable=rabbitLifeActivityCost).grid(row=1, column=3)  
-        entryNum6 = tk.Entry(self, textvariable=rabbitReproductionThreshold).grid(row=2, column=3)  
-        entryNum7 = tk.Entry(self, textvariable=lettuceEnergeticCapacity).grid(row=3, column=3)  
-        entryNum8 = tk.Entry(self, textvariable=lettuceReproductionFrequency).grid(row=4, column=3)    
+        vcmd = (self.register(Helpers.validate),
+                '%d', '%i', '%P', '%s', '%S', '%v', '%V', '%W')
 
-        button1 = tk.Button(self, text="Start", height=6, bg='#B2FFB0', activebackground='#B2FFB0',
+        tk.Label(self, text="spawn chance", pady=10).grid(row=1, column=0)
+        tk.Label(self, text="rabbit spawn chance", pady=10).grid(row=2, column=0) 
+        tk.Label(self, text="rabbit start energy", pady=10).grid(row=3, column=0)  
+        tk.Label(self, text="rabbit reproduction cost", pady=10).grid(row=4, column=0)
+        tk.Label(self, text="rabbit life activity cost", pady=10).grid(row=1, column=2)  
+        tk.Label(self, text="rabbit reproduction threshold", pady=10).grid(row=2, column=2)
+        tk.Label(self, text="lettuce energetic capacity", pady=10).grid(row=3, column=2)  
+        tk.Label(self, text="lettuce reproduction frequency", pady=10).grid(row=4, column=2) 
+
+        tk.Entry(self, textvariable=spawnChance, width = 6,validate = 'key', validatecommand = vcmd).grid(row=1, column=1)  
+        tk.Entry(self, textvariable=rabbitSpawnChance, width = 6,validate = 'key', validatecommand = vcmd).grid(row=2, column=1) 
+        tk.Entry(self, textvariable=rabbitStartEnergy, width = 6,validate = 'key', validatecommand = vcmd).grid(row=3, column=1)  
+        tk.Entry(self, textvariable=rabbitReproductionCost, width = 6,validate = 'key', validatecommand = vcmd).grid(row=4, column=1)  
+        tk.Entry(self, textvariable=rabbitLifeActivityCost, width = 6,validate = 'key', validatecommand = vcmd).grid(row=1, column=3)  
+        tk.Entry(self, textvariable=rabbitReproductionThreshold, width = 6,validate = 'key', validatecommand = vcmd).grid(row=2, column=3)  
+        tk.Entry(self, textvariable=lettuceEnergeticCapacity, width = 6,validate = 'key', validatecommand = vcmd).grid(row=3, column=3)  
+        tk.Entry(self, textvariable=lettuceReproductionFrequency, width = 6,validate = 'key', validatecommand = vcmd).grid(row=4, column=3)    
+
+        tk.Button(self, text="Start", height=6, bg='#B2FFB0', activebackground='#B2FFB0',
                         command=lambda: SimulationDriver.start_simulation_and_show_next_page(controller, "rabbits", self.shape)).grid(row=5, column=0, columnspan=4, sticky='nesw')
-        button2 = tk.Button(self, text="Return", height=4, bg='#FFBEB0', activebackground='#FFBEB0',
+        tk.Button(self, text="Return", height=4, bg='#FFBEB0', activebackground='#FFBEB0',
                         command=lambda: controller.show_frame("ShapePage")).grid(row=6, column=0, columnspan=4, sticky='nesw')
-        button3 = tk.Button(self, text="Cancel", height=4, bg='#FFBEB0', activebackground='#FFBEB0',
+        tk.Button(self, text="Cancel", height=4, bg='#FFBEB0', activebackground='#FFBEB0',
                         command=lambda: controller.show_frame("StartPage")).grid(row=7, column=0, columnspan=4, sticky='nesw')
-
-        #button1.pack(side="bottom", fill="x")
-        #button2.pack(side="bottom", fill="x")
-        #button3.pack(side="bottom", fill="x")
 
     def set_shape(self, shape):
         self.shape = shape
@@ -294,6 +299,6 @@ class SimulationDriver:
 if __name__ == "__main__":
     #sr.run_led_servers()
     app = App()
-    #app.geometry("800x480")
+    app.geometry("480x320")
     app.attributes('-fullscreen', True)
     app.mainloop()
