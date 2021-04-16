@@ -189,7 +189,7 @@ class RabbitsPage(tk.Frame):
         lettuceReproductionFrequency.set(2)
 
         for number in range(0, 10):
-            self.grid_rowconfigure(5, weight = 1, minsize=4)
+            self.grid_rowconfigure(number, weight = 1, minsize=4)
 
         for number in range(0,6):
             self.grid_columnconfigure(number, weight = 1, minsize=4)
@@ -204,7 +204,7 @@ class RabbitsPage(tk.Frame):
         tk.Label(self, textvariable=rabbitStartEnergy, borderwidth=2, relief="sunken").grid(row=4, column=1, rowspan=2, sticky='nesw')  
         tk.Label(self, textvariable=rabbitReproductionCost, borderwidth=2, relief="sunken").grid(row=6, column=1, rowspan=2, sticky='nesw')
 
-        bt = tk.Button(self, text="+", command=lambda: self.update_value(spawnChance, 0.1, "+")).grid(row=0, column=2, sticky='nesw')
+        tk.Button(self, text="+", command=lambda: self.update_value(spawnChance, 0.1, "+")).grid(row=0, column=2, sticky='nesw')
         tk.Button(self, text="-", command=lambda: self.update_value(spawnChance, 0.1, "-")).grid(row=1, column=2, sticky='nesw')
         tk.Button(self, text="+", command=lambda: self.update_value(rabbitSpawnChance, 0.1, "+")).grid(row=2, column=2, sticky='nesw')
         tk.Button(self, text="-", command=lambda: self.update_value(rabbitSpawnChance, 0.1, "-")).grid(row=3, column=2, sticky='nesw')
@@ -328,6 +328,6 @@ class SimulationDriver:
 if __name__ == "__main__":
     #sr.run_led_servers()
     app = App()
-    app.geometry("480x320")
+    #app.geometry("480x320")
     app.attributes('-fullscreen', True)
     app.mainloop()
