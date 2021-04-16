@@ -1,4 +1,4 @@
-from rabbitsPage import RabbitsPage
+from pages.rabbitsPage import RabbitsPage
 from helpers import SimulationDriver
 import scripts_runner as sr 
 import platform

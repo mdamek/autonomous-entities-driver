@@ -78,7 +78,8 @@ class RabbitsPage(tk.Frame):
         tk.Button(self, text="-", command=lambda: self.update_value(lettuceReproductionFrequency, 1, "-")).grid(row=7, column=5, sticky='nesw')
 
         tk.Button(self, text="Start", bg='#B2FFB0', activebackground='#B2FFB0', height=2,
-                        command=lambda: SimulationDriver.start_simulation_and_show_next_page(controller, "rabbits", self.shape)).grid(row=8, column=0, columnspan=6, sticky='nesw')
+                        command=lambda: SimulationDriver.start_rabbits_and_show_next_page(controller, "rabbits", self.shape, spawnChance.get(), rabbitSpawnChance.get(), rabbitStartEnergy.get(), 
+                        rabbitReproductionCost.get(), rabbitLifeActivityCost.get(), rabbitReproductionThreshold.get(), lettuceEnergeticCapacity.get(), lettuceReproductionFrequency.get())).grid(row=8, column=0, columnspan=6, sticky='nesw')
         tk.Button(self, text="Return", bg='#FFBEB0', activebackground='#FFBEB0', 
                         command=lambda: controller.show_frame("ShapePage")).grid(row=9, column=0, columnspan=6, sticky='nesw')
         tk.Button(self, text="Cancel", bg='#FFBEB0', activebackground='#FFBEB0', 
