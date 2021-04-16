@@ -30,11 +30,17 @@ class FortwistPage(tk.Frame):
         algaeRegenerationRate.set(0.07)
         algaeEnergeticCapacity.set(0.1)
 
+        for number in range(0, 10):
+            self.grid_rowconfigure(number, weight = 1, minsize=4)
 
-        tk.Label(self, text="Fora spawn chance", font='Helvetica 9 bold').grid(row=0, column=0, rowspan=2, sticky='nesw')
-        tk.Label(self, text="Fora start energy", font='Helvetica 9 bold').grid(row=2, column=0, rowspan=2, sticky='nesw') 
-        tk.Label(self, text="Fora reproduction cost", font='Helvetica 9 bold').grid(row=4, column=0, rowspan=2, sticky='nesw')  
-        tk.Label(self, text="Fora reproduction threshold", font='Helvetica 9 bold').grid(row=6, column=0, rowspan=2, sticky='nesw')
+        for number in range(0,6):
+            self.grid_columnconfigure(number, weight = 1, minsize=4)
+
+
+        tk.Label(self, text="Foraminifera spawn chance", font='Helvetica 9 bold').grid(row=0, column=0, rowspan=2, sticky='nesw')
+        tk.Label(self, text="Foraminifera start energy", font='Helvetica 9 bold').grid(row=2, column=0, rowspan=2, sticky='nesw') 
+        tk.Label(self, text="Foraminifera reproduction cost", font='Helvetica 9 bold').grid(row=4, column=0, rowspan=2, sticky='nesw')  
+        tk.Label(self, text="Foraminifera reproduction threshold", font='Helvetica 9 bold').grid(row=6, column=0, rowspan=2, sticky='nesw')
 
         tk.Label(self, textvariable=foraminiferaSpawnChance, borderwidth=2, relief="sunken").grid(row=0, column=1, rowspan=2, sticky='nesw')  
         tk.Label(self, textvariable=foraminiferaStartEnergy, borderwidth=2, relief="sunken").grid(row=2, column=1, rowspan=2, sticky='nesw') 
@@ -50,7 +56,7 @@ class FortwistPage(tk.Frame):
         tk.Button(self, text="+", command=lambda: self.update_value(foraminiferaReproductionThreshold, 0.1, "+")).grid(row=6, column=2, sticky='nesw')
         tk.Button(self, text="-", command=lambda: self.update_value(foraminiferaReproductionThreshold, 0.1, "-")).grid(row=7, column=2, sticky='nesw')
 
-        tk.Label(self, text="Fora life activity cost", font='Helvetica 9 bold').grid(row=0, column=3, rowspan=2, sticky='nesw')  
+        tk.Label(self, text="Foraminifera life activity cost", font='Helvetica 9 bold').grid(row=0, column=3, rowspan=2, sticky='nesw')  
         tk.Label(self, text="Algae start energy", font='Helvetica 9 bold').grid(row=2, column=3, rowspan=2, sticky='nesw')
         tk.Label(self, text="Algae regeneration rate", font='Helvetica 9 bold').grid(row=4, column=3, rowspan=2, sticky='nesw')  
         tk.Label(self, text="Algae energetic capacity", font='Helvetica 9 bold').grid(row=6, column=3, rowspan=2, sticky='nesw')
@@ -64,8 +70,8 @@ class FortwistPage(tk.Frame):
         tk.Button(self, text="-", command=lambda: self.update_value(foraminiferaLifeActivityCost, 0.1, "-")).grid(row=1, column=5, sticky='nesw')
         tk.Button(self, text="+", command=lambda: self.update_value(algaeStartEnergy, 0.1, "+")).grid(row=2, column=5, sticky='nesw')
         tk.Button(self, text="-", command=lambda: self.update_value(algaeStartEnergy, 0.1, "-")).grid(row=3, column=5, sticky='nesw')
-        tk.Button(self, text="+", command=lambda: self.update_value(algaeRegenerationRate, 0.1, "+")).grid(row=4, column=5, sticky='nesw')
-        tk.Button(self, text="-", command=lambda: self.update_value(algaeRegenerationRate, 0.1, "-")).grid(row=5, column=5, sticky='nesw')
+        tk.Button(self, text="+", command=lambda: self.update_value(algaeRegenerationRate, 0.01, "+")).grid(row=4, column=5, sticky='nesw')
+        tk.Button(self, text="-", command=lambda: self.update_value(algaeRegenerationRate, 0.01, "-")).grid(row=5, column=5, sticky='nesw')
         tk.Button(self, text="+", command=lambda: self.update_value(algaeEnergeticCapacity, 1, "+")).grid(row=6, column=5, sticky='nesw')
         tk.Button(self, text="-", command=lambda: self.update_value(algaeEnergeticCapacity, 1, "-")).grid(row=7, column=5, sticky='nesw')
 
@@ -76,6 +82,17 @@ class FortwistPage(tk.Frame):
                         command=lambda: controller.show_frame("ShapePage")).grid(row=9, column=0, columnspan=6, sticky='nesw')
         tk.Button(self, text="Cancel", bg='#FFBEB0', activebackground='#FFBEB0', 
                         command=lambda: controller.show_frame("StartPage")).grid(row=10, column=0, columnspan=6, sticky='nesw')
+
+    def update_value(self, value_to_update, value, direction):
+        if (direction == "+"):
+            new_value = round(value_to_update.get() + value, 1)
+            if (new_value < 5):
+                value_to_update.set(new_value)
+        if (direction == "-"):
+            new_value = round(value_to_update.get() - value, 1)
+            if (new_value > 0):
+                value_to_update.set(new_value)
+        return
 
     def set_shape(self, shape):
         self.shape = shape
