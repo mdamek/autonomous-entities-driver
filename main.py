@@ -235,11 +235,11 @@ class RabbitsPage(tk.Frame):
         tk.Button(self, text="+", command=lambda: self.update_value(lettuceReproductionFrequency, 0.1, "+")).grid(row=6, column=5, sticky='nesw')
         tk.Button(self, text="-", command=lambda: self.update_value(lettuceReproductionFrequency, 0.1, "-")).grid(row=7, column=5, sticky='nesw')
 
-        tk.Button(self, text="Start", bg='#B2FFB0', activebackground='#B2FFB0', height=3,
+        tk.Button(self, text="Start", bg='#B2FFB0', activebackground='#B2FFB0',
                         command=lambda: SimulationDriver.start_simulation_and_show_next_page(controller, "rabbits", self.shape)).grid(row=8, column=0, columnspan=6, sticky='nesw')
-        tk.Button(self, text="Return", bg='#FFBEB0', activebackground='#FFBEB0',height=1,
+        tk.Button(self, text="Return", bg='#FFBEB0', activebackground='#FFBEB0',
                         command=lambda: controller.show_frame("ShapePage")).grid(row=9, column=0, columnspan=6, sticky='nesw')
-        tk.Button(self, text="Cancel", bg='#FFBEB0', activebackground='#FFBEB0',height=1,
+        tk.Button(self, text="Cancel", bg='#FFBEB0', activebackground='#FFBEB0',
                         command=lambda: controller.show_frame("StartPage")).grid(row=10, column=0, columnspan=6, sticky='nesw')
 
     def update_value(self, value_to_update, value, direction):
@@ -331,6 +331,6 @@ class SimulationDriver:
 if __name__ == "__main__":
     #sr.run_led_servers()
     app = App()
-    app.geometry("480x320")
-    #app.attributes('-fullscreen', True)
+    #app.geometry("480x320")
+    app.attributes('-fullscreen', True)
     app.mainloop()
