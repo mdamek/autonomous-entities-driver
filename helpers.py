@@ -33,6 +33,14 @@ class SimulationDriver:
         sr.run_fortwist(shape, foraminiferaSpawnChance, foraminiferaStartEnergy, foraminiferaReproductionCost, foraminiferaReproductionThreshold, foraminiferaLifeActivityCost, algaeStartEnergy, 
         algaeRegenerationRate, algaeEnergeticCapacity)
     @staticmethod
+    def start_game_and_show_next_page(controller, simulation_name, shape, lifeSpawnChance, loadFromOutside):
+        controller.set_simulation_name_shape_and_show_frame("InProgressPage", simulation_name, shape)
+        sr.run_game(shape, lifeSpawnChance, loadFromOutside)
+    @staticmethod
+    def start_game_and_show_draw_page(controller, simulation_name, shape):
+        sr.start_motion_sensor(shape)
+        controller.set_simulation_name_shape_and_show_frame("DrawPage", simulation_name, shape)
+    @staticmethod
     def kill_simulation_and_back_to_start(controller):
         controller.show_frame("StartPage")
         sr.kill_simulation()

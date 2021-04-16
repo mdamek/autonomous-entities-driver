@@ -1,3 +1,4 @@
+from gamePage import GamePage
 from torchPage import TorchPage
 from fortwistPage import FortwistPage
 from mockPage import MockPage
@@ -21,7 +22,7 @@ class App(tk.Tk):
         container.grid_columnconfigure(0, weight=1)
 
         self.frames = {}
-        for F in (StartPage, ShapePage, InProgressPage, MockPage, OptionsPage, RabbitsPage, FortwistPage, TorchPage):
+        for F in (StartPage, ShapePage, InProgressPage, MockPage, OptionsPage, RabbitsPage, FortwistPage, TorchPage, GamePage, DrawPage):
             page_name = F.__name__
             frame = F(parent=container, controller=self)
             self.frames[page_name] = frame
@@ -58,8 +59,8 @@ class StartPage(tk.Frame):
                             command=lambda: controller.set_simulation_name_and_show_frame("ShapePage", "fortwist"))
         button4 = tk.Button(self, text="Torch",
                             command=lambda: controller.set_simulation_name_and_show_frame("ShapePage", "torch"))
-        button5 = tk.Button(self, text="Urban",
-                            command=lambda: controller.set_simulation_name_and_show_frame("ShapePage", "urban"))
+        button5 = tk.Button(self, text="Game of life",
+                            command=lambda: controller.set_simulation_name_and_show_frame("ShapePage", "game"))
         button6 = tk.Button(self, text="Service", bg='#FFFEB0', activebackground='#FFFEB0',
                             command=lambda: controller.show_frame("OptionsPage"))
         
@@ -67,7 +68,7 @@ class StartPage(tk.Frame):
         button2.pack(fill = tk.BOTH, expand = True)
         button3.pack(fill = tk.BOTH, expand = True)
         button4.pack(fill = tk.BOTH, expand = True)
-        #button5.pack(fill = tk.BOTH, expand = True)
+        button5.pack(fill = tk.BOTH, expand = True)
         button6.pack(fill = tk.BOTH, expand = True)
 
 class OptionsPage(tk.Frame):
@@ -124,9 +125,33 @@ class ShapePage(tk.Frame):
             return "FortwistPage"
         if simulation_name == "torch":
             return "TorchPage"
-        if simulation_name == "urban":
-            return "UrbanPage"
+        if simulation_name == "game":
+            return "GamePage"
         return ""
+
+class DrawPage(tk.Frame):
+    def __init__(self, parent, controller):
+        tk.Frame.__init__(self, parent)
+        self.controller = controller
+        self.shape = ""
+        self.simulation_name = ""
+        
+        label = tk.Label(self, text="Draw starting position on panels then click Start", font='Helvetica 14 bold')
+
+        button2 = tk.Button(self, text="Return", bg='#FFBEB0', activebackground='#FFBEB0', command=lambda: controller.show_frame("GamePage"))
+        button3 = tk.Button(self, text="Cancel", bg='#FFBEB0', activebackground='#FFBEB0', command=lambda: controller.show_frame("StartPage"))
+        button1 = tk.Button(self, text="Start", bg='#B2FFB0', activebackground='#B2FFB0', command=lambda: SimulationDriver.start_game_and_show_next_page(controller, self.simulation_name, self.shape, 0, True))
+
+        label.pack(side="top", fill="x")
+        button1.pack(side="bottom", fill = tk.BOTH, expand = True)
+        button2.pack(side="bottom", fill = tk.BOTH, expand = True)
+        button3.pack(side="bottom", fill = tk.BOTH, expand = True)
+
+    def set_shape(self, shape):
+        self.shape = shape
+
+    def set_simulation_name(self, simulation_name):
+        self.simulation_name = simulation_name
 
 class InProgressPage(tk.Frame):
     def __init__(self, parent, controller):
@@ -148,29 +173,6 @@ class InProgressPage(tk.Frame):
     def set_simulation_name(self, simulation_name):
         text = simulation_name + " " + self.shape + " simulation in progress..." 
         self.simulation_text.set(text.capitalize())
-
-class UrbanPage(tk.Frame):
-    def __init__(self, parent, controller):
-        tk.Frame.__init__(self, parent)
-        self.controller = controller
-        self.shape = ""
-
-        button1 = tk.Button(self, text="Start", height=8, bg='#B2FFB0', activebackground='#B2FFB0',
-                        command=lambda: SimulationDriver.start_simulation_and_show_next_page(controller, "urban", self.shape))
-        button2 = tk.Button(self, text="Return", height=4, bg='#FFBEB0', activebackground='#FFBEB0',
-                        command=lambda: controller.show_frame("ShapePage"))
-        button3 = tk.Button(self, text="Cancel", height=4, bg='#FFBEB0', activebackground='#FFBEB0',
-                        command=lambda: controller.show_frame("StartPage"))
-
-        button1.pack(side="bottom", fill="x")
-        button2.pack(side="bottom", fill="x")
-        button3.pack(side="bottom", fill="x")
-
-    def set_shape(self, shape):
-        self.shape = shape
-        
-
-        
 
 if __name__ == "__main__":
     #sr.run_led_servers()

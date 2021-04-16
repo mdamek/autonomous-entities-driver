@@ -26,6 +26,13 @@ def run_torch(shape, spawnChance, personSpawnChance, fireSpawnChance, exitSpawnC
     str(fireSpawnChance), '-exitSpawnChance', str(exitSpawnChance), '-personMaxSpeed', str(personMaxSpeed), 
     '-fireSpreadingFrequency', str(fireSpreadingFrequency)])
 
+def run_game(shape, lifeSpawnChance, loadFromOutside):
+    subprocess.call(['scripts/run_game.sh', '-shape', shape, '-lifeSpawnChance', str(lifeSpawnChance), '-loadFromOutside', str(loadFromOutside)])
+
+def start_motion_sensor(shape):
+    #make request for motion sensor!
+    pass
+
 def run_led_servers():
     subprocess.call("scripts/run_led_servers.sh")
 
