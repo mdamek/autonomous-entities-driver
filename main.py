@@ -328,6 +328,6 @@ class SimulationDriver:
 if __name__ == "__main__":
     #sr.run_led_servers()
     app = App()
-    3app.geometry("480x320")
+    app.geometry("480x320")
     app.attributes('-fullscreen', True)
     app.mainloop()
