@@ -70,8 +70,8 @@ class FortwistPage(tk.Frame):
         tk.Button(self, text="-", command=lambda: self.update_value(foraminiferaLifeActivityCost, 0.1, "-")).grid(row=1, column=5, sticky='nesw')
         tk.Button(self, text="+", command=lambda: self.update_value(algaeStartEnergy, 0.1, "+")).grid(row=2, column=5, sticky='nesw')
         tk.Button(self, text="-", command=lambda: self.update_value(algaeStartEnergy, 0.1, "-")).grid(row=3, column=5, sticky='nesw')
-        tk.Button(self, text="+", command=lambda: self.update_value(algaeRegenerationRate, 0.01, "+")).grid(row=4, column=5, sticky='nesw')
-        tk.Button(self, text="-", command=lambda: self.update_value(algaeRegenerationRate, 0.01, "-")).grid(row=5, column=5, sticky='nesw')
+        tk.Button(self, text="+", command=lambda: self.update_value(algaeRegenerationRate, 0.1, "+")).grid(row=4, column=5, sticky='nesw')
+        tk.Button(self, text="-", command=lambda: self.update_value(algaeRegenerationRate, 0.1, "-")).grid(row=5, column=5, sticky='nesw')
         tk.Button(self, text="+", command=lambda: self.update_value(algaeEnergeticCapacity, 1, "+")).grid(row=6, column=5, sticky='nesw')
         tk.Button(self, text="-", command=lambda: self.update_value(algaeEnergeticCapacity, 1, "-")).grid(row=7, column=5, sticky='nesw')
 
