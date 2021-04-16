@@ -19,7 +19,7 @@ def run_fortwist(shape, foraminiferaSpawnChance, foraminiferaStartEnergy, forami
     algaeEnergeticCapacity):
     subprocess.call(['scripts/run_fortwist.sh', '-shape', shape, '-foraminiferaSpawnChance', str(foraminiferaSpawnChance), '-foraminiferaStartEnergy', str(foraminiferaStartEnergy), '-foraminiferaReproductionCost',
     str(foraminiferaReproductionCost), '-foraminiferaReproductionThreshold', str(foraminiferaReproductionThreshold), '-foraminiferaLifeActivityCost', str(foraminiferaLifeActivityCost), 
-    str(algaeStartEnergy), '-algaeStartEnergy', '-algaeRegenerationRate', str(algaeRegenerationRate), '-algaeEnergeticCapacity', str(algaeEnergeticCapacity)])
+    '-algaeStartEnergy', str(algaeStartEnergy),  '-algaeRegenerationRate', str(algaeRegenerationRate), '-algaeEnergeticCapacity', str(algaeEnergeticCapacity)])
 
 def run_led_servers():
     subprocess.call("scripts/run_led_servers.sh")
