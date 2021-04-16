@@ -21,6 +21,11 @@ def run_fortwist(shape, foraminiferaSpawnChance, foraminiferaStartEnergy, forami
     str(foraminiferaReproductionCost), '-foraminiferaReproductionThreshold', str(foraminiferaReproductionThreshold), '-foraminiferaLifeActivityCost', str(foraminiferaLifeActivityCost), 
     '-algaeStartEnergy', str(algaeStartEnergy),  '-algaeRegenerationRate', str(algaeRegenerationRate), '-algaeEnergeticCapacity', str(algaeEnergeticCapacity)])
 
+def run_torch(shape, spawnChance, personSpawnChance, fireSpawnChance, exitSpawnChance, personMaxSpeed, fireSpreadingFrequency):
+    subprocess.call(['scripts/run_torch.sh', '-shape', shape, '-spawnChance', str(spawnChance), '-personSpawnChance', str(personSpawnChance), '-fireSpawnChance',
+    str(fireSpawnChance), '-exitSpawnChance', str(exitSpawnChance), '-personMaxSpeed', str(personMaxSpeed), 
+    '-fireSpreadingFrequency', str(fireSpreadingFrequency)])
+
 def run_led_servers():
     subprocess.call("scripts/run_led_servers.sh")
 
