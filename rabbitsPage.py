@@ -1,5 +1,9 @@
 from helpers import SimulationDriver
-import tkinter as tk  
+import platform
+if (platform.node() == "DESKTOP-TREPOQV"):
+    import tkinter as tk  
+else:
+    import Tkinter as tk 
 
 class RabbitsPage(tk.Frame):
     def __init__(self, parent, controller):
