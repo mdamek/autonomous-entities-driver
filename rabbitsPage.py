@@ -13,8 +13,6 @@ class RabbitsPage(tk.Frame):
 
         spawnChance = tk.DoubleVar()  
         rabbitSpawnChance = tk.DoubleVar()  
-        rabbitInitialSignal = tk.DoubleVar()  
-        lettuceInitialSignal = tk.DoubleVar()  
         rabbitStartEnergy = tk.DoubleVar()  
         rabbitReproductionCost = tk.DoubleVar()  
         rabbitLifeActivityCost = tk.DoubleVar()  
@@ -24,8 +22,6 @@ class RabbitsPage(tk.Frame):
 
         spawnChance.set(0.1)
         rabbitSpawnChance.set(0.3)
-        rabbitInitialSignal.set(-1)
-        lettuceInitialSignal.set(1)
         rabbitStartEnergy.set(0.5)
         rabbitReproductionCost.set(0.5)
         rabbitLifeActivityCost.set(0.1)

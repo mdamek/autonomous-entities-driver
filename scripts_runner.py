@@ -15,6 +15,12 @@ def run_rabbits(shape, spawnChance, rabbitSpawnChance, rabbitStartEnergy, rabbit
     str(rabbitReproductionCost), '-rabbitLifeActivityCost', str(rabbitLifeActivityCost), '-rabbitReproductionThreshold', str(rabbitReproductionThreshold), '-lettuceEnergeticCapacity', str(lettuceEnergeticCapacity), '-lettuceReproductionFrequency',
     str(lettuceReproductionFrequency)])
 
+def run_fortwist(shape, foraminiferaSpawnChance, foraminiferaStartEnergy, foraminiferaReproductionCost, foraminiferaReproductionThreshold, foraminiferaLifeActivityCost, algaeStartEnergy, algaeRegenerationRate, 
+    algaeEnergeticCapacity):
+    subprocess.call(['scripts/run_fortwist.sh', '-shape', shape, '-foraminiferaSpawnChance', str(foraminiferaSpawnChance), '-foraminiferaStartEnergy', str(foraminiferaStartEnergy), '-foraminiferaReproductionCost',
+    str(foraminiferaReproductionCost), '-foraminiferaReproductionThreshold', str(foraminiferaReproductionThreshold), '-foraminiferaLifeActivityCost', str(foraminiferaLifeActivityCost), 
+    '-rabbitReproductalgaeStartEnergyionThreshold', str(algaeStartEnergy), '-algaeRegenerationRate', str(algaeRegenerationRate), '-algaeEnergeticCapacity', str(algaeEnergeticCapacity)])
+
 def run_led_servers():
     subprocess.call("scripts/run_led_servers.sh")
 
