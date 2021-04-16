@@ -1,5 +1,5 @@
 from helpers import Helpers
-import Tkinter as tk      
+import tkinter as tk      
 import scripts_runner as sr          
 class App(tk.Tk):
 
@@ -188,8 +188,9 @@ class RabbitsPage(tk.Frame):
         lettuceEnergeticCapacity.set(0.6)
         lettuceReproductionFrequency.set(2)
 
-        for number in range(5, 7):
-            self.grid_rowconfigure(number, weight = 3)
+        self.grid_rowconfigure(5, weight = 3)
+        self.grid_rowconfigure(6, weight = 1)
+        self.grid_rowconfigure(7, weight = 1)
         for number in range(0, 3):
             self.grid_columnconfigure(number, weight = 1)
 
@@ -300,5 +301,5 @@ if __name__ == "__main__":
     #sr.run_led_servers()
     app = App()
     app.geometry("480x320")
-    app.attributes('-fullscreen', True)
+    #app.attributes('-fullscreen', True)
     app.mainloop()
