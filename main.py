@@ -1,5 +1,5 @@
 from helpers import Helpers
-import tkinter as tk      
+import Tkinter as tk      
 import scripts_runner as sr          
 class App(tk.Tk):
 
@@ -328,6 +328,6 @@ class SimulationDriver:
 if __name__ == "__main__":
     #sr.run_led_servers()
     app = App()
-    app.geometry("480x320")
-    #app.attributes('-fullscreen', True)
+    #app.geometry("480x320")
+    app.attributes('-fullscreen', True)
     app.mainloop()
