@@ -229,8 +229,8 @@ class RabbitsPage(tk.Frame):
         tk.Button(self, text="-", command=lambda: self.update_value(rabbitReproductionThreshold, 0.1, "-")).grid(row=3, column=5, sticky='nesw')
         tk.Button(self, text="+", command=lambda: self.update_value(lettuceEnergeticCapacity, 0.1, "+")).grid(row=4, column=5, sticky='nesw')
         tk.Button(self, text="-", command=lambda: self.update_value(lettuceEnergeticCapacity, 0.1, "-")).grid(row=5, column=5, sticky='nesw')
-        tk.Button(self, text="+", command=lambda: self.update_value(lettuceReproductionFrequency, 0.1, "+")).grid(row=6, column=5, sticky='nesw')
-        tk.Button(self, text="-", command=lambda: self.update_value(lettuceReproductionFrequency, 0.1, "-")).grid(row=7, column=5, sticky='nesw')
+        tk.Button(self, text="+", command=lambda: self.update_value(lettuceReproductionFrequency, 1, "+")).grid(row=6, column=5, sticky='nesw')
+        tk.Button(self, text="-", command=lambda: self.update_value(lettuceReproductionFrequency, 1, "-")).grid(row=7, column=5, sticky='nesw')
 
         tk.Button(self, text="Start", bg='#B2FFB0', activebackground='#B2FFB0', height=2,
                         command=lambda: SimulationDriver.start_simulation_and_show_next_page(controller, "rabbits", self.shape)).grid(row=8, column=0, columnspan=6, sticky='nesw')
