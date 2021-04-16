@@ -199,6 +199,6 @@ if __name__ == "__main__":
     if (platform.node() == "DESKTOP-TREPOQV"):
         app.geometry("480x320")
     else:
-        #app.attributes('-fullscreen', True)
+        app.attributes('-fullscreen', True)
         print("geo")
     app.mainloop()

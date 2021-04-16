@@ -31,10 +31,10 @@ class FortwistPage(tk.Frame):
         algaeEnergeticCapacity.set(0.1)
 
 
-        tk.Label(self, text="Foraminifera spawn chance", font='Helvetica 9 bold').grid(row=0, column=0, rowspan=2, sticky='nesw')
-        tk.Label(self, text="Foraminifera start energy", font='Helvetica 9 bold').grid(row=2, column=0, rowspan=2, sticky='nesw') 
-        tk.Label(self, text="Foraminifera reproduction cost", font='Helvetica 9 bold').grid(row=4, column=0, rowspan=2, sticky='nesw')  
-        tk.Label(self, text="Foraminifera reproduction threshold", font='Helvetica 9 bold').grid(row=6, column=0, rowspan=2, sticky='nesw')
+        tk.Label(self, text="Fora spawn chance", font='Helvetica 9 bold').grid(row=0, column=0, rowspan=2, sticky='nesw')
+        tk.Label(self, text="Fora start energy", font='Helvetica 9 bold').grid(row=2, column=0, rowspan=2, sticky='nesw') 
+        tk.Label(self, text="Fora reproduction cost", font='Helvetica 9 bold').grid(row=4, column=0, rowspan=2, sticky='nesw')  
+        tk.Label(self, text="Fora reproduction threshold", font='Helvetica 9 bold').grid(row=6, column=0, rowspan=2, sticky='nesw')
 
         tk.Label(self, textvariable=foraminiferaSpawnChance, borderwidth=2, relief="sunken").grid(row=0, column=1, rowspan=2, sticky='nesw')  
         tk.Label(self, textvariable=foraminiferaStartEnergy, borderwidth=2, relief="sunken").grid(row=2, column=1, rowspan=2, sticky='nesw') 
@@ -50,7 +50,7 @@ class FortwistPage(tk.Frame):
         tk.Button(self, text="+", command=lambda: self.update_value(foraminiferaReproductionThreshold, 0.1, "+")).grid(row=6, column=2, sticky='nesw')
         tk.Button(self, text="-", command=lambda: self.update_value(foraminiferaReproductionThreshold, 0.1, "-")).grid(row=7, column=2, sticky='nesw')
 
-        tk.Label(self, text="Foraminifera life activity cost", font='Helvetica 9 bold').grid(row=0, column=3, rowspan=2, sticky='nesw')  
+        tk.Label(self, text="Fora life activity cost", font='Helvetica 9 bold').grid(row=0, column=3, rowspan=2, sticky='nesw')  
         tk.Label(self, text="Algae start energy", font='Helvetica 9 bold').grid(row=2, column=3, rowspan=2, sticky='nesw')
         tk.Label(self, text="Algae regeneration rate", font='Helvetica 9 bold').grid(row=4, column=3, rowspan=2, sticky='nesw')  
         tk.Label(self, text="Algae energetic capacity", font='Helvetica 9 bold').grid(row=6, column=3, rowspan=2, sticky='nesw')
