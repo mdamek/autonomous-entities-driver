@@ -21,11 +21,6 @@ while test $# -gt 0; do
         SHAPE=$1
         shift
         ;;
-    -name)
-        shift
-        APPLICATION_NAME=$1
-        shift
-        ;;
     -spawnChance)
         shift
         SPAWNCHANCE=$1
@@ -102,11 +97,6 @@ case ${SHAPE} in
     exit 0
     ;;
 esac
-
-if [[ ${APPLICATION_NAME} != mock && ${APPLICATION_NAME} != rabbits && ${APPLICATION_NAME} != fortwist && ${APPLICATION_NAME} != urban && ${APPLICATION_NAME} != torch ]]; then
-    echo "Define application name with flag -name: mock, rabbits, fortwist, urban, torch "
-    exit 0
-fi
 
 MIN_NR_OF_MEMBERS=4
 GUI_TYPE="ledPanel"
