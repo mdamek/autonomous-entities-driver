@@ -2,7 +2,7 @@
 source $(dirname $0)/raspberry_hosts.sh
 
 USERNAME="pi"
-APPLICATION_NAME="mock"
+APPLICATION_NAME="rabbits"
 SHAPE="square"
 
 SPAWNCHANCE=0
