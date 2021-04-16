@@ -12,11 +12,6 @@ while test $# -gt 0; do
         SHAPE=$1
         shift
         ;;
-    -name)
-        shift
-        APPLICATION_NAME=$1
-        shift
-        ;;
     *)
         echo "$1 is not a recognized flag!"
         exit 0
@@ -54,11 +49,6 @@ case ${SHAPE} in
     ;;
 esac
 
-if [[ ${APPLICATION_NAME} != mock && ${APPLICATION_NAME} != rabbits && ${APPLICATION_NAME} != fortwist && ${APPLICATION_NAME} != urban && ${APPLICATION_NAME} != torch ]]; then
-    echo "Define application name with flag -name: mock, rabbits, fortwist, urban, torch "
-    exit 0
-fi
-
 ITERATIONS_NUMBER=100
 SIGNAL_DISABLED=false
 
@@ -82,7 +72,7 @@ function run_xinuk() {
 }
 
 echo Running Xinuk on every machine...
-run_xinuk ${RASPBERRY1} true
 run_xinuk ${RASPBERRY2} false
 run_xinuk ${RASPBERRY3} false
 run_xinuk ${RASPBERRY4} false
+run_xinuk ${RASPBERRY1} true

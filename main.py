@@ -1,3 +1,4 @@
+from mockPage import MockPage
 from rabbitsPage import RabbitsPage
 from helpers import SimulationDriver
 import scripts_runner as sr 
@@ -43,7 +44,6 @@ class App(tk.Tk):
         frame.tkraise()
 
 class StartPage(tk.Frame):
-    
     def __init__(self, parent, controller):
         tk.Frame.__init__(self, parent)
         self.controller = controller
@@ -146,27 +146,6 @@ class InProgressPage(tk.Frame):
     def set_simulation_name(self, simulation_name):
         text = simulation_name + " " + self.shape + " simulation in progress..." 
         self.simulation_text.set(text.capitalize())
-
-class MockPage(tk.Frame):
-    def __init__(self, parent, controller):
-        tk.Frame.__init__(self, parent)
-        self.controller = controller
-        self.shape = ""
-        button1 = tk.Button(self, text="Start", height=8, bg='#B2FFB0', activebackground='#B2FFB0',
-                        command=lambda: SimulationDriver.start_simulation_and_show_next_page(controller, "mock", self.shape))
-        button2 = tk.Button(self, text="Return", height=4, bg='#FFBEB0', activebackground='#FFBEB0',
-                        command=lambda: controller.show_frame("ShapePage"))
-        button3 = tk.Button(self, text="Cancel", height=4, bg='#FFBEB0', activebackground='#FFBEB0',
-                        command=lambda: controller.show_frame("StartPage"))
-
-        button1.pack(side="bottom", fill="x")
-        button2.pack(side="bottom", fill="x")
-        button3.pack(side="bottom", fill="x")
-
-    def set_shape(self, shape):
-        self.shape = shape
-
-
 
 class FortwistPage(tk.Frame):
     def __init__(self, parent, controller):

@@ -15,6 +15,10 @@ class Helpers:
 
 class SimulationDriver:
     @staticmethod
+    def start_mock_and_show_next_page(controller, simulation_name, shape):
+        controller.set_simulation_name_shape_and_show_frame("InProgressPage", simulation_name, shape)
+        sr.run_mock(shape)
+    @staticmethod
     def start_rabbits_and_show_next_page(controller, simulation_name, shape, spawnChance, rabbitSpawnChance, rabbitStartEnergy, rabbitReproductionCost, rabbitLifeActivityCost, rabbitReproductionThreshold, lettuceEnergeticCapacity, lettuceReproductionFrequency):
         controller.set_simulation_name_shape_and_show_frame("InProgressPage", simulation_name, shape)
         sr.run_rabbits(shape, spawnChance, rabbitSpawnChance, rabbitStartEnergy, rabbitReproductionCost, rabbitLifeActivityCost, rabbitReproductionThreshold, lettuceEnergeticCapacity, lettuceReproductionFrequency)

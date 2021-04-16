@@ -7,8 +7,8 @@ def restart_led_servers():
 def restart_all_devices():
     subprocess.call("scripts/restart_all_devices.sh")
 
-def run_simulation(name, shape):
-    subprocess.call(['scripts/run_xinuk.sh', '-name', name, '-shape', shape])
+def run_mock(shape):
+    subprocess.call(['scripts/run_mock.sh', '-shape', shape])
 
 def run_rabbits(shape, spawnChance, rabbitSpawnChance, rabbitStartEnergy, rabbitReproductionCost, rabbitLifeActivityCost, rabbitReproductionThreshold, lettuceEnergeticCapacity, lettuceReproductionFrequency):
     subprocess.call(['scripts/run_rabbits.sh', '-shape', shape, '-spawnChance', str(spawnChance), '-rabbitSpawnChance', str(rabbitSpawnChance), '-rabbitStartEnergy', str(rabbitStartEnergy), '-rabbitReproductionCost',
