@@ -10,6 +10,6 @@ echo $UPDATEXINUKSCRIPT
 for HOSTNAME in ${RASPBERRYHOSTS[@]} ; do
     ssh -l ${USERNAME} ${HOSTNAME} "cd Desktop/xinuk; git pull;"
     for PROJECT in ${PROJECTS[@]} ; do
-        ssh -l ${USERNAME} ${HOSTNAME} "sbt ${PROJECT}/assembly < /dev/null > /tmp/mylogfile 2>&1 &";
+        ssh -l ${USERNAME} ${HOSTNAME} "sbt ${PROJECT}/assembly";
     done
 done
