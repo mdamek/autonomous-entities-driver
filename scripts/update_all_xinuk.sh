@@ -3,7 +3,7 @@ source $(dirname $0)/raspberry_hosts.sh
 
 USERNAME="pi"
 
-PROJECTS=["mock", "torch", "fortwist", "game", "rabbits"]
+PROJECTS=("mock", "torch", "fortwist", "game", "rabbits")
 
 echo Updating Xinuk...
 echo $UPDATEXINUKSCRIPT
