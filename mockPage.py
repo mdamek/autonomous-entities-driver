@@ -4,6 +4,15 @@ import platform
 import scripts_runner as sr 
 
 if (platform.node() == "DESKTOP-TREPOQV"):
+    import tkinter as tk
+    from tkinter import BooleanVar, Radiobutton, Frame
+    from tkinter.constants import TOP
+else:
+    import Tkinter as tk
+    from Tkinter import BooleanVar, Radiobutton, Frame
+    from Tkinter.constants import TOP
+
+if (platform.node() == "DESKTOP-TREPOQV"):
     import tkinter as tk  
 else:
     import Tkinter as tk 

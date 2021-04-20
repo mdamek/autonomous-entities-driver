@@ -1,10 +1,11 @@
-from tkinter import BooleanVar, Radiobutton
 import platform
 import scripts_runner as sr
 if (platform.node() == "DESKTOP-TREPOQV"):
-    import tkinter as tk  
+    import tkinter as tk
+    from tkinter import BooleanVar, Radiobutton  
 else:
-    import Tkinter as tk 
+    import Tkinter as tk
+    from Tkinter import BooleanVar, Radiobutton 
 
 class TorchPage(tk.Frame):
     def __init__(self, parent, controller):

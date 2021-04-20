@@ -1,8 +1,13 @@
-from tkinter import Radiobutton
 from requestMaker import set_simulation_delay, start_stepped_simulation
 from helpers import SimulationDriver
 import platform
 import threading
+if (platform.node() == "DESKTOP-TREPOQV"):
+    import tkinter as tk
+    from tkinter import Radiobutton
+else:
+    import Tkinter as tk
+    from Tkinter import Radiobutton
 
 if (platform.node() == "DESKTOP-TREPOQV"):
     import tkinter as tk  

@@ -1,10 +1,11 @@
-from tkinter import BooleanVar, Radiobutton
 import scripts_runner as sr
 import platform
 if (platform.node() == "DESKTOP-TREPOQV"):
-    import tkinter as tk  
+    import tkinter as tk
+    from tkinter import BooleanVar, Radiobutton  
 else:
-    import Tkinter as tk 
+    import Tkinter as tk
+    from Tkinter import BooleanVar, Radiobutton
 
 class FortwistPage(tk.Frame):
     def __init__(self, parent, controller):
