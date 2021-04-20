@@ -107,7 +107,7 @@ class RabbitsPage(tk.Frame):
     def start_rabbits_and_show_next_page(self, controller, simulation_name, shape, spawnChance, rabbitSpawnChance, rabbitStartEnergy, rabbitReproductionCost, rabbitLifeActivityCost, 
     rabbitReproductionThreshold, lettuceEnergeticCapacity, lettuceReproductionFrequency, stepped):
         if stepped == True:
-            pass
+            controller.set_simulation_name_shape_and_show_frame("InProgressSteppedPage", simulation_name, shape)
         else:
             controller.set_simulation_name_shape_and_show_frame("InProgressPage", simulation_name, shape)
-        sr.run_rabbits(shape, spawnChance, rabbitSpawnChance, rabbitStartEnergy, rabbitReproductionCost, rabbitLifeActivityCost, rabbitReproductionThreshold, lettuceEnergeticCapacity, lettuceReproductionFrequency)
+        sr.run_rabbits(shape, spawnChance, rabbitSpawnChance, rabbitStartEnergy, rabbitReproductionCost, rabbitLifeActivityCost, rabbitReproductionThreshold, lettuceEnergeticCapacity, lettuceReproductionFrequency, stepped)

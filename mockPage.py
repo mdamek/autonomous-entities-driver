@@ -40,7 +40,7 @@ class MockPage(tk.Frame):
 
     def start_mock_and_show_next_page(self, controller, simulation_name, shape, stepped):
         if stepped == True:
-            pass
+            controller.set_simulation_name_shape_and_show_frame("InProgressSteppedPage", simulation_name, shape)
         else:
             controller.set_simulation_name_shape_and_show_frame("InProgressPage", simulation_name, shape)
-        sr.run_mock(shape)
+        sr.run_mock(shape, stepped)

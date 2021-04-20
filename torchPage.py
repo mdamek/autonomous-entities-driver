@@ -94,7 +94,7 @@ class TorchPage(tk.Frame):
 
     def start_torch_and_show_next_page(self, controller, simulation_name, shape, spawnChance, personSpawnChance, fireSpawnChance, exitSpawnChance, personMaxSpeed, fireSpreadingFrequency,stepped):
         if stepped == True:
-            pass
+            controller.set_simulation_name_shape_and_show_frame("InProgressSteppedPage", simulation_name, shape)
         else:
             controller.set_simulation_name_shape_and_show_frame("InProgressPage", simulation_name, shape)
-        sr.run_torch(shape, spawnChance, personSpawnChance, fireSpawnChance, exitSpawnChance, personMaxSpeed, fireSpreadingFrequency)
+        sr.run_torch(shape, spawnChance, personSpawnChance, fireSpawnChance, exitSpawnChance, personMaxSpeed, fireSpreadingFrequency, stepped)

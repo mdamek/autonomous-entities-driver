@@ -11,6 +11,7 @@ FIRESPAWNCHANCE=0
 EXITSPAWNCHANCE=0
 PERSONMAXSPEED=0
 FIRESPREADINGFREQUENCY=0
+STEPPED=false
 
 while test $# -gt 0; do
     case "$1" in
@@ -49,6 +50,10 @@ while test $# -gt 0; do
         FIRESPREADINGFREQUENCY=$1
         shift
         ;;
+    -stepped)
+        shift
+        STEPPED=$1
+        shift
     *)
         echo "$1 is not a recognized flag!"
         exit 0
@@ -104,7 +109,7 @@ function run_xinuk() {
 -D${APPLICATION_NAME}.config.signalDisabled=${SIGNAL_DISABLED} -D${APPLICATION_NAME}.config.worldHeight=${WORLD_HEIGHT} -D${APPLICATION_NAME}.config.guiType=${GUI_TYPE} -D${APPLICATION_NAME}.config.ledPanelPort=${LED_PANEL_PORT} 
 -D${APPLICATION_NAME}.config.workersRoot=${WORKERS_ROOT} -D${APPLICATION_NAME}.config.spawnChance=${SPAWNCHANCE} -D${APPLICATION_NAME}.config.personSpawnChance=${PERSONSPAWNCHANCE}
 -D${APPLICATION_NAME}.config.fireSpawnChance=${FIRESPAWNCHANCE} -D${APPLICATION_NAME}.config.exitSpawnChance=${EXITSPAWNCHANCE} -D${APPLICATION_NAME}.config.personMaxSpeed=${PERSONMAXSPEED}
--D${APPLICATION_NAME}.config.fireSpreadingFrequency=${FIRESPREADINGFREQUENCY} -jar /home/pi/Desktop/xinuk/${APPLICATION_NAME}/target/scala-2.13/${APPLICATION_NAME}.jar"
+-D${APPLICATION_NAME}.config.fireSpreadingFrequency=${FIRESPREADINGFREQUENCY} -D${APPLICATION_NAME}.start-stepped=${STEPPED} -jar /home/pi/Desktop/xinuk/${APPLICATION_NAME}/target/scala-2.13/${APPLICATION_NAME}.jar"
 
     ssh -l ${USERNAME} $1 ${RUN_SCRIPT} "< /dev/null > /tmp/mylogfile 2>&1 &"
     echo Run Xinuk: ${APPLICATION_NAME} on ${deviceIp}

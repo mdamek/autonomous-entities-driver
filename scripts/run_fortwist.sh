@@ -13,6 +13,7 @@ FORAMINIFERALIFEACTIVITYCOST=0
 ALGAESTARTENERGY=0
 ALGAEREGENERATIONRATE=0
 ALGAEENERGETICCAPACITY=0
+STEPPED=false
 
 while test $# -gt 0; do
     case "$1" in
@@ -59,6 +60,11 @@ while test $# -gt 0; do
     -algaeEnergeticCapacity)
         shift
         ALGAEENERGETICCAPACITY=$1
+        shift
+        ;;
+    -stepped)
+        shift
+        STEPPED=$1
         shift
         ;;
     *)
@@ -117,7 +123,7 @@ function run_xinuk() {
 -D${APPLICATION_NAME}.config.workersRoot=${WORKERS_ROOT} -D${APPLICATION_NAME}.config.foraminiferaSpawnChance=${FORAMINIFERASPAWNCHANCE} -D${APPLICATION_NAME}.config.foraminiferaStartEnergy=${FORAMINIFERASTARTENERGY}
 -D${APPLICATION_NAME}.config.foraminiferaReproductionCost=${FORAMINIFERAREPRODUCTIONCOST} -D${APPLICATION_NAME}.config.foraminiferaReproductionThreshold=${FORAMINIFERAREPRODUCTIONTHRESHOLD}
 -D${APPLICATION_NAME}.config.foraminiferaLifeActivityCost=${FORAMINIFERALIFEACTIVITYCOST} -D${APPLICATION_NAME}.config.algaeStartEnergy=${ALGAESTARTENERGY} -D${APPLICATION_NAME}.config.algaeRegenerationRate=${ALGAEREGENERATIONRATE}
--D${APPLICATION_NAME}.config.algaeEnergeticCapacity=${ALGAEENERGETICCAPACITY} -jar /home/pi/Desktop/xinuk/${APPLICATION_NAME}/target/scala-2.13/${APPLICATION_NAME}.jar"
+-D${APPLICATION_NAME}.config.algaeEnergeticCapacity=${ALGAEENERGETICCAPACITY} -D${APPLICATION_NAME}.start-stepped=${STEPPED} -jar /home/pi/Desktop/xinuk/${APPLICATION_NAME}/target/scala-2.13/${APPLICATION_NAME}.jar"
 
     ssh -l ${USERNAME} $1 ${RUN_SCRIPT} "< /dev/null > /tmp/mylogfile 2>&1 &"
     echo Run Xinuk: ${APPLICATION_NAME} on ${deviceIp}

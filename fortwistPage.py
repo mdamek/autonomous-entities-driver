@@ -108,8 +108,8 @@ class FortwistPage(tk.Frame):
     def start_fortwist_and_show_next_page(self, controller, simulation_name, shape, foraminiferaSpawnChance, foraminiferaStartEnergy, foraminiferaReproductionCost, foraminiferaReproductionThreshold, 
     foraminiferaLifeActivityCost, algaeStartEnergy, algaeRegenerationRate, algaeEnergeticCapacity, stepped):
         if stepped == True:
-            pass
+            controller.set_simulation_name_shape_and_show_frame("InProgressSteppedPage", simulation_name, shape)
         else:
             controller.set_simulation_name_shape_and_show_frame("InProgressPage", simulation_name, shape)
         sr.run_fortwist(shape, foraminiferaSpawnChance, foraminiferaStartEnergy, foraminiferaReproductionCost, foraminiferaReproductionThreshold, foraminiferaLifeActivityCost, algaeStartEnergy, 
-        algaeRegenerationRate, algaeEnergeticCapacity)
+        algaeRegenerationRate, algaeEnergeticCapacity, stepped)

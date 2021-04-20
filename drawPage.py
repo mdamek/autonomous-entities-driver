@@ -36,12 +36,11 @@ class DrawPage(tk.Frame):
 
     @staticmethod
     def start_game_and_show_next_page(controller, simulation_name, shape, lifeSpawnChance, loadFromOutside, stepped):
-        print(stepped)
         if stepped == True:
             controller.set_simulation_name_shape_and_show_frame("InProgressSteppedPage", simulation_name, shape)
         else:
             controller.set_simulation_name_shape_and_show_frame("InProgressPage", simulation_name, shape)
         if loadFromOutside:
             stop_motion_sensor()
-        sr.run_game(shape, lifeSpawnChance, loadFromOutside)
+        sr.run_game(shape, lifeSpawnChance, loadFromOutside, stepped)
         
