@@ -11,6 +11,6 @@ for HOSTNAME in ${RASPBERRYHOSTS[@]} ; do
     ssh -l ${USERNAME} ${HOSTNAME} "cd Desktop/xinuk; git pull;"
     for PROJECT in ${PROJECTS[@]} ; do
         echo ${HOSTNAME} : ${PROJECT}
-        ssh -l ${USERNAME} ${HOSTNAME} "cd Desktop/xinuk; sbt ${PROJECT}/assembly < /dev/null > /tmp/mylogfile 2>&1 &";
+        ssh -l ${USERNAME} ${HOSTNAME} "cd Desktop/xinuk; sbt ${PROJECT}/assembly";
     done
 done
