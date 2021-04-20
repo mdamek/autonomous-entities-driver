@@ -54,6 +54,7 @@ while test $# -gt 0; do
         shift
         STEPPED=$1
         shift
+        ;;
     *)
         echo "$1 is not a recognized flag!"
         exit 0
