@@ -1,3 +1,4 @@
+from requestMaker import start_motion_sensor
 from pages.drawPage import DrawPage
 from tkinter import BooleanVar, Radiobutton
 import scripts_runner as sr
@@ -14,7 +15,6 @@ class GamePage(tk.Frame):
         self.shape = ""
 
         lifeSpawnChance = tk.DoubleVar()
-
         lifeSpawnChance.set(0.1)
 
         for number in range(0,6):
@@ -62,5 +62,5 @@ class GamePage(tk.Frame):
         self.shape = shape
 
     def start_game_and_show_draw_page(self, controller, simulation_name, shape, stepped):
-        sr.start_motion_sensor(shape)
+        start_motion_sensor(shape)
         controller.set_simulation_name_shape_stepped_and_show_frame("DrawPage", simulation_name, shape, stepped)
