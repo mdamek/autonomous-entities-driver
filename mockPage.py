@@ -3,11 +3,9 @@ import scripts_runner as sr
 if (platform.node() == "DESKTOP-TREPOQV"):
     import tkinter as tk
     from tkinter import BooleanVar, Radiobutton, Frame
-    from tkinter.constants import TOP
 else:
     import Tkinter as tk
     from Tkinter import BooleanVar, Radiobutton, Frame
-    from Tkinter.constants import TOP
 
 class MockPage(tk.Frame):
     def __init__(self, parent, controller):
@@ -18,7 +16,7 @@ class MockPage(tk.Frame):
         self.steppedSimulation = BooleanVar()
 
         topframe = Frame(self)
-        topframe.pack(side=TOP)
+        topframe.pack(side="top")
 
         r1 = Radiobutton(topframe, text="Classical simulation", variable=self.steppedSimulation, value=False)
         r2 = Radiobutton(topframe, text="Stepped simulation", variable=self.steppedSimulation, value=True)
