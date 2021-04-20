@@ -111,7 +111,7 @@ function run_xinuk() {
 -D${APPLICATION_NAME}.config.fireSpawnChance=${FIRESPAWNCHANCE} -D${APPLICATION_NAME}.config.exitSpawnChance=${EXITSPAWNCHANCE} -D${APPLICATION_NAME}.config.personMaxSpeed=${PERSONMAXSPEED}
 -D${APPLICATION_NAME}.config.fireSpreadingFrequency=${FIRESPREADINGFREQUENCY} -D${APPLICATION_NAME}.start-stepped=${STEPPED} -jar /home/pi/Desktop/xinuk/${APPLICATION_NAME}/target/scala-2.13/${APPLICATION_NAME}.jar"
 
-    ssh -l ${USERNAME} $1 ${RUN_SCRIPT} "< /dev/null > /tmp/mylogfile 2>&1 &"
+    ssh -l ${USERNAME} $1 ${RUN_SCRIPT}
     echo Run Xinuk: ${APPLICATION_NAME} on ${deviceIp}
 }
 
