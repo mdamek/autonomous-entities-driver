@@ -1,7 +1,6 @@
 import scripts_runner as sr 
 
 class SimulationDriver:
-
     @staticmethod
     def start_mock_and_show_next_page(controller, simulation_name, shape, stepped):
         if stepped == True:

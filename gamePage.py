@@ -1,4 +1,4 @@
-from main import DrawPage
+from drawPage import DrawPage
 from tkinter import BooleanVar, Radiobutton
 import scripts_runner as sr
 import platform

@@ -1,9 +1,12 @@
 from gamePage import GamePage
+from inProgressSteppedPage import InProgressSteppedPage
+from drawPage import DrawPage
+from inProgressPage import InProgressPage
 from torchPage import TorchPage
 from fortwistPage import FortwistPage
 from mockPage import MockPage
 from rabbitsPage import RabbitsPage
-from helpers import SimulationDriver
+
 import scripts_runner as sr 
 import platform
 if (platform.node() == "DESKTOP-TREPOQV"):
@@ -22,7 +25,7 @@ class App(tk.Tk):
         container.grid_columnconfigure(0, weight=1)
 
         self.frames = {}
-        for F in (StartPage, ShapePage, InProgressPage, MockPage, OptionsPage, RabbitsPage, FortwistPage, TorchPage, GamePage, DrawPage):
+        for F in (StartPage, ShapePage, InProgressPage, InProgressSteppedPage, MockPage, OptionsPage, RabbitsPage, FortwistPage, TorchPage, GamePage, DrawPage):
             page_name = F.__name__
             frame = F(parent=container, controller=self)
             self.frames[page_name] = frame
@@ -135,111 +138,6 @@ class ShapePage(tk.Frame):
         if simulation_name == "game":
             return "GamePage"
         return ""
-
-class DrawPage(tk.Frame):
-    def __init__(self, parent, controller):
-        tk.Frame.__init__(self, parent)
-        self.controller = controller
-        self.shape = ""
-        self.simulation_name = ""
-        self.stepped = False
-        
-        label = tk.Label(self, text="Draw starting position on panels then click Start", font='Helvetica 14 bold')
-
-        button2 = tk.Button(self, text="Return", bg='#FFBEB0', activebackground='#FFBEB0', command=lambda: controller.show_frame("GamePage"))
-        button3 = tk.Button(self, text="Cancel", bg='#FFBEB0', activebackground='#FFBEB0', command=lambda: controller.show_frame("StartPage"))
-        button1 = tk.Button(self, text="Start", bg='#B2FFB0', activebackground='#B2FFB0', command=lambda: DrawPage.start_game_and_show_next_page(controller, self.simulation_name, self.shape, 0, True, self.stepped))
-
-        label.pack(side="top", fill="x")
-        button1.pack(side="bottom", fill = tk.BOTH, expand = True)
-        button2.pack(side="bottom", fill = tk.BOTH, expand = True)
-        button3.pack(side="bottom", fill = tk.BOTH, expand = True)
-
-    def set_shape(self, shape):
-        self.shape = shape
-
-    def set_simulation_name(self, simulation_name):
-        self.simulation_name = simulation_name
-
-    def set_stepped(self, stepped):
-        self.stepped = stepped
-
-    @staticmethod
-    def start_game_and_show_next_page(controller, simulation_name, shape, lifeSpawnChance, loadFromOutside, stepped):
-        print(stepped)
-        if stepped == True:
-            pass
-        else:
-            controller.set_simulation_name_shape_and_show_frame("InProgressPage", simulation_name, shape)
-        sr.run_game(shape, lifeSpawnChance, loadFromOutside)
-
-class InProgressPage(tk.Frame):
-    def __init__(self, parent, controller):
-        tk.Frame.__init__(self, parent)
-        self.controller = controller
-        self.shape = ""
-        self.simulation_text = tk.StringVar()
-
-        label = tk.Label(self, textvariable=self.simulation_text, font=("Courier", 13))
-        button1 = tk.Button(self, text="Stop", bg='#FFBEB0', activebackground='#FFBEB0',
-                           command=lambda: SimulationDriver.kill_simulation_and_back_to_start(controller), font=("Courier", 40))
-
-        label.pack(side="top", fill="x")
-        button1.pack(side="bottom", fill = tk.BOTH, expand = True)
-
-    def set_shape(self, shape):
-        self.shape = shape
-
-    def set_simulation_name(self, simulation_name):
-        text = simulation_name + " " + self.shape + " simulation in progress..." 
-        self.simulation_text.set(text.capitalize())
-
-class InProgressSteppedPage(tk.Frame):
-    def __init__(self, parent, controller):
-        tk.Frame.__init__(self, parent)
-        self.controller = controller
-        self.shape = ""
-        self.simulation_text = tk.StringVar()
-
-class SelectStartTypePage(tk.Frame):
-    def __init__(self, parent, controller):
-        tk.Frame.__init__(self, parent)
-        self.controller = controller
-        self.shape = ""
-        self.simulation_name = ""
-
-        label = tk.Label(self, text="Draw starting position on panels then click Start", font='Helvetica 14 bold')
-
-        button1 = tk.Button(self, text="Stepped simulation", bg='#FFBEB0', activebackground='#FFBEB0', command=lambda: SimulationDriver.kill_simulation_and_back_to_start(controller))
-        button2 = tk.Button(self, text="Classical simulation", bg='#FFBEB0', activebackground='#FFBEB0', command=lambda: SimulationDriver.kill_simulation_and_back_to_start(controller))
-        button3 = tk.Button(self, text="Return", bg='#FFBEB0', activebackground='#FFBEB0', command=lambda: controller.show_frame("GamePage"))
-        button4 = tk.Button(self, text="Cancel", bg='#FFBEB0', activebackground='#FFBEB0', command=lambda: controller.show_frame("StartPage"))
-
-        label.pack(side="top", fill="x")
-        button1.pack(side="bottom", fill = tk.BOTH, expand = True)
-        button2.pack(side="bottom", fill = tk.BOTH, expand = True)
-        button3.pack(side="bottom", fill = tk.BOTH, expand = True)
-        button4.pack(side="bottom", fill = tk.BOTH, expand = True)
-
-
-    def get_valid_simulation_details_page(self, simulation_name):
-        if simulation_name == "mock":
-            return "MockPage"
-        if simulation_name == "rabbits":
-            return "RabbitsPage"
-        if simulation_name == "fortwist":
-            return "FortwistPage"
-        if simulation_name == "torch":
-            return "TorchPage"
-        if simulation_name == "game":
-            return "GamePage"
-        return ""
-
-    def set_shape(self, shape):
-        self.shape = shape
-    
-    def set_simulation_name(self, simulation_name):
-        self.simulation_name = simulation_name
 
 if __name__ == "__main__":
     #sr.run_led_servers()
