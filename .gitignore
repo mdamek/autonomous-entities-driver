@@ -10,3 +10,11 @@ __pycache__/drawPage.cpython-35.pyc
 __pycache__/main.cpython-35.pyc
 __pycache__/inProgressSteppedPage.cpython-35.pyc
 __pycache__/inProgressPage.cpython-35.pyc
+pages/__pycache__/drawPage.cpython-35.pyc
+pages/__pycache__/gamePage.cpython-35.pyc
+pages/__pycache__/inProgressPage.cpython-35.pyc
+pages/__pycache__/inProgressSteppedPage.cpython-35.pyc
+pages/__pycache__/mockPage.cpython-35.pyc
+pages/__pycache__/rabbitsPage.cpython-35.pyc
+pages/__pycache__/torchPage.cpython-35.pyc
+pages/__pycache__/fortwistPage.cpython-35.pyc

@@ -1,11 +1,11 @@
-from gamePage import GamePage
-from inProgressSteppedPage import InProgressSteppedPage
-from drawPage import DrawPage
-from inProgressPage import InProgressPage
-from torchPage import TorchPage
-from fortwistPage import FortwistPage
-from mockPage import MockPage
-from rabbitsPage import RabbitsPage
+from pages.gamePage import GamePage
+from pages.inProgressSteppedPage import InProgressSteppedPage
+from pages.drawPage import DrawPage
+from pages.inProgressPage import InProgressPage
+from pages.torchPage import TorchPage
+from pages.fortwistPage import FortwistPage
+from pages.mockPage import MockPage
+from pages.rabbitsPage import RabbitsPage
 
 import scripts_runner as sr 
 import platform
