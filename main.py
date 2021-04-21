@@ -8,6 +8,7 @@ from fortwistPage import FortwistPage
 from mockPage import MockPage
 from rabbitsPage import RabbitsPage
 
+import threading
 import scripts_runner as sr 
 import platform
 if (platform.node() == "DESKTOP-TREPOQV"):
@@ -88,15 +89,15 @@ class OptionsPage(tk.Frame):
         self.controller = controller
 
         button1 = tk.Button(self, text="Restart LED servers", bg='#FFFEB0', activebackground='#FFFEB0', 
-                            command=lambda: sr.restart_led_servers())
+                            command=lambda: threading.Thread(target=sr.restart_led_servers).start())
         button2 = tk.Button(self, text="Check Raspberries avaliability", bg='#FFFEB0', activebackground='#FFFEB0', 
-                            command=lambda: self.open_avaliability_check(controller))
+                            command=lambda: threading.Thread(target=self.open_avaliability_check, args = (controller, )).start())
         button3 = tk.Button(self, text="Stop Xinuk", bg='#FFFEB0', activebackground='#FFFEB0',
-                            command=lambda: sr.kill_xinuk())
+                            command=lambda: threading.Thread(target=sr.kill_simulation).start())
         button4 = tk.Button(self, text="Restart all devices", bg='#FFBEB0', activebackground='#FFBEB0',
-                            command=lambda: sr.restart_all_devices())
+                            command=lambda: threading.Thread(target=sr.restart_all_devices).start())
         button5 = tk.Button(self, text="Turn off platform", bg='#FFBEB0', activebackground='#FFBEB0',
-                            command=lambda: sr.turn_off_the_platform())                        
+                            command=lambda: threading.Thread(target=sr.turn_off_the_platform).start())                        
         button6 = tk.Button(self, text="Return", 
                             command=lambda: controller.show_frame("StartPage"))
 
