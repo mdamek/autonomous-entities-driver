@@ -109,5 +109,8 @@ class RabbitsPage(tk.Frame):
         if stepped == True:
             controller.set_simulation_name_shape_and_show_frame("InProgressSteppedPage", simulation_name, shape)
         else:
-            controller.set_simulation_name_shape_and_show_frame("InProgressPage", simulation_name, shape)
+            controller.frames["InProgressPage"].set_shape(shape)
+            controller.frames["InProgressPage"].set_simulation_name(simulation_name)
+            controller.frames["InProgressPage"].reset_speed()
+            controller.frames["InProgressPage"].tkraise()
         sr.run_rabbits(shape, spawnChance, rabbitSpawnChance, rabbitStartEnergy, rabbitReproductionCost, rabbitLifeActivityCost, rabbitReproductionThreshold, lettuceEnergeticCapacity, lettuceReproductionFrequency, stepped)

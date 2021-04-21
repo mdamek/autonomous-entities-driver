@@ -39,7 +39,10 @@ class DrawPage(tk.Frame):
         if stepped == True:
             controller.set_simulation_name_shape_and_show_frame("InProgressSteppedPage", simulation_name, shape)
         else:
-            controller.set_simulation_name_shape_and_show_frame("InProgressPage", simulation_name, shape)
+            controller.frames["InProgressPage"].set_shape(shape)
+            controller.frames["InProgressPage"].set_simulation_name(simulation_name)
+            controller.frames["InProgressPage"].reset_speed()
+            controller.frames["InProgressPage"].tkraise()
         if loadFromOutside:
             stop_motion_sensor()
         sr.run_game(shape, lifeSpawnChance, loadFromOutside, stepped)

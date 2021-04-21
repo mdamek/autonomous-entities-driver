@@ -43,7 +43,6 @@ class InProgressPage(tk.Frame):
         Radiobutton(self, text="2.5s", variable=self.delay, bg='#B2FFB0', activebackground='#B2FFB0', value=2500, command=self.set_new_delay).grid(row=1, column=7, sticky='nesw')
         Radiobutton(self, text="3s", variable=self.delay, bg='#B2FFB0', activebackground='#B2FFB0', value=3000, command=self.set_new_delay).grid(row=1, column=8, sticky='nesw')
         Radiobutton(self, text="5s", variable=self.delay, bg='#B2FFB0', activebackground='#B2FFB0', value=5000, command=self.set_new_delay).grid(row=1, column=9, sticky='nesw')
-
         
         tk.Button(self, text="Stepped simulation", bg='#3399ff', activebackground='#3399ff',
                            command=lambda: self.show_stepped_simulation(self.controller, self.simulation_name.get(), self.shape.get()), font=("Courier", 13)).grid(row=2, column=0, columnspan=10, sticky='nesw')
@@ -67,3 +66,6 @@ class InProgressPage(tk.Frame):
         self.simulation_name.set(simulation_name)
         text = simulation_name + " " + self.shape.get() + " simulation in progress..." 
         self.simulation_text.set(text.capitalize())
+
+    def reset_speed(self):
+        self.delay.set(0)
