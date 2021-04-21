@@ -1,3 +1,4 @@
+from checkRaspberriesConnectionPage import CkeckRaspberriesConnectionPage
 from gamePage import GamePage
 from inProgressSteppedPage import InProgressSteppedPage
 from drawPage import DrawPage
@@ -25,7 +26,7 @@ class App(tk.Tk):
         container.grid_columnconfigure(0, weight=1)
 
         self.frames = {}
-        for F in (StartPage, ShapePage, InProgressPage, InProgressSteppedPage, MockPage, OptionsPage, RabbitsPage, FortwistPage, TorchPage, GamePage, DrawPage):
+        for F in (StartPage, ShapePage, InProgressPage, InProgressSteppedPage, MockPage, OptionsPage, RabbitsPage, FortwistPage, TorchPage, GamePage, DrawPage, CkeckRaspberriesConnectionPage):
             page_name = F.__name__
             frame = F(parent=container, controller=self)
             self.frames[page_name] = frame
@@ -88,20 +89,28 @@ class OptionsPage(tk.Frame):
 
         button1 = tk.Button(self, text="Restart LED servers", bg='#FFFEB0', activebackground='#FFFEB0', 
                             command=lambda: sr.restart_led_servers())
-        button2 = tk.Button(self, text="Stop Xinuk", bg='#FFFEB0', activebackground='#FFFEB0',
+        button2 = tk.Button(self, text="Check Raspberries avaliability", bg='#FFFEB0', activebackground='#FFFEB0', 
+                            command=lambda: self.open_avaliability_check(controller))
+        button3 = tk.Button(self, text="Stop Xinuk", bg='#FFFEB0', activebackground='#FFFEB0',
                             command=lambda: sr.kill_xinuk())
-        button3 = tk.Button(self, text="Restart all devices", bg='#FFBEB0', activebackground='#FFBEB0',
+        button4 = tk.Button(self, text="Restart all devices", bg='#FFBEB0', activebackground='#FFBEB0',
                             command=lambda: sr.restart_all_devices())
-        button4 = tk.Button(self, text="Turn off platform", bg='#E83838', activebackground='#E83838',
+        button5 = tk.Button(self, text="Turn off platform", bg='#FFBEB0', activebackground='#FFBEB0',
                             command=lambda: sr.turn_off_the_platform())                        
-        button5 = tk.Button(self, text="Return", 
+        button6 = tk.Button(self, text="Return", 
                             command=lambda: controller.show_frame("StartPage"))
 
         button1.pack(fill = tk.BOTH, expand = True)
         button2.pack(fill = tk.BOTH, expand = True)
         button3.pack(fill = tk.BOTH, expand = True)
         button4.pack(fill = tk.BOTH, expand = True)
-        button5.pack(fill = tk.BOTH, expand = True)   
+        button5.pack(fill = tk.BOTH, expand = True)
+        button6.pack(fill = tk.BOTH, expand = True)
+
+    def open_avaliability_check(self, controller):
+        controller.frames["CkeckRaspberriesConnectionPage"].clean_statuses()
+        controller.show_frame("CkeckRaspberriesConnectionPage")
+
 
 class ShapePage(tk.Frame):
     def __init__(self, parent, controller):

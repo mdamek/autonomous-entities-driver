@@ -1,4 +1,6 @@
+import subprocess
 import requests
+import platform
 
 supervisor_host = "192.168.100.180"
 port_of_actors_manager = "8013"
