@@ -27,7 +27,7 @@ class InProgressSteppedPage(tk.Frame):
         tk.Label(self, textvariable=self.simulation_text, font=("Courier", 13)).grid(row=0, column=0, columnspan=1, sticky='nesw')
         tk.Button(self, text="Next iteration", bg='#B2FFB0', activebackground='#B2FFB0',
                             command=lambda: self.make_next_iteration()).grid(row=1, column=0, columnspan=1, sticky='nesw')
-        tk.Button(self, text="Smooth simulation", bg='#3399ff', activebackground='#3399ff',
+        tk.Button(self, text="Continuous simulation", bg='#3399ff', activebackground='#3399ff',
                             command=lambda: self.show_classical_simulation(self.controller, self.simulation_name.get(), self.shape.get())).grid(row=2, column=0,columnspan=1, sticky='nesw')
         tk.Button(self, text="Stop", bg='#FFBEB0', activebackground='#FFBEB0',
                             command=lambda: SimulationDriver.kill_simulation_and_back_to_start(controller)).grid(row=3, column=0,columnspan=1, sticky='nesw')
