@@ -51,9 +51,9 @@ class CkeckRaspberriesConnectionPage(tk.Frame):
                 command = ['ping', param, '1', host]
                 retVal = subprocess.call(command, stdout=subprocess.PIPE)
                 if retVal == 0:
-                    self.avaliable[idx].set("✔")
+                    self.avaliable[idx].set("Ok")
                 else:
-                    self.avaliable[idx].set("✘")
+                    self.avaliable[idx].set("Fail")
 
     def clean_statuses(self):
         self.avaliable[0].set("-")
