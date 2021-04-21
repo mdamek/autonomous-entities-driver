@@ -122,7 +122,7 @@ function run_mock() {
 -D${APPLICATION_NAME}.config.signalDisabled=${SIGNAL_DISABLED} -D${APPLICATION_NAME}.config.worldHeight=${WORLD_HEIGHT} -D${APPLICATION_NAME}.config.guiType=${GUI_TYPE} -D${APPLICATION_NAME}.config.ledPanelPort=${LED_PANEL_PORT} 
 -D${APPLICATION_NAME}.config.workersRoot=${WORKERS_ROOT} -D${APPLICATION_NAME}.config.spawnChance=${SPAWNCHANCE} -D${APPLICATION_NAME}.config.rabbitSpawnChance=${RABBITSPAWNCHANCE} -D${APPLICATION_NAME}.config.rabbitStartEnergy=${RABBITSTARTENERGY}
 -D${APPLICATION_NAME}.config.rabbitReproductionCost=${RABBITREPRODUCTIONCOST} -D${APPLICATION_NAME}.config.rabbitLifeActivityCost=${RABBITLIFEACTIVITYCOST} -D${APPLICATION_NAME}.config.rabbitReproductionThreshold=${RABBITREPRODUCTIONTHRESHOLD}
--D${APPLICATION_NAME}.config.lettuceEnergeticCapacity=${LETTUCEENERGETICCAPACITY} -D${APPLICATION_NAME}.config.lettuceReproductionFrequency=${LETTUCEREPRODUCTIONFREQUENCY} -D${APPLICATION_NAME}.start-stepped=${STEPPED} -jar /home/pi/Desktop/xinuk/${APPLICATION_NAME}/target/scala-2.13/${APPLICATION_NAME}.jar"
+-D${APPLICATION_NAME}.config.lettuceEnergeticCapacity=${LETTUCEENERGETICCAPACITY} -D${APPLICATION_NAME}.config.lettuceReproductionFrequency=${LETTUCEREPRODUCTIONFREQUENCY} -Dstart-stepped=${STEPPED} -jar /home/pi/Desktop/xinuk/${APPLICATION_NAME}/target/scala-2.13/${APPLICATION_NAME}.jar"
 
     ssh -l ${USERNAME} $1 ${RUN_SCRIPT} "< /dev/null > /tmp/mylogfile 2>&1 &"
     echo Run Xinuk ${APPLICATION_NAME}: ${APPLICATION_NAME} on ${deviceIp}
