@@ -19,7 +19,7 @@ def run_fortwist(shape, foraminiferaSpawnChance, foraminiferaStartEnergy, forami
     algaeEnergeticCapacity, stepped):
     subprocess.call(['scripts/run_fortwist.sh', '-shape', shape, '-foraminiferaSpawnChance', str(foraminiferaSpawnChance), '-foraminiferaStartEnergy', str(foraminiferaStartEnergy), '-foraminiferaReproductionCost',
     str(foraminiferaReproductionCost), '-foraminiferaReproductionThreshold', str(foraminiferaReproductionThreshold), '-foraminiferaLifeActivityCost', str(foraminiferaLifeActivityCost), 
-    '-algaeStartEnergy', str(algaeStartEnergy),  '-algaeRegenerationRate', str(algaeRegenerationRate), '-algaeEnergeticCapacity', str(algaeEnergeticCapacity, '-stepped', str(stepped).lower())])
+    '-algaeStartEnergy', str(algaeStartEnergy),  '-algaeRegenerationRate', str(algaeRegenerationRate), '-algaeEnergeticCapacity', str(algaeEnergeticCapacity), '-stepped', str(stepped).lower()])
 
 def run_torch(shape, spawnChance, personSpawnChance, fireSpawnChance, exitSpawnChance, personMaxSpeed, fireSpreadingFrequency, stepped):
     subprocess.call(['scripts/run_torch.sh', '-shape', shape, '-spawnChance', str(spawnChance), '-personSpawnChance', str(personSpawnChance), '-fireSpawnChance',
