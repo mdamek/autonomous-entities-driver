@@ -27,7 +27,7 @@ class CkeckRaspberriesConnectionPage(tk.Frame):
         self.avaliable[2].set("-")
         self.avaliable[3].set("-")
 
-        hosts = ["192.168.100.180", "192.168.100.185","192.168.100.192","192.168.100.191",]
+        hosts = ["192.168.1.87", "192.168.1.172","192.168.1.205","192.168.1.196",]
 
         tk.Label(self, text="Check connection with Raspberries", font=("Courier", 13)).grid(row=0, column=0, columnspan=2, sticky='nesw')
         tk.Label(self, text="RP-1: " + hosts[0], font=("Courier", 13)).grid(row=1, column=0, sticky='nesw')
