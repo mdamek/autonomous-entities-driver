@@ -40,7 +40,7 @@ class InProgressPage(tk.Frame):
         Radiobutton(self, variable=self.delay, value=3000, command=self.set_new_delay).grid(row=2, column=8)
         Radiobutton(self, variable=self.delay, value=5000, command=self.set_new_delay).grid(row=2, column=9)
 
-        Label(self, text="0ms").grid(row=3, column=0)
+        Label(self, text="Without").grid(row=3, column=0)
         Label(self, text="100ms").grid(row=3, column=1)
         Label(self, text="300ms").grid(row=3, column=2)
         Label(self, text="500ms").grid(row=3, column=3)
