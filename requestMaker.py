@@ -47,15 +47,15 @@ def set_simulation_delay(delay):
 def start_motion_sensor(shape):
     motion_sensor_interface = "192.168.1.20"
     motion_sensor_port = "8888"
-    core_sensor = "http://%s:%s/" %(motion_sensor_interface, motion_sensor_port)
+    core_sensor = "http://%s:%s/api/v1/" %(motion_sensor_interface, motion_sensor_port)
     path = core_sensor + "startReadingPositions"
-    params  = {'shape' : shape}
+    params  ={'shape' : shape}
     requests.get(path, params=params, timeout=10000)
 
 def stop_motion_sensor():
     motion_sensor_interface = "192.168.1.20"
     motion_sensor_port = "8888"
-    core_sensor = "http://%s:%s/" %(motion_sensor_interface, motion_sensor_port)
+    core_sensor = "http://%s:%s/api/v1/" %(motion_sensor_interface, motion_sensor_port)
     path = core_sensor + "stopReadingPositions"
     requests.get(path, timeout=timeouts)
 
