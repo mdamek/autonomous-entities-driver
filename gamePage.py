@@ -1,3 +1,4 @@
+import threading
 from requestMaker import start_motion_sensor
 from drawPage import DrawPage
 import platform
@@ -62,5 +63,6 @@ class GamePage(tk.Frame):
         self.shape = shape
 
     def start_game_and_show_draw_page(self, controller, simulation_name, shape, stepped):
-        start_motion_sensor(shape)
+
+        threading.Thread(target=start_motion_sensor, args = (shape, )).start()
         controller.set_simulation_name_shape_stepped_and_show_frame("DrawPage", simulation_name, shape, stepped)
