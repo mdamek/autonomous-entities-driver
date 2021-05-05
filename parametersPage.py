@@ -1,3 +1,4 @@
+from colors import Colors
 import scripts_runner as sr
 import platform
 if (platform.node() == "DESKTOP-TREPOQV"):
@@ -38,7 +39,12 @@ class ParametersPage(tk.Frame):
                 self.parameters_collection[value_to_update].set(new_value)
         return
 
+    def clear_page(self):
+        passf
+
     def generate_page(self, simulation):
+        for widget in self.winfo_children():
+            widget.destroy()
         print(simulation.shape)
         self.simulation = simulation
         self.parameters_collection = {}
@@ -49,7 +55,7 @@ class ParametersPage(tk.Frame):
         number_of_addition_buttons = 5
 
         for number in range(0, number_of_parameters + number_of_addition_buttons):
-            self.grid_rowconfigure(number, weight=1)
+            self.grid_rowconfigure(number, weight=1, minsize=4)
 
         for number in range(0, 6):
             self.grid_columnconfigure(number, weight=1, minsize=4)
@@ -91,9 +97,9 @@ class ParametersPage(tk.Frame):
             tk.Button(self, text="-", command=lambda name=name, change_on_click=change_on_click: self.update_value(name,
                       change_on_click, "-")).grid(row=index + 4 if on_left else index + 3, column=2 if on_left else 5, sticky='nesw')
 
-        tk.Button(self, text="Start", bg='#B2FFB0',
-                  activebackground='#B2FFB0', command=lambda: print("SD")).grid(row=number_of_parameters + 3, column=0, columnspan=6, sticky='nesw')
-        tk.Button(self, text="Return", bg='#FFBEB0', activebackground='#FFBEB0', command=lambda: self.controller.show_frame(
+        tk.Button(self, text="Start", bg=Colors.Green,
+                  activebackground=Colors.Green, command=lambda: print("SD")).grid(row=number_of_parameters + 3, column=0, columnspan=6, sticky='nesw')
+        tk.Button(self, text="Return", bg=Colors.Red, activebackground=Colors.Red, command=lambda: self.controller.show_frame(
             "ShapePage")).grid(row=number_of_parameters + 4, column=0, columnspan=6, sticky='nesw')
-        tk.Button(self, text="Cancel", bg='#FFBEB0', activebackground='#FFBEB0',
+        tk.Button(self, text="Cancel", bg=Colors.Red, activebackground=Colors.Red,
                   command=lambda:  self.controller.show_frame("StartPage")).grid(row=number_of_parameters + 5, column=0, columnspan=6, sticky='nesw')
