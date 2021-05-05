@@ -40,12 +40,11 @@ class ParametersPage(tk.Frame):
         return
 
     def clear_page(self):
-        passf
-
-    def generate_page(self, simulation):
         for widget in self.winfo_children():
             widget.destroy()
-        print(simulation.shape)
+
+    def generate_page(self, simulation):
+        self.clear_page()
         self.simulation = simulation
         self.parameters_collection = {}
         parameters = simulation.config["parameters"]
