@@ -1,3 +1,5 @@
+from requestMaker import start_motion_sensor
+import threading
 from colors import Colors
 import scripts_runner as sr
 import platform
@@ -102,3 +104,24 @@ class ParametersPage(tk.Frame):
             "ShapePage")).grid(row=number_of_parameters + 4, column=0, columnspan=6, sticky='nesw')
         tk.Button(self, text="Cancel", bg=Colors.Red, activebackground=Colors.Red,
                   command=lambda:  self.controller.show_frame("StartPage")).grid(row=number_of_parameters + 5, column=0, columnspan=6, sticky='nesw')
+
+    def go_to_final_page(self):
+        self.simulation.set_parameters(self.parameters_collection)
+        self.simulation.set_stepped_simulation(self.steppedSimulation.get())
+        self.simulation.set_load_from_outside(self.drawInitialPosition.get())
+
+        if self.drawInitialPosition.get():
+            shape = self.simulation.shape
+            threading.Thread(target=start_motion_sensor, args = (shape, )).start()
+            self.frames["DrawPage"].set_simulation(self.simulation)
+            self.frames["DrawPage"].tkraise()
+        else:
+            if self.stepped:
+                self.controller.frames["InProgressSteppedPage"].set_simulation(self.simulation)
+                self.controller.frames["InProgressSteppedPage"].tkraise()
+            else:
+                self.controller.frames["InProgressPage"].set_simulation(self.simulation)
+                self.controller.frames["InProgressPage"].tkraise()
+            #run similation
+
+
