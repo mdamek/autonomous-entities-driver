@@ -44,7 +44,7 @@ class App(tk.Tk):
         start_frame.grid(row=0, column=0, sticky="nsew")
 
         shape_frame = ShapePage(
-        parent=container, controller=self, config=config)
+            parent=container, controller=self, config=config)
         self.frames[ShapePage.__name__] = shape_frame
         shape_frame.grid(row=0, column=0, sticky="nsew")
 
@@ -89,7 +89,7 @@ class StartPage(tk.Frame):
         for simulation in config['simulations']:
             simulation_name = simulation['name']
 
-            button = tk.Button(self, text=simulation_name.capitalize(), command=lambda: self.go_to_shape_page(
+            button = tk.Button(self, text=simulation_name.capitalize(), command=lambda simulation_name=simulation_name: self.go_to_shape_page(
                 self.get_valid_config(simulation_name)))
             button.pack(fill=tk.BOTH, expand=True)
 
@@ -107,6 +107,7 @@ class StartPage(tk.Frame):
         simulation = Simulation(simulation_config)
         self.controller.frames["ShapePage"].set_simulation(simulation)
         self.controller.frames["ShapePage"].tkraise()
+
 
 if __name__ == "__main__":
     # sr.run_led_servers()
