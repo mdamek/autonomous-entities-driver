@@ -2,11 +2,8 @@ import platform
 import subprocess
 if (platform.node() == "DESKTOP-TREPOQV"):
     import tkinter as tk
-    from tkinter import BooleanVar, Radiobutton, Frame
 else:
     import Tkinter as tk
-    from Tkinter import BooleanVar, Radiobutton, Frame
-
 
 class CkeckRaspberriesConnectionPage(tk.Frame):
     

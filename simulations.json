@@ -1,0 +1,111 @@
+{
+    "avaliableShapes": [
+        {
+            "name": "square",
+            "x": 64,
+            "y": 64
+        },
+        {
+            "name": "horizontal",
+            "x": 128,
+            "y": 32
+        },
+        {
+            "name": "vertical",
+            "x": 32,
+            "y": 128
+        }
+    ],
+    "simulations": [
+        {
+            "name": "mock",
+            "drawInitialPositionsAvaliable": true,
+            "avaliableToDraw": [
+                {
+                    "mock": "#ffffff"
+                }
+            ],
+            "parameters": []
+        },
+        {
+            "name": "fortwist",
+            "drawInitialPositionsAvaliable": false,
+            "avaliableToDraw": [
+                {
+                    "foraminifera": "#ffffff"
+                }
+            ],
+            "parameters": []
+        },
+        {
+            "name": "game",
+            "drawInitialPositionsAvaliable": true,
+            "avaliableToDraw": [
+                {
+                    "life": "#FF0000"
+                }
+            ],
+            "parameters": []
+        },
+        {
+            "name": "rabbits",
+            "drawInitialPositionsAvaliable": true,
+            "avaliableToDraw": [
+                {
+                    "rabbit": "#808080",
+                    "lettuce": "#008000"
+                }
+            ],
+            "parameters": []
+        },
+        {
+            "name": "torch",
+            "drawInitialPositionsAvaliable": true,
+            "defaultInitialValue": 1,
+            "defaultChangeValue": 0.1,
+            "maxValue": 5,
+            "minValue": 0,
+            "avaliableToDraw": [
+                {
+                    "person": "#ffffff",
+                    "fire": " #FFC800",
+                    "exit": "#0000FF"
+                }
+            ],
+            "parameters": [
+                {
+                    "text": "Spawn chance",
+                    "name": "spawnChance",
+                    "initialValue": 0.1
+                },
+                {
+                    "text": "Person spawn chance",
+                    "name": "personSpawnChance",
+                    "initialValue": 0.06
+                },
+                {
+                    "text": "Fire spawn chance",
+                    "name": "fireSpawnChance",
+                    "initialValue": 0.03
+                },
+                {
+                    "text": "Exit spawn chance",
+                    "name": "exitSpawnChance",
+                    "initialValue": 0.02
+                },
+                {
+                    "text": "Person max speed",
+                    "name": "personMaxSpeed",
+                    "initialValue": 1,
+                    "changeOnClick": 1
+                },
+                {
+                    "text": "Fire spreading frequency",
+                    "name": "fireSpreadingFrequency",
+                    "initialValue": 5,
+                    "changeOnClick": 1
+                }
+            ]
+        }
+    ]
+}
