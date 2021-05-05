@@ -1,3 +1,4 @@
+from colors import Colors
 import platform
 from requestMaker import stop_motion_sensor
 import scripts_runner as sr
@@ -16,9 +17,9 @@ class DrawPage(tk.Frame):
         
         label = tk.Label(self, text="Draw starting position on panels then click Start", font='Helvetica 14 bold')
 
-        button2 = tk.Button(self, text="Return", bg='#FFBEB0', activebackground='#FFBEB0', command=lambda: controller.show_frame("GamePage"))
-        button3 = tk.Button(self, text="Cancel", bg='#FFBEB0', activebackground='#FFBEB0', command=lambda: controller.show_frame("StartPage"))
-        button1 = tk.Button(self, text="Start", bg='#B2FFB0', activebackground='#B2FFB0', command=lambda: DrawPage.start_game_and_show_next_page(controller, self.simulation_name, self.shape, 0, True, self.stepped))
+        button2 = tk.Button(self, text="Return", bg=Colors.Red, activebackground=Colors.Red, command=lambda: controller.show_frame("GamePage"))
+        button3 = tk.Button(self, text="Cancel", bg=Colors.Red, activebackground=Colors.Red, command=lambda: controller.show_frame("StartPage"))
+        button1 = tk.Button(self, text="Start", bg=Colors.Green, activebackground=Colors.Green, command=lambda: DrawPage.start_game_and_show_next_page(controller, self.simulation_name, self.shape, 0, True, self.stepped))
 
         label.pack(side="top", fill="x")
         button1.pack(side="bottom", fill = tk.BOTH, expand = True)

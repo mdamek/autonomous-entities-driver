@@ -1,3 +1,4 @@
+from colors import Colors
 import platform
 import threading
 import scripts_runner as sr 
@@ -11,15 +12,15 @@ class OptionsPage(tk.Frame):
         tk.Frame.__init__(self, parent)
         self.controller = controller
 
-        tk.Button(self, text="Restart LED servers", bg='#FFFEB0', activebackground='#FFFEB0',
+        tk.Button(self, text="Restart LED servers", bg=Colors.Yellow, activebackground=Colors.Yellow,
                   command=lambda: threading.Thread(target=sr.restart_led_servers).start()).pack(fill=tk.BOTH, expand=True)
-        tk.Button(self, text="Check Raspberries avaliability", bg='#FFFEB0', activebackground='#FFFEB0',
+        tk.Button(self, text="Check Raspberries avaliability", bg=Colors.Yellow, activebackground=Colors.Yellow,
                   command=lambda: threading.Thread(target=self.open_avaliability_check).start()).pack(fill=tk.BOTH, expand=True)
-        tk.Button(self, text="Stop Xinuk", bg='#FFFEB0', activebackground='#FFFEB0',
+        tk.Button(self, text="Stop Xinuk", bg=Colors.Yellow, activebackground=Colors.Yellow,
                   command=lambda: threading.Thread(target=sr.kill_simulation).start()).pack(fill=tk.BOTH, expand=True)
-        tk.Button(self, text="Restart all devices", bg='#FFBEB0', activebackground='#FFBEB0',
+        tk.Button(self, text="Restart all devices", bg=Colors.Red, activebackground=Colors.Red,
                   command=lambda: threading.Thread(target=sr.restart_all_devices).start()).pack(fill=tk.BOTH, expand=True)
-        tk.Button(self, text="Turn off platform", bg='#FFBEB0', activebackground='#FFBEB0',
+        tk.Button(self, text="Turn off platform", bg=Colors.Red, activebackground=Colors.Red,
                             command=lambda: threading.Thread(target=sr.turn_off_the_platform).start()).pack(fill=tk.BOTH, expand=True)
         tk.Button(self, text="Return",
                             command=lambda: controller.show_frame("StartPage")).pack(fill=tk.BOTH, expand=True)

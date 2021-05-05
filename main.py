@@ -1,3 +1,4 @@
+from colors import Colors
 from shapePage import ShapePage
 from optionsPage import OptionsPage
 from parametersPage import ParametersPage
@@ -93,8 +94,8 @@ class StartPage(tk.Frame):
                 self.get_valid_config(simulation_name)))
             button.pack(fill=tk.BOTH, expand=True)
 
-        options_button = tk.Button(self, text="Service", bg='#FFFEB0',
-                                   activebackground='#FFFEB0', command=lambda: controller.show_frame("OptionsPage"))
+        options_button = tk.Button(self, text="Service", bg=Colors.Yellow,
+                                   activebackground=Colors.Yellow, command=lambda: controller.show_frame("OptionsPage"))
         options_button.pack(fill=tk.BOTH, expand=True)
 
     def get_valid_config(self, config_name):

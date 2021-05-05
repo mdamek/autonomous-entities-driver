@@ -1,3 +1,4 @@
+from colors import Color, Colors
 from requestMaker import set_simulation_delay, start_stepped_simulation
 from helpers import SimulationDriver
 import platform
@@ -51,10 +52,10 @@ class InProgressPage(tk.Frame):
         Label(self, text="3s").grid(row=3, column=8)
         Label(self, text="5s").grid(row=3, column=9)
         
-        tk.Button(self, text="Step simulation", bg='#3399ff', activebackground='#3399ff',
+        tk.Button(self, text="Step simulation", bg=Colors.Blue, activebackground=Colors.Blue,
                            command=lambda: self.show_stepped_simulation(self.controller, self.simulation_name.get(), self.shape.get()), font=("Courier", 13)).grid(row=4, column=0, columnspan=10, sticky='nesw')
 
-        tk.Button(self, text="Stop", bg='#FFBEB0', activebackground='#FFBEB0',
+        tk.Button(self, text="Stop", bg=Colors.Red, activebackground=Colors.Red,
                            command=lambda: SimulationDriver.kill_simulation_and_back_to_start(controller), font=("Courier", 13)).grid(row=5, column=0, columnspan=10, sticky='nesw')
 
     def set_shape(self, shape):

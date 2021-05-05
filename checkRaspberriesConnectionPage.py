@@ -1,3 +1,4 @@
+from colors import Colors
 import platform
 import subprocess
 if (platform.node() == "DESKTOP-TREPOQV"):
@@ -37,7 +38,7 @@ class CkeckRaspberriesConnectionPage(tk.Frame):
         tk.Label(self, textvariable=self.avaliable[2], font=("Courier", 13)).grid(row=3, column=1, sticky='nesw')
         tk.Label(self, textvariable=self.avaliable[3], font=("Courier", 13)).grid(row=4, column=1, sticky='nesw')
 
-        tk.Button(self, text="Start", command=lambda: check_statuses(), bg='#B2FFB0', activebackground='#B2FFB0').grid(row=5, column=0, columnspan=2, sticky='nesw')
+        tk.Button(self, text="Start", command=lambda: check_statuses(), bg=Colors.Green, activebackground=Colors.Green).grid(row=5, column=0, columnspan=2, sticky='nesw')
 
         tk.Button(self, text="Return", command=lambda: controller.show_frame("OptionsPage")).grid(row=6, column=0, columnspan=2, sticky='nesw')
 

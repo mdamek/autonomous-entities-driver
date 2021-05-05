@@ -1,3 +1,4 @@
+from colors import Colors
 import platform
 import scripts_runner as sr 
 if (platform.node() == "DESKTOP-TREPOQV"):
@@ -21,11 +22,11 @@ class MockPage(tk.Frame):
         r1 = Radiobutton(topframe, text="Classical simulation", variable=self.steppedSimulation, value=False)
         r2 = Radiobutton(topframe, text="Stepped simulation", variable=self.steppedSimulation, value=True)
         
-        button1 = tk.Button(self, text="Start", bg='#B2FFB0', activebackground='#B2FFB0',
+        button1 = tk.Button(self, text="Start", bg=Colors.Green, activebackground=Colors.Green,
                         command=lambda: self.start_mock_and_show_next_page(controller, "mock", self.shape, self.steppedSimulation.get()))
-        button2 = tk.Button(self, text="Return", bg='#FFBEB0', activebackground='#FFBEB0',
+        button2 = tk.Button(self, text="Return", bg=Colors.Red, activebackground=Colors.Red,
                         command=lambda: controller.show_frame("ShapePage"))
-        button3 = tk.Button(self, text="Cancel", bg='#FFBEB0', activebackground='#FFBEB0',
+        button3 = tk.Button(self, text="Cancel", bg=Colors.Red, activebackground=Colors.Red,
                         command=lambda: controller.show_frame("StartPage"))
 
         r1.pack(side=tk.LEFT)
