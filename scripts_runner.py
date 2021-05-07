@@ -29,6 +29,28 @@ def run_torch(shape, spawnChance, personSpawnChance, fireSpawnChance, exitSpawnC
 def run_game(shape, lifeSpawnChance, loadFromOutside, stepped):
     subprocess.call(['scripts/run_game.sh', '-shape', shape, '-lifeSpawnChance', str(lifeSpawnChance), '-loadFromOutside', str(loadFromOutside).lower(), '-stepped', str(stepped).lower()])
 
+def run_xinuk(simulation):
+    shape = simulation.shape
+    loadFromOutside = simulation.from_outside
+    stepped = simulation.stepped
+    args_list = []
+    for key in simulation.parameters:
+        parameter_name = key
+        parameter_value = str(simulation.parameters[key].get())
+        args_list.append("-" + parameter_name)
+        args_list.append(parameter_value)
+    args_list.append("-shape")
+    args_list.append(shape)
+    args_list.append("-loadFromOutside")
+    args_list.append(str(loadFromOutside).lower())
+    args_list.append("-stepped")
+    args_list.append(str(stepped).lower())
+    print("All selected parameters: " + ' '.join(args_list))
+    subprocess.call(['scripts/run_xinuk.sh'] + args_list)
+    
+
+
+
 def run_led_servers():
     subprocess.call("scripts/run_led_servers.sh")
 

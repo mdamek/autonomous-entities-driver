@@ -122,6 +122,6 @@ class ParametersPage(tk.Frame):
             else:
                 self.controller.frames["InProgressPage"].render_page(self.simulation)
                 self.controller.frames["InProgressPage"].tkraise()
-            #run similation
+            sr.run_xinuk(self.simulation)
 
 

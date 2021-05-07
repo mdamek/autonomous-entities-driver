@@ -1,5 +1,5 @@
 {
-    "avaliableShapes": [
+    "shapes": [
         {
             "name": "square",
             "x": 64,

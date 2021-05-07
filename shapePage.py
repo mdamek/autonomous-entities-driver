@@ -11,7 +11,7 @@ class ShapePage(tk.Frame):
     def __init__(self, parent, controller, config):
         tk.Frame.__init__(self, parent)
         self.controller = controller
-        shape_config = config["avaliableShapes"]
+        shape_config = config["shapes"]
         for shape in shape_config:
             shape_name = shape["name"]
             tk.Button(self, text=shape_name.capitalize(),

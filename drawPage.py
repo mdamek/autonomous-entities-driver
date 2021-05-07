@@ -29,6 +29,5 @@ class DrawPage(tk.Frame):
         else:
             self.controller.frames["InProgressPage"].set_simulation(self.simulation)
             self.controller.frames["InProgressPage"].tkraise()
-        #run similation
-        #sr.run_game(shape, lifeSpawnChance, loadFromOutside, stepped)
+        sr.run_xinuk(self.simulation)
         
