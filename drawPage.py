@@ -14,7 +14,7 @@ class DrawPage(tk.Frame):
         self.controller = controller
         
         tk.Label(self, text="Draw starting position on panels then click Start", font='Helvetica 14 bold').pack(side="top", fill="x")
-        tk.Button(self, text="Start", bg=Colors.Green, activebackground=Colors.Green, command=lambda: DrawPage.start_game_and_show_next_page(controller, self.simulation_name, self.shape, 0, True, self.stepped)).pack(side="bottom", fill = tk.BOTH, expand = True)
+        tk.Button(self, text="Start", bg=Colors.Green, activebackground=Colors.Green, command=lambda: self.go_to_in_progress_page()).pack(side="bottom", fill = tk.BOTH, expand = True)
         tk.Button(self, text="Return", bg=Colors.Red, activebackground=Colors.Red, command=lambda: self.controller["ParametersPage"].tkraise()).pack(side="bottom", fill = tk.BOTH, expand = True)
         tk.Button(self, text="Cancel", bg=Colors.Red, activebackground=Colors.Red, command=lambda: self.controller["StartPage"].tkraise()).pack(side="bottom", fill = tk.BOTH, expand = True)
 
