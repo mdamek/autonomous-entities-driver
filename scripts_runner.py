@@ -50,18 +50,32 @@ def run_xinuk(simulation):
     stepped = str(simulation.stepped).lower()
     name = simulation.config["name"]
     with open('simulations.json') as json_file:
-        config = json.load(json_file)["config"]
-        xinuk_port = config["xinukPort"]
-        supervisor_host = config["supervisor"]
-        led_panel_port = config["ledPanelPort"]
-        allocation_order = config["akkaSpawnActorOrder"]
-        user = config["user"]
+        config_file = json.load(json_file)
+    config = config_file["config"]
+    xinuk_port = config["xinukPort"]
+    supervisor_host = config["supervisor"]
+    led_panel_port = config["ledPanelPort"]
+    allocation_order = ",".join(config["akkaSpawnActorOrder"])
+    user = config["user"]
+    iterationsNumber = config["iterationsNumber"]
+    shapes_config = config_file["shapes"]
+    shape = simulation.shape
+    selected_shape_config = next(
+            filter(lambda shapes_config: shapes_config["name"] == shape, shapes_config))
+    width = selected_shape_config["width"]
+    height = selected_shape_config["height"]
+    width_workers = selected_shape_config["width_workers"]
+    height_workers = selected_shape_config["height_workers"]
+    signal_disabled = "false"
+    min_nr_of_members = width_workers * height_workers
+
     for host in config["hosts"]:
-        privatekeyfile = os.path.expanduser('~/.ssh/id_rsa')
-        mykey = paramiko.RSAKey.from_private_key_file(privatekeyfile)
+        #privatekeyfile = os.path.expanduser('~/.ssh/id_rsa')
+        #mykey = paramiko.RSAKey.from_private_key_file(privatekeyfile)
         ssh = paramiko.SSHClient()
+        password="zaq12wsx"
         ssh.set_missing_host_key_policy(paramiko.AutoAddPolicy())
-        ssh.connect(host, username = user, pkey = mykey)
+        ssh.connect(host, username = user, password=password)
         args_list = []
         args_list.append("java")
         for key in simulation.parameters:
@@ -70,20 +84,27 @@ def run_xinuk(simulation):
             args_list.append(
                 f"-D{name}.config.{parameter_name}={parameter_value}")
         args_list.append(f"-D{name}.config.isSupervisor=true") if host == config["supervisor"] else args_list.append(
-            f"-D{name}.config.isSupervisor=true")
+            f"-D{name}.config.isSupervisor=false")
         args_list.append(f"-Dclustering.ip={host}")
         args_list.append(f"-Dclustering.port={xinuk_port}")
         args_list.append(f"-Dclustering.supervisor.ip={supervisor_host}")
         args_list.append(f"-Dclustering.supervisor.port={xinuk_port}")
-        args_list.append(f"-Dclustering.min-nr-of-members=4")
+        args_list.append(f"-Dclustering.min-nr-of-members={min_nr_of_members}")
+        args_list.append(f"-Dstart-stepped={stepped}")
+        args_list.append(f"-D{name}.config.workersRoot=2")
+        args_list.append(f"-D{name}.config.iterationsNumber={iterationsNumber}")
+        args_list.append(f"-D{name}.config.loadFromOutside={loadFromOutside}")
         args_list.append(f"-D{name}.config.guiType=ledPanel")
         args_list.append(f"-D{name}.config.ledPanelPort={led_panel_port}")
-        args_list.append(f"-D{name}.config.workersRoot=2")
-        args_list.append(f"-D{name}.config.loadFromOutside={loadFromOutside}")
-        args_list.append(f"-Dstart-stepped={stepped}")
-        #args_list.append(f"-Dshard-allocation-order={allocation_order}")
+        args_list.append(f"-D{name}.config.worldWidth={width}")
+        args_list.append(f"-D{name}.config.worldHeight={height}")
+        args_list.append(f"-D{name}.config.workersX={width_workers}")
+        args_list.append(f"-D{name}.config.workersY={height_workers}")
+        args_list.append(f"-D{name}.config.signalDisabled={signal_disabled}")
+        args_list.append(f"-Dshard-allocation-order={allocation_order}")
         args_list.append(f"-jar /home/pi/Desktop/xinuk/{name}/target/scala-2.13/{name}.jar")
         args_list.append("< /dev/null > /tmp/mylogfile 2>&1 &")
+        print(' '.join(args_list))
         ssh.exec_command(' '.join(args_list))
 
 def run_led_servers():

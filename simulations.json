@@ -15,23 +15,30 @@
         ],
         "xinukPort": 2551,
         "ledPanelPort": 8000,
-        "user": "pi"
+        "user": "pi",
+        "iterationsNumber" : 1000
     },
     "shapes": [
         {
             "name": "square",
-            "x": 64,
-            "y": 64
+            "width": 64,
+            "height": 64,
+            "width_workers": 2,
+            "height_workers": 2
         },
         {
             "name": "horizontal",
-            "x": 128,
-            "y": 32
+            "width": 128,
+            "height": 32,
+            "width_workers": 4,
+            "height_workers": 1
         },
         {
             "name": "vertical",
-            "x": 32,
-            "y": 128
+            "width": 32,
+            "height": 128,
+            "width_workers": 1,
+            "height_workers": 4
         }
     ],
     "continiousSimulation": {
