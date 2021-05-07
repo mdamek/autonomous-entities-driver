@@ -16,7 +16,7 @@
         "xinukPort": 2551,
         "ledPanelPort": 8000,
         "user": "pi",
-        "iterationsNumber" : 1000
+        "iterationsNumber": 1000
     },
     "shapes": [
         {
@@ -88,6 +88,10 @@
     "simulations": [
         {
             "name": "mock",
+            "defaultInitialValue": 1,
+            "defaultChangeValue": 0.1,
+            "maxValue": 1,
+            "minValue": 0,
             "avaliableToDraw": [
                 {
                     "mock": "#ffffff"
@@ -97,31 +101,133 @@
         },
         {
             "name": "fortwist",
+            "defaultInitialValue": 1,
+            "defaultChangeValue": 0.1,
+            "maxValue": 5,
+            "minValue": 0,
             "avaliableToDraw": [
                 {
                     "foraminifera": "#ffffff"
                 }
             ],
-            "parameters": []
+            "parameters": [
+                {
+                    "text": "Foramini spawn chance",
+                    "name": "foraminiferaSpawnChance",
+                    "initialValue": 0.3
+                },
+                {
+                    "text": "Foramini start energy",
+                    "name": "foraminiferaStartEnergy",
+                    "initialValue": 0.3
+                },
+                {
+                    "text": "Foramini reproduction cost",
+                    "name": "foraminiferaReproductionCost",
+                    "initialValue": 0.5
+                },
+                {
+                    "text": "Foramini reproduction threshold",
+                    "name": "foraminiferaReproductionThreshold",
+                    "initialValue": 0.8
+                },
+                {
+                    "text": "Foramini life activity cost",
+                    "name": "foraminiferaLifeActivityCost",
+                    "initialValue": 0.2
+                },
+                {
+                    "text": "Algae start energy",
+                    "name": "algaeStartEnergy",
+                    "initialValue": 1
+                },
+                {
+                    "text": "Algae regeneration rate",
+                    "name": "algaeRegenerationRate",
+                    "initialValue": 0.07
+                },
+                {
+                    "text": "Algae energetic capacity",
+                    "name": "algaeEnergeticCapacity",
+                    "initialValue": 0.1,
+                    "changeOnClick": 1
+                }
+            ]
         },
         {
             "name": "game",
+            "defaultInitialValue": 1,
+            "defaultChangeValue": 0.1,
+            "maxValue": 1,
+            "minValue": 0,
             "avaliableToDraw": [
                 {
                     "life": "#FF0000"
                 }
             ],
-            "parameters": []
+            "parameters": [
+                {
+                    "text": "Spawn chance",
+                    "name": "lifeSpawnChance",
+                    "initialValue": 0.1
+                }
+            ]
         },
         {
             "name": "rabbits",
+            "defaultInitialValue": 1,
+            "defaultChangeValue": 0.1,
+            "maxValue": 5,
+            "minValue": 0,
             "avaliableToDraw": [
                 {
                     "rabbit": "#808080",
                     "lettuce": "#008000"
                 }
             ],
-            "parameters": []
+            "parameters": [
+                {
+                    "text": "Spawn chance",
+                    "name": "rabbitSpawnChance",
+                    "initialValue": 0.1
+                },
+                {
+                    "text": "Rabbit spawn chance",
+                    "name": "spawnChance",
+                    "initialValue": 0.3
+                },
+                {
+                    "text": "Rabbit start energy",
+                    "name": "rabbitStartEnergy",
+                    "initialValue": 0.5
+                },
+                {
+                    "text": "Rabbit reproduction cost",
+                    "name": "rabbitReproductionCost",
+                    "initialValue": 0.5
+                },
+                {
+                    "text": "Rabbit life activity cost",
+                    "name": "rabbitLifeActivityCost",
+                    "initialValue": 0.1
+                },
+                {
+                    "text": "Rabbit reproduction threshold",
+                    "name": "rabbitReproductionThreshold",
+                    "initialValue": 1
+                },
+                {
+                    "text": "Lettuce energetic capacity",
+                    "name": "lettuceEnergeticCapacity",
+                    "initialValue": 0.6
+                },
+                {
+                    "text": "Lettuce reproduction frequency",
+                    "name": "lettuceReproductionFrequency",
+                    "initialValue": 2,
+                    "changeOnClick": 1
+                }
+            ]
         },
         {
             "name": "torch",
