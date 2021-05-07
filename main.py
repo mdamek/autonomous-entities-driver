@@ -49,7 +49,12 @@ class App(tk.Tk):
         self.frames[ShapePage.__name__] = shape_frame
         shape_frame.grid(row=0, column=0, sticky="nsew")
 
-        for page in (InProgressPage, InProgressSteppedPage, OptionsPage, DrawPage, CkeckRaspberriesConnectionPage, ParametersPage):
+        in_progress_frame = InProgressPage(
+            parent=container, controller=self, config=config["continiousSimulation"])
+        self.frames[InProgressPage.__name__] = in_progress_frame
+        in_progress_frame.grid(row=0, column=0, sticky="nsew")
+
+        for page in (InProgressSteppedPage, OptionsPage, DrawPage, CkeckRaspberriesConnectionPage, ParametersPage):
             page_name = page.__name__
             frame = page(parent=container, controller=self)
             self.frames[page_name] = frame

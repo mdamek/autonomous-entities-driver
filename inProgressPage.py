@@ -12,9 +12,10 @@ else:
 
 
 class InProgressPage(tk.Frame):
-    def __init__(self, parent, controller):
+    def __init__(self, parent, controller, config):
         tk.Frame.__init__(self, parent)
         self.controller = controller
+        self.config = config
 
     def render_page(self, simualtion):
         self.simulation = simualtion
@@ -33,37 +34,10 @@ class InProgressPage(tk.Frame):
         tk.Label(self, text="Iteration space time", font=("Courier", 10)).grid(
             row=1, column=0, columnspan=10, sticky='nesw')
 
-        Radiobutton(self, variable=self.delay, value=0,
-                    command=self.set_new_delay).grid(row=2, column=0)
-        Radiobutton(self, variable=self.delay, value=100,
-                    command=self.set_new_delay).grid(row=2, column=1)
-        Radiobutton(self, variable=self.delay, value=300,
-                    command=self.set_new_delay).grid(row=2, column=2)
-        Radiobutton(self, variable=self.delay, value=500,
-                    command=self.set_new_delay).grid(row=2, column=3)
-        Radiobutton(self, variable=self.delay, value=1000,
-                    command=self.set_new_delay).grid(row=2, column=4)
-        Radiobutton(self, variable=self.delay, value=1500,
-                    command=self.set_new_delay).grid(row=2, column=5)
-        Radiobutton(self, variable=self.delay, value=2000,
-                    command=self.set_new_delay).grid(row=2, column=6)
-        Radiobutton(self, variable=self.delay, value=2500,
-                    command=self.set_new_delay).grid(row=2, column=7)
-        Radiobutton(self, variable=self.delay, value=3000,
-                    command=self.set_new_delay).grid(row=2, column=8)
-        Radiobutton(self, variable=self.delay, value=5000,
-                    command=self.set_new_delay).grid(row=2, column=9)
-
-        Label(self, text="Without").grid(row=3, column=0)
-        Label(self, text="100ms").grid(row=3, column=1)
-        Label(self, text="300ms").grid(row=3, column=2)
-        Label(self, text="500ms").grid(row=3, column=3)
-        Label(self, text="1s").grid(row=3, column=4)
-        Label(self, text="1.5s").grid(row=3, column=5)
-        Label(self, text="2s").grid(row=3, column=6)
-        Label(self, text="2.5s").grid(row=3, column=7)
-        Label(self, text="3s").grid(row=3, column=8)
-        Label(self, text="5s").grid(row=3, column=9)
+        for idx, delay in enumerate(self.config["delayValues"]):
+            Radiobutton(self, variable=delay["value"], value=0,
+                    command=self.set_new_delay).grid(row=2, column=idx)
+            Label(self, text=delay["name"]).grid(row=3, column=idx)
 
         tk.Button(self, text="Step simulation", bg=Colors.Blue, activebackground=Colors.Blue,
                   command=lambda: self.show_stepped_simulation(), font=("Courier", 13)).grid(row=4, column=0, columnspan=10, sticky='nesw')

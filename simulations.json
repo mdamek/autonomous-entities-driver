@@ -16,6 +16,50 @@
             "y": 128
         }
     ],
+    "continiousSimulation": {
+        "delayValues": [
+            {
+                "name": "without",
+                "value": 0
+            },
+            {
+                "name": "100ms",
+                "value": 100
+            },
+            {
+                "name": "300ms",
+                "value": 300
+            },
+            {
+                "name": "500ms",
+                "value": 500
+            },
+            {
+                "name": "1s",
+                "value": 1000
+            },
+            {
+                "name": "1.5s",
+                "value": 1500
+            },
+            {
+                "name": "2s",
+                "value": 2000
+            },
+            {
+                "name": "2.5s",
+                "value": 2500
+            },
+            {
+                "name": "3s",
+                "value": 3000
+            },
+            {
+                "name": "5s",
+                "value": 5000
+            }
+        ]
+    },
     "simulations": [
         {
             "name": "mock",
