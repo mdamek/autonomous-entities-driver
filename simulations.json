@@ -19,7 +19,6 @@
     "simulations": [
         {
             "name": "mock",
-            "drawInitialPositionsAvaliable": true,
             "avaliableToDraw": [
                 {
                     "mock": "#ffffff"
@@ -29,7 +28,6 @@
         },
         {
             "name": "fortwist",
-            "drawInitialPositionsAvaliable": false,
             "avaliableToDraw": [
                 {
                     "foraminifera": "#ffffff"
@@ -39,7 +37,6 @@
         },
         {
             "name": "game",
-            "drawInitialPositionsAvaliable": true,
             "avaliableToDraw": [
                 {
                     "life": "#FF0000"
@@ -49,7 +46,6 @@
         },
         {
             "name": "rabbits",
-            "drawInitialPositionsAvaliable": true,
             "avaliableToDraw": [
                 {
                     "rabbit": "#808080",
@@ -60,7 +56,6 @@
         },
         {
             "name": "torch",
-            "drawInitialPositionsAvaliable": true,
             "defaultInitialValue": 1,
             "defaultChangeValue": 0.1,
             "maxValue": 5,

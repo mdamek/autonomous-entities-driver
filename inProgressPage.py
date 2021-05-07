@@ -16,7 +16,8 @@ class InProgressPage(tk.Frame):
         tk.Frame.__init__(self, parent)
         self.controller = controller
 
-    def render_page(self):
+    def render_page(self, simualtion):
+        self.simulation = simualtion
         self.delay = tk.IntVar()
 
         self.grid_rowconfigure(0, weight=1, minsize=4)
@@ -27,7 +28,7 @@ class InProgressPage(tk.Frame):
         for number in range(0, 10):
             self.grid_columnconfigure(number, weight=1, minsize=4)
 
-        tk.Label(self, text=self.simulation.config["name"].capitalize(), font=("Courier", 13)).grid(
+        tk.Label(self, text=self.simulation.config["name"].capitalize() + " simulation", font=("Courier", 13)).grid(
             row=0, column=0, columnspan=10, sticky='nesw')
         tk.Label(self, text="Iteration space time", font=("Courier", 10)).grid(
             row=1, column=0, columnspan=10, sticky='nesw')
@@ -70,16 +71,13 @@ class InProgressPage(tk.Frame):
         tk.Button(self, text="Stop", bg=Colors.Red, activebackground=Colors.Red,
                   command=lambda: self.stop_simulation(), font=("Courier", 13)).grid(row=5, column=0, columnspan=10, sticky='nesw')
 
-    def set_simulation(self, simulation):
-        self.simulation = simulation
-
     def set_new_delay(self):
         threading.Thread(target=set_simulation_delay,
                          args=(self.delay.get(),)).start()
 
     def show_stepped_simulation(self):
         start_stepped_simulation()
-        self.controller.frames["InProgressSteppedPage"].set_simulation(
+        self.controller.frames["InProgressSteppedPage"].render_in_progress_simulation(
             self.simulation)
         self.controller.frames["InProgressSteppedPage"].tkraise()
 

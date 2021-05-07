@@ -99,7 +99,7 @@ class ParametersPage(tk.Frame):
                       change_on_click, "-")).grid(row=index + 4 if on_left else index + 3, column=2 if on_left else 5, sticky='nesw')
 
         tk.Button(self, text="Start", bg=Colors.Green,
-                  activebackground=Colors.Green, command=lambda: print("SD")).grid(row=number_of_parameters + 3, column=0, columnspan=6, sticky='nesw')
+                  activebackground=Colors.Green, command=lambda: self.go_to_final_page()).grid(row=number_of_parameters + 3, column=0, columnspan=6, sticky='nesw')
         tk.Button(self, text="Return", bg=Colors.Red, activebackground=Colors.Red, command=lambda: self.controller.show_frame(
             "ShapePage")).grid(row=number_of_parameters + 4, column=0, columnspan=6, sticky='nesw')
         tk.Button(self, text="Cancel", bg=Colors.Red, activebackground=Colors.Red,
@@ -116,11 +116,11 @@ class ParametersPage(tk.Frame):
             self.frames["DrawPage"].set_simulation(self.simulation)
             self.frames["DrawPage"].tkraise()
         else:
-            if self.stepped:
-                self.controller.frames["InProgressSteppedPage"].set_simulation(self.simulation)
+            if self.simulation.stepped:
+                self.controller.frames["InProgressSteppedPage"].render_in_progress_simulation(self.simulation)
                 self.controller.frames["InProgressSteppedPage"].tkraise()
             else:
-                self.controller.frames["InProgressPage"].set_simulation(self.simulation)
+                self.controller.frames["InProgressPage"].render_page(self.simulation)
                 self.controller.frames["InProgressPage"].tkraise()
             #run similation
 
