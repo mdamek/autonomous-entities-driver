@@ -26,7 +26,7 @@ function run_mock() {
 
 for arg in $@
 do
-	echo arg
+	echo ${arg}
 done
 
 #echo Running Xinuk ${APPLICATION_NAME} on every machine...
