@@ -31,7 +31,7 @@ class InProgressPage(tk.Frame):
             row=1, column=0, columnspan=10, sticky='nesw')
 
         for idx, delay in enumerate(self.config["delayValues"]):
-            Radiobutton(self, variable=delay["value"], value=0,
+            Radiobutton(self, variable=self.delay, value=delay["value"],
                     command=self.set_new_delay).grid(row=2, column=idx)
             Label(self, text=delay["name"]).grid(row=3, column=idx)
 

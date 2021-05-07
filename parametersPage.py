@@ -3,8 +3,8 @@ import threading
 from colors import Colors
 import scripts_runner as sr
 import tkinter as tk
+import math
 from tkinter import BooleanVar, Radiobutton
-
 
 
 class ParametersPage(tk.Frame):
@@ -51,7 +51,7 @@ class ParametersPage(tk.Frame):
 
         number_of_addition_buttons = 5
 
-        for number in range(0, number_of_parameters + number_of_addition_buttons):
+        for number in range(0, math.floor(number_of_parameters / 2) + number_of_addition_buttons):
             self.grid_rowconfigure(number, weight=1, minsize=4)
 
         for number in range(0, 6):
@@ -94,12 +94,12 @@ class ParametersPage(tk.Frame):
             tk.Button(self, text="-", command=lambda name=name, change_on_click=change_on_click: self.update_value(name,
                       change_on_click, "-")).grid(row=index + 4 if on_left else index + 3, column=2 if on_left else 5, sticky='nesw')
 
-        tk.Button(self, text="Start", bg=Colors.Green,
-                  activebackground=Colors.Green, command=lambda: self.go_to_final_page()).grid(row=number_of_parameters + 3, column=0, columnspan=6, sticky='nesw')
         tk.Button(self, text="Return", bg=Colors.Red, activebackground=Colors.Red, command=lambda: self.controller.show_frame(
             "ShapePage")).grid(row=number_of_parameters + 4, column=0, columnspan=6, sticky='nesw')
         tk.Button(self, text="Cancel", bg=Colors.Red, activebackground=Colors.Red,
                   command=lambda:  self.controller.show_frame("StartPage")).grid(row=number_of_parameters + 5, column=0, columnspan=6, sticky='nesw')
+        tk.Button(self, text="Start", bg=Colors.Green,
+                  activebackground=Colors.Green, command=lambda: self.go_to_final_page()).grid(row=number_of_parameters + 6, column=0, columnspan=6, sticky='nesw')
 
     def go_to_final_page(self):
         self.simulation.set_parameters(self.parameters_collection)
@@ -108,16 +108,17 @@ class ParametersPage(tk.Frame):
 
         if self.drawInitialPosition.get():
             shape = self.simulation.shape
-            threading.Thread(target=start_motion_sensor, args = (shape, )).start()
+            threading.Thread(target=start_motion_sensor,
+                             args=(shape, )).start()
             self.frames["DrawPage"].set_simulation(self.simulation)
             self.frames["DrawPage"].tkraise()
         else:
             if self.simulation.stepped:
-                self.controller.frames["InProgressSteppedPage"].render_in_progress_simulation(self.simulation)
+                self.controller.frames["InProgressSteppedPage"].render_in_progress_simulation(
+                    self.simulation)
                 self.controller.frames["InProgressSteppedPage"].tkraise()
             else:
-                self.controller.frames["InProgressPage"].render_page(self.simulation)
+                self.controller.frames["InProgressPage"].render_page(
+                    self.simulation)
                 self.controller.frames["InProgressPage"].tkraise()
             sr.run_xinuk(self.simulation)
-
-
