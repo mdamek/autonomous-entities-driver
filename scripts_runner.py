@@ -33,18 +33,21 @@ def run_xinuk(simulation):
     shape = simulation.shape
     loadFromOutside = simulation.from_outside
     stepped = simulation.stepped
+    name = simulation.config["name"]
     args_list = []
     for key in simulation.parameters:
         parameter_name = key
         parameter_value = str(simulation.parameters[key].get())
-        args_list.append("-" + parameter_name)
+        args_list.append(parameter_name)
         args_list.append(parameter_value)
-    args_list.append("-shape")
+    args_list.append("shape")
     args_list.append(shape)
-    args_list.append("-loadFromOutside")
+    args_list.append("loadFromOutside")
     args_list.append(str(loadFromOutside).lower())
-    args_list.append("-stepped")
+    args_list.append("stepped")
     args_list.append(str(stepped).lower())
+    args_list.append("name")
+    args_list.append(str(name).lower())
     print("All selected parameters: " + ' '.join(args_list))
     subprocess.call(['scripts/run_xinuk.sh'] + args_list)
     

@@ -24,10 +24,27 @@ function run_mock() {
     echo Run Xinuk ${APPLICATION_NAME}: ${APPLICATION_NAME} on ${deviceIp}
 }
 
-for arg in $@
+
+APPLICATION_NAME=${@: -1}
+STEPPED=${@: -2}
+LOAD_FROM_OUTSIDE=${@: -3}
+SHAPE=${@: -4}
+
+ITERATION_INDEX=0
+APPLICATION_SCRIPT=""
+
+until [ ITERATION_INDEX==$#-4 ]
 do
-	echo ${arg}
+    if [ iterationIndex%2 == 0 ]; then
+        APPLICATION_SCRIPT+="-D${APPLICATION_NAME}.config.${arg}="
+    else
+        APPLICATION_SCRIPT+=""
+    fi
+    ITERATION_INDEX++
 done
+
+echo ${APPLICATION_SCRIPT}
+
 
 #echo Running Xinuk ${APPLICATION_NAME} on every machine...
 #run_mock ${RASPBERRY2} false
