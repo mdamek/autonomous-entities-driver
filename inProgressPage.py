@@ -1,14 +1,10 @@
 from colors import Colors
 from requestMaker import set_simulation_delay, start_stepped_simulation
 import scripts_runner as sr
-import platform
 import threading
-if (platform.node() == "DESKTOP-TREPOQV"):
-    import tkinter as tk
-    from tkinter import Radiobutton, Label
-else:
-    import Tkinter as tk
-    from Tkinter import Radiobutton, Label
+import tkinter as tk
+from tkinter import Radiobutton, Label
+
 
 
 class InProgressPage(tk.Frame):

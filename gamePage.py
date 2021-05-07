@@ -2,13 +2,9 @@ from colors import Colors
 import threading
 from requestMaker import start_motion_sensor
 from drawPage import DrawPage
-import platform
-if (platform.node() == "DESKTOP-TREPOQV"):
-    import tkinter as tk
-    from tkinter import BooleanVar, Radiobutton
-else:
-    import Tkinter as tk
-    from Tkinter import BooleanVar, Radiobutton
+import tkinter as tk
+from tkinter import BooleanVar, Radiobutton
+
 
 class GamePage(tk.Frame):
     def __init__(self, parent, controller):

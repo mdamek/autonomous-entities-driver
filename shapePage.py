@@ -1,11 +1,5 @@
 from colors import Colors
-import platform
-import scripts_runner as sr
-if (platform.node() == "DESKTOP-TREPOQV"):
-    import tkinter as tk
-else:
-    import Tkinter as tk
-
+import tkinter as tk
 
 class ShapePage(tk.Frame):
     def __init__(self, parent, controller, config):

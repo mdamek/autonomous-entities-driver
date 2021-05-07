@@ -1,10 +1,7 @@
 from colors import Colors
 import platform
 import subprocess
-if (platform.node() == "DESKTOP-TREPOQV"):
-    import tkinter as tk
-else:
-    import Tkinter as tk
+import tkinter as tk
 
 class CkeckRaspberriesConnectionPage(tk.Frame):
     

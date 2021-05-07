@@ -1,13 +1,9 @@
 from colors import Colors
-import platform
 from requestMaker import make_iteration, stop_stepped_simulation
 import scripts_runner as sr
 import threading
+import tkinter as tk
 
-if (platform.node() == "DESKTOP-TREPOQV"):
-    import tkinter as tk
-else:
-    import Tkinter as tk
 
 
 class InProgressSteppedPage(tk.Frame):

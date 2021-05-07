@@ -1,12 +1,8 @@
 from colors import Colors
 import scripts_runner as sr
-import platform
-if (platform.node() == "DESKTOP-TREPOQV"):
-    import tkinter as tk
-    from tkinter import BooleanVar, Radiobutton  
-else:
-    import Tkinter as tk
-    from Tkinter import BooleanVar, Radiobutton
+import tkinter as tk
+from tkinter import BooleanVar, Radiobutton  
+
 
 class FortwistPage(tk.Frame):
     def __init__(self, parent, controller):

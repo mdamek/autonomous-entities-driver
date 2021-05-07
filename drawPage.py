@@ -1,12 +1,8 @@
 import threading
 from colors import Colors
-import platform
 from requestMaker import stop_motion_sensor
 import scripts_runner as sr
-if (platform.node() == "DESKTOP-TREPOQV"):
-    import tkinter as tk  
-else:
-    import Tkinter as tk 
+import tkinter as tk  
 
 class DrawPage(tk.Frame):
     def __init__(self, parent, controller):

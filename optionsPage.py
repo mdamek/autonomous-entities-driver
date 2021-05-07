@@ -1,11 +1,7 @@
 from colors import Colors
-import platform
 import threading
 import scripts_runner as sr 
-if (platform.node() == "DESKTOP-TREPOQV"):
-    import tkinter as tk
-else:
-    import Tkinter as tk
+import tkinter as tk
 
 class OptionsPage(tk.Frame):
     def __init__(self, parent, controller):

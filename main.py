@@ -4,25 +4,11 @@ from optionsPage import OptionsPage
 from parametersPage import ParametersPage
 from Simulation import Simulation
 from checkRaspberriesConnectionPage import CkeckRaspberriesConnectionPage
-from gamePage import GamePage
 from inProgressSteppedPage import InProgressSteppedPage
 from drawPage import DrawPage
 from inProgressPage import InProgressPage
-from torchPage import TorchPage
-from fortwistPage import FortwistPage
-from mockPage import MockPage
-from rabbitsPage import RabbitsPage
-
 import json
-import threading
-import scripts_runner as sr
-import platform
-
-if (platform.node() == "DESKTOP-TREPOQV"):
-    import tkinter as tk
-else:
-    import Tkinter as tk
-
+import tkinter as tk
 
 class App(tk.Tk):
 
@@ -118,8 +104,5 @@ class StartPage(tk.Frame):
 if __name__ == "__main__":
     # sr.run_led_servers()
     app = App()
-    if (platform.node() == "DESKTOP-TREPOQV"):
-        app.geometry("480x320")
-    else:
-        app.attributes('-fullscreen', True)
+    app.geometry("480x320")
     app.mainloop()
