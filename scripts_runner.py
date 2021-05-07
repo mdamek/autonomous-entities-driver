@@ -60,6 +60,7 @@ def run_xinuk(simulation):
         privatekeyfile = os.path.expanduser('~/.ssh/id_rsa')
         mykey = paramiko.RSAKey.from_private_key_file(privatekeyfile)
         ssh = paramiko.SSHClient()
+        ssh.set_missing_host_key_policy(paramiko.AutoAddPolicy())
         ssh.connect(host, username = user, pkey = mykey)
         args_list = []
         args_list.append("java")
