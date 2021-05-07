@@ -16,6 +16,7 @@
         "xinukPort": 2551,
         "ledPanelPort": 8000,
         "user": "pi",
+        "localPassword": "zaq12wsx",
         "iterationsNumber": 1000
     },
     "shapes": [
