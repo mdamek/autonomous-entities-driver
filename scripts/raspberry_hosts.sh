@@ -1,7 +1,7 @@
 #!/usr/bin/bash
-
+declare -a RASPBERRIES
 jq -c '.config.hosts | .[]' ../simulations.json | while read i; do
-    RASPBERRIES+=("SAD")
+    RASPBERRIES[${#RASPBERRIES[@]}]=${i}
     echo ${i}
 done
 
