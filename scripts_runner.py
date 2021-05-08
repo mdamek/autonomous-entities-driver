@@ -48,7 +48,7 @@ def run_xinuk(simulation):
     height = selected_shape_config["height"]
     width_workers = selected_shape_config["width_workers"]
     height_workers = selected_shape_config["height_workers"]
-    workers_manager_port = selected_shape_config["actorsManagerPort"]
+    workers_manager_port = config["actorsManagerPort"]
     signal_disabled = "false"
     min_nr_of_members = width_workers * height_workers
 

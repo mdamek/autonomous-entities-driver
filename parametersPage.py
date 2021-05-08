@@ -110,8 +110,8 @@ class ParametersPage(tk.Frame):
             shape = self.simulation.shape
             threading.Thread(target=start_motion_sensor,
                              args=(shape, )).start()
-            self.frames["DrawPage"].set_simulation(self.simulation)
-            self.frames["DrawPage"].tkraise()
+            self.controller.frames["DrawPage"].set_simulation(self.simulation)
+            self.controller.frames["DrawPage"].tkraise()
         else:
             if self.simulation.stepped:
                 self.controller.frames["InProgressSteppedPage"].render_in_progress_simulation(

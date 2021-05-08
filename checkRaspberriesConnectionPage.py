@@ -11,7 +11,6 @@ class CkeckRaspberriesConnectionPage(tk.Frame):
         self.controller = controller
 
         for number in range(0, len(hosts) + 3):
-            print(number)
             self.grid_rowconfigure(number, weight=1, minsize=4)
 
         for number in range(0, 2):
