@@ -1,5 +1,7 @@
 #!/usr/bin/bash
 
+jq '.config.hosts' simulations.json
+
 RASPBERRY1="192.168.1.87"
 RASPBERRY2="192.168.1.172"
 RASPBERRY3="192.168.1.205"
