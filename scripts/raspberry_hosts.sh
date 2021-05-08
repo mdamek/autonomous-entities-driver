@@ -2,8 +2,8 @@
 
 RASPBERRIES=()
 jq -c '.config.hosts | .[]' ../simulations.json | while read i; do
-    echo ${i}
     RASPBERRIES+=("SAD")
+    echo ${i}
 done
 
 echo "SS"
