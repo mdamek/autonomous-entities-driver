@@ -1,6 +1,7 @@
 from colors import Colors
 import tkinter as tk
 
+
 class ShapePage(tk.Frame):
     def __init__(self, parent, controller, config):
         tk.Frame.__init__(self, parent)

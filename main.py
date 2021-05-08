@@ -10,6 +10,7 @@ from inProgressPage import InProgressPage
 import json
 import tkinter as tk
 
+
 class App(tk.Tk):
 
     def __init__(self, *args, **kwargs):

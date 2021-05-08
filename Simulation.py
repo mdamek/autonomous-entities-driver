@@ -11,6 +11,6 @@ class Simulation:
 
     def set_stepped_simulation(self, stepped):
         self.stepped = stepped
-    
+
     def set_load_from_outside(self, from_outside):
         self.from_outside = from_outside

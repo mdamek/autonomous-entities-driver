@@ -6,7 +6,6 @@ import tkinter as tk
 from tkinter import Radiobutton, Label
 
 
-
 class InProgressPage(tk.Frame):
     def __init__(self, parent, controller, config):
         tk.Frame.__init__(self, parent)
@@ -32,7 +31,7 @@ class InProgressPage(tk.Frame):
 
         for idx, delay in enumerate(self.config["delayValues"]):
             Radiobutton(self, variable=self.delay, value=delay["value"],
-                    command=self.set_new_delay).grid(row=2, column=idx)
+                        command=self.set_new_delay).grid(row=2, column=idx)
             Label(self, text=delay["name"]).grid(row=3, column=idx)
 
         tk.Button(self, text="Step simulation", bg=Colors.Blue, activebackground=Colors.Blue,
