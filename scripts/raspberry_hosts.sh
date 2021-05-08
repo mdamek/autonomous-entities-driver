@@ -1,6 +1,5 @@
 #!/usr/bin/bash
 
-RASPBERRIES=()
 jq -c '.config.hosts | .[]' ../simulations.json | while read i; do
     RASPBERRIES+=("SAD")
     echo ${i}
