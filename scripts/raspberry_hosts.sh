@@ -1,6 +1,13 @@
 #!/usr/bin/bash
 
-jq '.config.hosts' ../simulations.json
+RASPBERRIES=jq '.config.hosts' ../simulations.json
+
+for VARIABLE in RASPBERRIES
+do
+	echo "elo"
+    echo ${VARIABLE}
+done
+
 
 RASPBERRY1="192.168.1.87"
 RASPBERRY2="192.168.1.172"
