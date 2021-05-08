@@ -3,14 +3,24 @@ import json
 import paramiko
 import os
 
-def restart_led_servers():
-    subprocess.call("scripts/kill_led_servers.sh")
-    subprocess.call("scripts/run_led_servers.sh")
+with open('simulations.json') as json_file:
+        config_file = json.load(json_file)
+        config = config_file["config"]
 
+def restart_led_servers():
+    for host in config["hosts"]:
+        ssh = paramiko.SSHClient()
+        ssh.set_missing_host_key_policy(paramiko.AutoAddPolicy())
+        ssh.connect(host, username = config["user"], password=config["localPassword"])
+        ssh.exec_command("sudo killall -9 node")
+        ssh.exec_command("cd Desktop/simulation-platform-for-autonomous-entities; sudo npx ts-node -T Server/app.ts < /dev/null > /tmp/mylogfile 2>&1 &")
 
 def restart_all_devices():
-    subprocess.call("scripts/restart_all_devices.sh")
-
+    for host in config["hosts"]:
+        ssh = paramiko.SSHClient()
+        ssh.set_missing_host_key_policy(paramiko.AutoAddPolicy())
+        ssh.connect(host, username = config["user"], password=config["localPassword"])
+        ssh.exec_command("sudo reboot")
 
 def run_mock(shape, stepped):
     subprocess.call(['scripts/run_mock.sh', '-shape', shape,
@@ -49,9 +59,6 @@ def run_xinuk(simulation):
     loadFromOutside = str(simulation.from_outside).lower()
     stepped = str(simulation.stepped).lower()
     name = simulation.config["name"]
-    with open('simulations.json') as json_file:
-        config_file = json.load(json_file)
-    config = config_file["config"]
     xinuk_port = config["xinukPort"]
     supervisor_host = config["supervisor"]
     led_panel_port = config["ledPanelPort"]
