@@ -1,6 +1,10 @@
 #!/usr/bin/bash
 
-RASPBERRIES <<< $( jq '.config.hosts' ../simulations.json )
+RASPBERRIES=()
+jq -c '.config.hosts' ../simulations.json | while read i; do
+    RASPBERRIES+=${i}
+done
+
 
 for VARIABLE in RASPBERRIES
 do
