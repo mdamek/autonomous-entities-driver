@@ -2,9 +2,10 @@
 declare -a RASPBERRIES
 jq -c '.config.hosts | .[]' ../simulations.json | while read i; do
     RASPBERRIES[${#RASPBERRIES[@]}]=${i}
+    dsa=${i}
     echo ${i}
 done
-
+echo ${dsa}
 echo "SS"
 
 echo ${#RASPBERRIES[@]}
