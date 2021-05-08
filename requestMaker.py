@@ -1,15 +1,24 @@
+import json
 import requests
 
-supervisor_host = "192.168.1.87"
-port_of_actors_manager = "8013"
-core = "http://%s:%s/" % (supervisor_host, port_of_actors_manager)
-timeouts = 5
+with open('simulations.json') as json_file:
+    config = json.load(json_file)
+
+supervisor_host = config["config"]["supervisor"]
+port_of_actors_manager = config["config"]["actorsManagerPort"]
+motion_sensor_host = config["config"]["motionSensor"]["host"]
+motion_sensor_port = config["config"]["motionSensor"]["port"]
+
+actor_manager_core = f"http://{supervisor_host}:{port_of_actors_manager}/"
+motion_sensor_core = f"http://{motion_sensor_host}:{motion_sensor_port}/api/v1/"
+
+timeout = 3
 
 
 def start_stepped_simulation():
-    path = core + "startSteppedSimulation"
+    path = actor_manager_core + "startSteppedSimulation"
     try:
-        requests.get(path, timeout=timeouts)
+        requests.get(path, timeout=timeout)
     except requests.Timeout:
         print("Timeout on: ", path)
     except requests.ConnectionError:
@@ -17,9 +26,9 @@ def start_stepped_simulation():
 
 
 def stop_stepped_simulation():
-    path = core + "stopSteppedSimulation"
+    path = actor_manager_core + "stopSteppedSimulation"
     try:
-        requests.get(path, timeout=timeouts)
+        requests.get(path, timeout=timeout)
     except requests.Timeout:
         print("Timeout on: ", path)
     except requests.ConnectionError:
@@ -27,9 +36,9 @@ def stop_stepped_simulation():
 
 
 def make_iteration():
-    path = core + "makeIteration"
+    path = actor_manager_core + "makeIteration"
     try:
-        requests.get(path, timeout=timeouts)
+        requests.get(path, timeout=timeout)
     except requests.Timeout:
         print("Timeout on: ", path)
     except requests.ConnectionError:
@@ -37,10 +46,10 @@ def make_iteration():
 
 
 def set_simulation_delay(delay):
-    path = core + "setSimulationDelay"
+    path = actor_manager_core + "setSimulationDelay"
     params = {'delay': delay}
     try:
-        requests.get(path, params=params, timeout=timeouts)
+        requests.get(path, params=params, timeout=timeout)
     except requests.Timeout:
         print("Timeout on: ", path)
     except requests.ConnectionError:
@@ -48,27 +57,20 @@ def set_simulation_delay(delay):
 
 
 def start_motion_sensor(shape):
-    motion_sensor_interface = "192.168.1.20"
-    motion_sensor_port = "8888"
-    core_sensor = "http://%s:%s/api/v1/" % (
-        motion_sensor_interface, motion_sensor_port)
-    path = core_sensor + "startReadingPositions"
+    path = motion_sensor_core + "startReadingPositions"
     params = {'shape': shape}
     try:
-        requests.get(path, params=params, timeout=10000)
+        requests.get(path, params=params, timeout=timeout)
     except requests.Timeout:
         print("Timeout on: ", path)
     except requests.ConnectionError:
         print("Request error")
-    
+
+
 def stop_motion_sensor():
-    motion_sensor_interface = "192.168.1.20"
-    motion_sensor_port = "8888"
-    core_sensor = "http://%s:%s/api/v1/" % (
-        motion_sensor_interface, motion_sensor_port)
-    path = core_sensor + "stopReadingPositions"
+    path = motion_sensor_core + "stopReadingPositions"
     try:
-        requests.get(path, timeout=timeouts)
+        requests.get(path, timeout=timeout)
     except requests.Timeout:
         print("Timeout on: ", path)
     except requests.ConnectionError:

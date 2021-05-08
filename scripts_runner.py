@@ -66,6 +66,7 @@ def run_xinuk(simulation):
     height = selected_shape_config["height"]
     width_workers = selected_shape_config["width_workers"]
     height_workers = selected_shape_config["height_workers"]
+    workers_manager_port = selected_shape_config["actorsManagerPort"]
     signal_disabled = "false"
     min_nr_of_members = width_workers * height_workers
 
@@ -90,6 +91,8 @@ def run_xinuk(simulation):
         args_list.append(f"-Dclustering.supervisor.port={xinuk_port}")
         args_list.append(f"-Dclustering.min-nr-of-members={min_nr_of_members}")
         args_list.append(f"-Dstart-stepped={stepped}")
+        args_list.append(f"-Dworker-manager-host={supervisor_host}")
+        args_list.append(f"-Dworkers-manager-port={workers_manager_port}")
         args_list.append(f"-D{name}.config.workersRoot=2")
         args_list.append(f"-D{name}.config.iterationsNumber={iterationsNumber}")
         args_list.append(f"-D{name}.config.loadFromOutside={loadFromOutside}")

@@ -13,8 +13,13 @@
             "192.168.1.205",
             "192.168.1.196"
         ],
+        "motionSensor": {
+            "host" : "192.168.1.20",
+            "port" : 8888
+        },
         "xinukPort": 2551,
         "ledPanelPort": 8000,
+        "actorsManagerPort": 8013,
         "user": "pi",
         "localPassword": "zaq12wsx",
         "iterationsNumber": 1000
