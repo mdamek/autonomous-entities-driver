@@ -40,7 +40,12 @@ class App(tk.Tk):
         self.frames[InProgressPage.__name__] = in_progress_frame
         in_progress_frame.grid(row=0, column=0, sticky="nsew")
 
-        for page in (InProgressSteppedPage, OptionsPage, DrawPage, CkeckRaspberriesConnectionPage, ParametersPage):
+        raspberries_frame = CkeckRaspberriesConnectionPage(
+            parent=container, controller=self, hosts=config["config"]["hosts"])
+        self.frames[CkeckRaspberriesConnectionPage.__name__] = raspberries_frame
+        raspberries_frame.grid(row=0, column=0, sticky="nsew")
+
+        for page in (InProgressSteppedPage, OptionsPage, DrawPage, ParametersPage):
             page_name = page.__name__
             frame = page(parent=container, controller=self)
             self.frames[page_name] = frame
