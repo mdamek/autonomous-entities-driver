@@ -14,6 +14,7 @@ def restart_led_servers():
         ssh.connect(host, username = config["user"], password=config["localPassword"])
         ssh.exec_command("sudo killall -9 node")
         ssh.exec_command("cd Desktop/simulation-platform-for-autonomous-entities; sudo npx ts-node -T Server/app.ts < /dev/null > /tmp/mylogfile 2>&1 &")
+        print(f"Led server restared on {host}")
 
 def restart_all_devices():
     for host in config["hosts"]:
@@ -21,6 +22,7 @@ def restart_all_devices():
         ssh.set_missing_host_key_policy(paramiko.AutoAddPolicy())
         ssh.connect(host, username = config["user"], password=config["localPassword"])
         ssh.exec_command("sudo reboot")
+        print(f"Raspberry {host} restarted")
 
 def run_mock(shape, stepped):
     subprocess.call(['scripts/run_mock.sh', '-shape', shape,
