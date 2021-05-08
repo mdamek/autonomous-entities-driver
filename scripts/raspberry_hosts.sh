@@ -2,17 +2,10 @@
 
 RASPBERRIES=()
 jq -c '.config.hosts | .[]' ../simulations.json | while read i; do
-    echo ${i}
     RASPBERRIES+=${i}
 done
 
-
-for VARIABLE in RASPBERRIES
-do
-	echo "elo"
-    echo ${VARIABLE}
-done
-
+echo ${RASPBERRIES[@]}
 
 RASPBERRY1="192.168.1.87"
 RASPBERRY2="192.168.1.172"
