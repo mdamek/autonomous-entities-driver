@@ -2,7 +2,7 @@
 
 RASPBERRIES=()
 jq -c '.config.hosts | .[]' ../simulations.json | while read i; do
-    RASPBERRIES+=${i}
+    RASPBERRIES+=(${i})
 done
 
 echo ${RASPBERRIES[@]}
