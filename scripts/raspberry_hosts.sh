@@ -1,6 +1,6 @@
 #!/usr/bin/bash
 
-RASPBERRIES=$(jq '.config.hosts' ../simulations.json)
+RASPBERRIES <<< $( jq '.config.hosts' ../simulations.json )
 
 for VARIABLE in RASPBERRIES
 do
