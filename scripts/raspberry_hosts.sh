@@ -6,7 +6,7 @@ jq -c '.config.hosts | .[]' ../simulations.json | while read i; do
     RASPBERRIES+=(${i})
 done
 
-echo ${RASPBERRIES[@]}
+echo ${RASPBERRIES[1]}
 
 RASPBERRY1="192.168.1.87"
 RASPBERRY2="192.168.1.172"
