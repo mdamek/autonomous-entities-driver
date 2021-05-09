@@ -1,5 +1,3 @@
-from requestMaker import start_motion_sensor
-import threading
 from colors import Colors
 import scripts_runner as sr
 import tkinter as tk
@@ -94,10 +92,10 @@ class ParametersPage(tk.Frame):
             tk.Button(self, text="-", command=lambda name=name, change_on_click=change_on_click: self.update_value(name,
                       change_on_click, "-")).grid(row=index + 4 if on_left else index + 3, column=2 if on_left else 5, sticky='nesw')
 
-        tk.Button(self, text="Return", bg=Colors.Red, activebackground=Colors.Red, command=lambda: self.controller.show_frame(
-            "ShapePage")).grid(row=number_of_parameters + 4, column=0, columnspan=6, sticky='nesw')
+        tk.Button(self, text="Return", bg=Colors.Red, activebackground=Colors.Red, command=lambda: self.controller.frames["ShapePage"].tkraise(
+        )).grid(row=number_of_parameters + 4, column=0, columnspan=6, sticky='nesw')
         tk.Button(self, text="Cancel", bg=Colors.Red, activebackground=Colors.Red,
-                  command=lambda:  self.controller.show_frame("StartPage")).grid(row=number_of_parameters + 5, column=0, columnspan=6, sticky='nesw')
+                  command=lambda:  self.controller.frames["StartPage"].tkraise()).grid(row=number_of_parameters + 5, column=0, columnspan=6, sticky='nesw')
         tk.Button(self, text="Start", bg=Colors.Green,
                   activebackground=Colors.Green, command=lambda: self.go_to_final_page()).grid(row=number_of_parameters + 6, column=0, columnspan=6, sticky='nesw')
 
@@ -107,10 +105,8 @@ class ParametersPage(tk.Frame):
         self.simulation.set_load_from_outside(self.drawInitialPosition.get())
 
         if self.drawInitialPosition.get():
-            shape = self.simulation.shape
-            threading.Thread(target=start_motion_sensor,
-                             args=(shape, )).start()
             self.controller.frames["DrawPage"].set_simulation(self.simulation)
+            self.controller.frames["DrawPage"].render_page()
             self.controller.frames["DrawPage"].tkraise()
         else:
             if self.simulation.stepped:

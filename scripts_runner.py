@@ -30,7 +30,6 @@ def restart_all_devices():
 
 
 def run_xinuk(simulation):
-    shape = simulation.shape
     loadFromOutside = str(simulation.from_outside).lower()
     stepped = str(simulation.stepped).lower()
     name = simulation.config["name"]
@@ -40,14 +39,10 @@ def run_xinuk(simulation):
     allocation_order = ",".join(config["akkaSpawnActorOrder"])
     user = config["user"]
     iterationsNumber = config["iterationsNumber"]
-    shapes_config = config_file["shapes"]
-    shape = simulation.shape
-    selected_shape_config = next(
-        filter(lambda shapes_config: shapes_config["name"] == shape, shapes_config))
-    width = selected_shape_config["width"]
-    height = selected_shape_config["height"]
-    width_workers = selected_shape_config["width_workers"]
-    height_workers = selected_shape_config["height_workers"]
+    width = simulation.x
+    height = simulation.y
+    width_workers = simulation.x_nodes
+    height_workers = simulation.y_nodes
     workers_manager_port = config["actorsManagerPort"]
     signal_disabled = "false"
     min_nr_of_members = width_workers * height_workers

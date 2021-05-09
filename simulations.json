@@ -14,8 +14,8 @@
             "192.168.1.196"
         ],
         "motionSensor": {
-            "host" : "192.168.1.20",
-            "port" : 8888
+            "host": "192.168.1.20",
+            "port": 8888
         },
         "xinukPort": 2551,
         "ledPanelPort": 8000,
@@ -187,7 +187,9 @@
             "minValue": 0,
             "avaliableToDraw": [
                 {
-                    "rabbit": "#808080",
+                    "rabbit": "#808080"
+                },
+                {
                     "lettuce": "#008000"
                 }
             ],
@@ -243,9 +245,13 @@
             "minValue": 0,
             "avaliableToDraw": [
                 {
-                    "person": "#ffffff",
-                    "fire": " #FFC800",
-                    "exit": "#0000FF"
+                    "person": "#0000FF"
+                },
+                {
+                    "fire": "#FFC800"
+                },
+                {
+                    "exit": "#00FF00"
                 }
             ],
             "parameters": [

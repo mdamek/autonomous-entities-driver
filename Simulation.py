@@ -3,7 +3,11 @@ class Simulation:
     def __init__(self, config):
         self.config = config
 
-    def set_shape(self, shape):
+    def set_shape_data(self, x_nodes, y_nodes, x, y, shape):
+        self.x_nodes = int(x_nodes)
+        self.y_nodes = int(y_nodes)
+        self.x = int(x)
+        self.y = int(y)
         self.shape = shape
 
     def set_parameters(self, parameters):

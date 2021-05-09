@@ -46,37 +46,18 @@ class App(tk.Tk):
         self.frames[CkeckRaspberriesConnectionPage.__name__] = raspberries_frame
         raspberries_frame.grid(row=0, column=0, sticky="nsew")
 
-        for page in (InProgressSteppedPage, OptionsPage, DrawPage, ParametersPage):
+        draw_frame = DrawPage(
+            parent=container, controller=self, hosts=config["config"]["hosts"])
+        self.frames[DrawPage.__name__] = draw_frame
+        draw_frame.grid(row=0, column=0, sticky="nsew")
+
+        for page in (InProgressSteppedPage, OptionsPage, ParametersPage):
             page_name = page.__name__
             frame = page(parent=container, controller=self)
             self.frames[page_name] = frame
             frame.grid(row=0, column=0, sticky="nsew")
 
-        self.show_frame("StartPage")
-
-    def set_shape_and_show_frame(self, page_name, shape):
-        self.frames[page_name].set_shape(shape)
-        self.frames[page_name].tkraise()
-
-    def set_simulation_name_and_show_frame(self, page_name, simulation_name):
-        self.frames[page_name].set_simulation_name(simulation_name)
-        self.frames[page_name].tkraise()
-
-    def set_simulation_name_shape_and_show_frame(self, page_name, simulation_name, shape):
-        self.frames[page_name].set_shape(shape)
-        self.frames[page_name].set_simulation_name(simulation_name)
-        self.frames[page_name].tkraise()
-
-    def set_simulation_name_shape_stepped_and_show_frame(self, page_name, simulation_name, shape, stepped):
-        self.frames[page_name].set_shape(shape)
-        self.frames[page_name].set_simulation_name(simulation_name)
-        self.frames[page_name].set_stepped(stepped)
-        self.frames[page_name].tkraise()
-
-    def show_frame(self, page_name):
-        frame = self.frames[page_name]
-        frame.tkraise()
-
+        self.frames["StartPage"].tkraise()
 
 class StartPage(tk.Frame):
     def __init__(self, parent, controller, config):
