@@ -73,7 +73,7 @@ def run_xinuk(simulation):
         args_list.append(f"-Dclustering.supervisor.port={xinuk_port}")
         args_list.append(f"-Dclustering.min-nr-of-members={min_nr_of_members}")
         args_list.append(f"-Dstart-stepped={stepped}")
-        args_list.append(f"-Dworker-manager-host={supervisor_host}")
+        args_list.append(f"-Dsupervisor={supervisor_host}")
         args_list.append(f"-Dworkers-manager-port={workers_manager_port}")
         args_list.append(f"-D{name}.config.workersRoot=2")
         args_list.append(
