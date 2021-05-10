@@ -73,7 +73,7 @@ class StartPage(tk.Frame):
             button.pack(fill=tk.BOTH, expand=True)
 
         options_button = tk.Button(self, text="Service", bg=Colors.Yellow,
-                                   activebackground=Colors.Yellow, command=lambda: controller.show_frame("OptionsPage"))
+                                   activebackground=Colors.Yellow, command=lambda: self.controller.frames["OptionsPage"].tkraise())
         options_button.pack(fill=tk.BOTH, expand=True)
 
     def get_valid_config(self, config_name):

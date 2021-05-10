@@ -20,9 +20,9 @@ class OptionsPage(tk.Frame):
         tk.Button(self, text="Turn off platform", bg=Colors.Red, activebackground=Colors.Red,
                   command=lambda: threading.Thread(target=sr.turn_off_the_platform).start()).pack(fill=tk.BOTH, expand=True)
         tk.Button(self, text="Return",
-                  command=lambda: controller.show_frame("StartPage")).pack(fill=tk.BOTH, expand=True)
+                  command=lambda: self.controller.frames["StartPage"].tkraise()).pack(fill=tk.BOTH, expand=True)
 
     def open_avaliability_check(self):
         self.controller.frames["CkeckRaspberriesConnectionPage"].clean_statuses(
         )
-        self.controller.show_frame("CkeckRaspberriesConnectionPage")
+        self.controller.frames["CkeckRaspberriesConnectionPage"].tkraise()

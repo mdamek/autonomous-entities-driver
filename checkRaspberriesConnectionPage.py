@@ -32,8 +32,8 @@ class CkeckRaspberriesConnectionPage(tk.Frame):
         tk.Button(self, text="Start", command=lambda: check_statuses(), bg=Colors.Green,
                   activebackground=Colors.Green).grid(row=5, column=0, columnspan=2, sticky='nesw')
 
-        tk.Button(self, text="Return", command=lambda: controller.show_frame(
-            "OptionsPage")).grid(row=6, column=0, columnspan=2, sticky='nesw')
+        tk.Button(self, text="Return", command=lambda:  self.controller.frames[
+            "OptionsPage"].tkraise()).grid(row=6, column=0, columnspan=2, sticky='nesw')
 
         def check_statuses():
             param = '-n' if platform.system().lower() == 'windows' else '-c'
