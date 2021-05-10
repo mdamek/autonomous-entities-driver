@@ -1,5 +1,6 @@
 import json
 import paramiko
+import os
 import requests
 
 with open('simulations.json') as json_file:
@@ -120,3 +121,4 @@ def turn_off_the_platform():
                     password=config["localPassword"])
         ssh.exec_command("sudo shutdown -h now")
         print(f"Platform off on {host}")
+    os.system('sudo shutdown now')
