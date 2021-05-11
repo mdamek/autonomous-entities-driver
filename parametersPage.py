@@ -49,7 +49,7 @@ class ParametersPage(tk.Frame):
 
         number_of_addition_buttons = 5
 
-        for number in range(0, math.floor(number_of_parameters / 2) + number_of_addition_buttons):
+        for number in range(0, number_of_parameters + number_of_addition_buttons - 2):
             self.grid_rowconfigure(number, weight=1, minsize=4)
 
         for number in range(0, 6):
@@ -63,14 +63,17 @@ class ParametersPage(tk.Frame):
 
         tk.Label(self, text=self.simulation.config["name"].capitalize(
         ) + " simulation", font='Helvetica 14 bold').grid(row=0, column=0, columnspan=6, sticky='nesw')
-        Radiobutton(self, text="Classical simulation", variable=self.steppedSimulation,
-                    value=False).grid(row=1, column=0, columnspan=3, sticky='nesw')
-        Radiobutton(self, text="Stepped simulation", variable=self.steppedSimulation,
-                    value=True).grid(row=1, column=3, columnspan=6, sticky='nesw')
-        Radiobutton(self, text="Random initial position", variable=self.drawInitialPosition,
-                    value=False).grid(row=2, column=0, columnspan=3, sticky='nesw')
-        Radiobutton(self, text="Draw initial position", variable=self.drawInitialPosition,
-                    value=True).grid(row=2, column=3, columnspan=6, sticky='nesw')
+
+        tk.Label(self, text="Start type:").grid(row=1, column=0, sticky='nesw')
+        Radiobutton(self, text="Classical", variable=self.steppedSimulation,
+                    value=False).grid(row=1, column=2, sticky='nesw')
+        Radiobutton(self, text="Stepped", variable=self.steppedSimulation,
+                    value=True).grid(row=1, column=3, sticky='nesw')
+        tk.Label(self, text="Initial position:").grid(row=2, column=0, sticky='nesw')
+        Radiobutton(self, text="Random", variable=self.drawInitialPosition,
+                    value=False).grid(row=2, column=2, sticky='nesw')
+        Radiobutton(self, text="Draw", variable=self.drawInitialPosition,
+                    value=True).grid(row=2, column=3, sticky='nesw')
 
         for index, parameter in enumerate(parameters):
             name, text, initial_value, change_on_click = self.extract_values_for_parameter(
