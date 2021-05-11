@@ -66,12 +66,12 @@ class ParametersPage(tk.Frame):
 
         tk.Label(self, text="Start type:").grid(row=1, column=0, sticky='nesw')
         Radiobutton(self, text="Classical", variable=self.steppedSimulation,
-                    value=False).grid(row=1, column=2, sticky='nesw')
+                    value=False).grid(row=1, column=1, sticky='nesw')
         Radiobutton(self, text="Stepped", variable=self.steppedSimulation,
                     value=True).grid(row=1, column=3, sticky='nesw')
         tk.Label(self, text="Initial position:").grid(row=2, column=0, sticky='nesw')
         Radiobutton(self, text="Random", variable=self.drawInitialPosition,
-                    value=False).grid(row=2, column=2, sticky='nesw')
+                    value=False).grid(row=2, column=1, sticky='nesw')
         Radiobutton(self, text="Draw", variable=self.drawInitialPosition,
                     value=True).grid(row=2, column=3, sticky='nesw')
 

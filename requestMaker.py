@@ -19,6 +19,7 @@ timeout = 3
 
 
 def start_stepped_simulation():
+    print("Start stepped simulation")
     path = actor_manager_core + "startSteppedSimulation"
     try:
         requests.get(path, timeout=timeout)
@@ -29,6 +30,7 @@ def start_stepped_simulation():
 
 
 def stop_stepped_simulation():
+    print("Stop stepped simulation")
     path = actor_manager_core + "stopSteppedSimulation"
     try:
         requests.get(path, timeout=timeout)
@@ -39,6 +41,7 @@ def stop_stepped_simulation():
 
 
 def make_iteration():
+    print("Make iteration")
     path = actor_manager_core + "makeIteration"
     try:
         requests.get(path, timeout=timeout)
@@ -49,6 +52,7 @@ def make_iteration():
 
 
 def set_simulation_delay(delay):
+    print("Set simulation delay")
     path = actor_manager_core + "setSimulationDelay"
     params = {'delay': delay}
     try:
@@ -60,6 +64,7 @@ def set_simulation_delay(delay):
 
 
 def configure_drawing_server(simulation):
+    print("Configure drawing server")
     avaliableColors = simulation.config["avaliableToDraw"]
     body = {"nodes": drawing_server_hosts, "xNodes": simulation.x_nodes,
             "yNodes": simulation.y_nodes, "avaliableColors": avaliableColors}
@@ -73,6 +78,7 @@ def configure_drawing_server(simulation):
             print("Request error")
 
 def set_color(color):
+    print(f"Set server color on {color}")
     color = color.replace("#", "")
     for host in drawing_server_hosts:
         try:
@@ -84,6 +90,7 @@ def set_color(color):
 
 
 def start_motion_sensor(shape):
+    print("Start motion sensor")
     path = motion_sensor_core + "startReadingPositions"
     params = {'shape': shape}
     try:
@@ -95,6 +102,7 @@ def start_motion_sensor(shape):
 
 
 def stop_motion_sensor():
+    print("Stop motion sensor")
     path = motion_sensor_core + "stopReadingPositions"
     try:
         requests.get(path, timeout=timeout)
