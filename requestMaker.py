@@ -71,28 +71,37 @@ def configure_drawing_server(simulation):
     headers = {'Content-type': 'application/json', 'Accept': 'text/plain'}
     for host in drawing_server_hosts:
         try:
-            requests.post(f"http://{host}:{drawing_server_port}/configureDrawing", data=json.dumps(body), headers=headers)
+            requests.post(f"http://{host}:{drawing_server_port}/configureDrawing",
+                          data=json.dumps(body), headers=headers)
         except requests.Timeout:
             print("Timeout on: ", host)
         except requests.ConnectionError:
             print("Request error")
+
 
 def set_color(color):
     print(f"Set server color on {color}")
     color = color.replace("#", "")
     for host in drawing_server_hosts:
         try:
-            requests.get(f"http://{host}:{drawing_server_port}/setColor/{color}")
+            requests.get(
+                f"http://{host}:{drawing_server_port}/setColor/{color}")
         except requests.Timeout:
             print("Timeout on: ", host)
         except requests.ConnectionError:
             print("Request error")
 
 
-def start_motion_sensor(shape):
+def start_motion_sensor(simulation):
     print("Start motion sensor")
+    width = simulation.x
+    height = simulation.y
+    pixelSize = config["config"]["motionSensor"]["pixelSizeCm"]
+    screenWidth = config["config"]["motionSensor"]["panelWidth"]
+    screenHeight = config["config"]["motionSensor"]["panelHeight"]
     path = motion_sensor_core + "startReadingPositions"
-    params = {'shape': shape}
+    params = {'width': width, "height": height, "pixelSize": pixelSize,
+              "screenWidth": screenWidth, "screenHeight": screenHeight}
     try:
         requests.get(path, params=params, timeout=timeout)
     except requests.Timeout:

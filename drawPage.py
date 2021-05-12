@@ -17,7 +17,7 @@ class DrawPage(tk.Frame):
     def render_page(self):
         configure_drawing_server(self.simulation)
         threading.Thread(target=start_motion_sensor,
-                         args=(self.simulation.shape, )).start()
+                         args=(self.simulation, )).start()
 
         avaliable_colors = self.simulation.config["avaliableToDraw"]
         self.selected_color = tk.StringVar()
