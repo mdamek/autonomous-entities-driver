@@ -76,7 +76,7 @@ def run_xinuk(simulation):
             f"-D{name}.config.iterationsNumber={iterationsNumber}")
         args_list.append(f"-D{name}.config.loadFromOutside={loadFromOutside}")
         args_list.append(f"-D{name}.config.guiType=ledPanel")
-        args_list.append(f"-D{name}.config.ledPanelPort={led_panel_port}")
+        args_list.append(f"-DledPanelPort={led_panel_port}")
         args_list.append(f"-D{name}.config.worldWidth={width}")
         args_list.append(f"-D{name}.config.worldHeight={height}")
         args_list.append(f"-D{name}.config.workersX={width_workers}")
