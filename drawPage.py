@@ -15,6 +15,7 @@ class DrawPage(tk.Frame):
         self.simulation = simulation
 
     def render_page(self):
+        self.clear_page()
         configure_drawing_server(self.simulation)
         threading.Thread(target=start_motion_sensor,
                          args=(self.simulation, )).start()
@@ -80,3 +81,7 @@ class DrawPage(tk.Frame):
                 self.simulation)
             self.controller.frames["InProgressPage"].tkraise()
         sr.run_xinuk(self.simulation)
+
+    def clear_page(self):
+        for widget in self.winfo_children():
+            widget.destroy()
