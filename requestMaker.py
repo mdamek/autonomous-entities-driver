@@ -66,8 +66,12 @@ def set_simulation_delay(delay):
 def configure_drawing_server(simulation):
     print("Configure drawing server")
     avaliableColors = simulation.config["avaliableToDraw"]
+    panelWidth = config["config"]["motionSensor"]["panelWidth"]
+    panelHeight = config["config"]["motionSensor"]["panelHeight"]
+    print(panelWidth)
+    print(panelHeight)
     body = {"nodes": drawing_server_hosts, "xNodes": simulation.x_nodes,
-            "yNodes": simulation.y_nodes, "avaliableColors": avaliableColors}
+            "yNodes": simulation.y_nodes, "avaliableColors": avaliableColors, "panelWidth": panelWidth, "panelHeight": panelHeight}
     headers = {'Content-type': 'application/json', 'Accept': 'text/plain'}
     for host in drawing_server_hosts:
         try:
