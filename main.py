@@ -89,7 +89,8 @@ class StartPage(tk.Frame):
 
 
 if __name__ == "__main__":
-    # sr.run_led_servers()
+    sr.run_led_servers()
     app = App()
     app.geometry("480x320")
+    app.attributes('-fullscreen', True)
     app.mainloop()
