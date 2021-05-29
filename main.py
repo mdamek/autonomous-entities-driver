@@ -9,6 +9,7 @@ from drawPage import DrawPage
 from inProgressPage import InProgressPage
 import json
 import tkinter as tk
+import scripts_runner as sr
 
 
 class App(tk.Tk):
@@ -89,7 +90,7 @@ class StartPage(tk.Frame):
 
 
 if __name__ == "__main__":
-    sr.run_led_servers()
+    sr.restart_led_servers()
     app = App()
     app.geometry("480x320")
     app.attributes('-fullscreen', True)
