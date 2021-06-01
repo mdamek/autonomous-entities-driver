@@ -58,10 +58,10 @@
         },
         {
             "name": "One row",
-            "width": 32,
-            "height": 64,
-            "width_workers": 1,
-            "height_workers": 2
+            "width": 64,
+            "height": 32,
+            "width_workers": 2,
+            "height_workers": 1
         }
 
     ],
