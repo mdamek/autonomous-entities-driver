@@ -50,10 +50,17 @@
             "height_workers": 4
         },
         {
-            "name": "onePanel",
+            "name": "One panel",
             "width": 32,
             "height": 32,
             "width_workers": 1,
+            "height_workers": 1
+        },
+        {
+            "name": "One row",
+            "width": 64,
+            "height": 32,
+            "width_workers": 2,
             "height_workers": 1
         }
 
