@@ -60,8 +60,8 @@
             "name": "One row",
             "width": 64,
             "height": 32,
-            "width_workers": 2,
-            "height_workers": 1
+            "width_workers": 1,
+            "height_workers": 2
         }
 
     ],
