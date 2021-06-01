@@ -25,7 +25,7 @@
         "actorsManagerPort": 8013,
         "user": "pi",
         "localPassword": "zaq12wsx",
-        "iterationsNumber": 1000
+        "iterationsNumber": 200
     },
     "shapes": [
         {
